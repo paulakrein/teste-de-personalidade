@@ -126,29 +126,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+    return array.map(value => ({ value, sort: Math.random() }))
+                .sort((a, b) => a.sort - b.sort)
+                .map(({ value }) => value);
 }
 
 function loadQuestion() {
     document.getElementById("question-text").innerText = questions[currentQuestion].text;
     let optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = "";
-    
-    if (questions[currentQuestion].options) {
-        let shuffledOptions = [...questions[currentQuestion].options]; // 🔹 Cria uma cópia das opções
-        shuffleArray(shuffledOptions); // 🔹 Embaralha apenas a cópia, sem alterar o original
-       
-        shuffledOptions.forEach(option => {
-            optionsDiv.innerHTML += `<label>
-                <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
-                ${option}
-            </label><br>`;
-        });
-    }
-    
+
     if (questions[currentQuestion].type === "draggable") {
         optionsDiv.innerHTML = "<ul id='draggable-list' class='draggable-list'></ul>";
         let list = document.getElementById("draggable-list");
@@ -187,12 +174,16 @@ function loadQuestion() {
             </div>
         `;
     } else {
-        questions[currentQuestion].options.forEach(option => {
-            optionsDiv.innerHTML += `<label>
-                <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
-                ${option}
-            </label><br>`;
-        });
+        if (questions[currentQuestion].options) {
+            let shuffledOptions = shuffleArray([...questions[currentQuestion].options]); // 🔹 Embaralha uma cópia, sem alterar o original
+            
+            shuffledOptions.forEach(option => {
+                optionsDiv.innerHTML += `<label>
+                    <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
+                    ${option}
+                </label><br>`;
+            });
+        }
     }
 }
 
