@@ -15,7 +15,6 @@ let currentQuestion = 0;
 const answers = {};
 
 document.addEventListener("DOMContentLoaded", () => {
-    updateNav(); 
     loadQuestion();
 });
 
@@ -58,8 +57,24 @@ function loadQuestion() {
     }
 }
 
+function nextQuestion() {
+    saveAnswer();
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+    }
+}
+
+function prevQuestion() {
+    saveAnswer();
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+    }
+}
+
 function saveAnswer() {
-    if (currentQuestion === 1) { // Pergunta 2 - Barras Deslizantes
+    if (currentQuestion === 1) {
         answers["2a"] = document.getElementById("q2a").value;
         answers["2b"] = document.getElementById("q2b").value;
         answers["2c"] = document.getElementById("q2c").value;
@@ -69,25 +84,6 @@ function saveAnswer() {
         if (selectedOption) {
             answers[currentQuestion] = selectedOption.value;
         }
-    }
-}
-
-function nextQuestion() {
-    saveAnswer();
-    if (currentQuestion < questions.length - 1) {
-        currentQuestion++;
-        loadQuestion();
-    } else {
-        document.getElementById("quiz-form").style.display = "none";
-        document.getElementById("submit-btn").style.display = "block";
-    }
-}
-
-function prevQuestion() {
-    saveAnswer();
-    if (currentQuestion > 0) {
-        currentQuestion--;
-        loadQuestion();
     }
 }
 
