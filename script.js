@@ -259,6 +259,24 @@ function submitQuiz() {
         cluster2: ["t4", "t5", "t6", "t7"],
         cluster3: ["t8", "t9", "t10"]
     };
+    
+    // 🔹 Pontuação das Barras da Pergunta 2 🔹
+    const sliderScores = {
+        "2a": { "-2": { c1: 4, c2: 0, c3: 2 }, "-1": { c1: 2, c2: 2, c3: 2 }, "0": { c1: 2, c2: 2, c3: 2 }, "+1": { c1: 0, c2: 2, c3: 2 }, "+2": { c1: 0, c2: 4, c3: 2 } },
+        "2b": { "-2": { c1: 4, c2: 0, c3: 0 }, "-1": { c1: 2, c2: 0, c3: 2 }, "0": { c1: 2, c2: 2, c3: 2 }, "+1": { c1: 0, c2: 2, c3: 2 }, "+2": { c1: 0, c2: 4, c3: 2 } },
+        "2c": { "-2": { c1: 0, c2: 4, c3: 2 }, "-1": { c1: 2, c2: 2, c3: 2 }, "0": { c1: 2, c2: 2, c3: 2 }, "+1": { c1: 2, c2: 0, c3: 2 }, "+2": { c1: 4, c2: 0, c3: 4 } },
+        "2d": { "-2": { c1: 4, c2: 2, c3: 0 }, "-1": { c1: 2, c2: 2, c3: 0 }, "0": { c1: 2, c2: 2, c3: 2 }, "+1": { c1: 0, c2: 2, c3: 2 }, "+2": { c1: 0, c2: 0, c3: 4 } }
+    };
+    
+    Object.keys(sliderScores).forEach(slider => {
+        let value = savedAnswers[slider];
+        if (value !== undefined) {
+            let clusterPoints = sliderScores[slider][value.toString()];
+            clusters.cluster1.forEach(t => transtornoScores[t] += clusterPoints.c1);
+            clusters.cluster2.forEach(t => transtornoScores[t] += clusterPoints.c2);
+            clusters.cluster3.forEach(t => transtornoScores[t] += clusterPoints.c3);
+        }
+    });
 
     // Percorre todas as perguntas e pontua corretamente
     questions.forEach((question, index) => {
