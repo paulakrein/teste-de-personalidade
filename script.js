@@ -254,15 +254,17 @@ function submitQuiz() {
 
     const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
 
-    // Percorre todas as perguntas exceto a 2 e 9
-    const questionsToScore = [1, 3, 4, 5, 6, 7, 8, 10];
+    // Lista das perguntas que pontuam para transtornos (ignora 2 e 9)
+    const questionsToScore = [0, 1, 3, 4, 5, 6, 7, 8, 10];
+
     questionsToScore.forEach(qNum => {
         let answer = savedAnswers[qNum];
         if (answer) {
-            let index = questions[qNum].options.indexOf(answer); // Posição da resposta
+            // Obtém o índice da resposta na lista de opções da pergunta
+            let index = questions[qNum].options.indexOf(answer);
             if (index !== -1) {
                 let transtornoKey = `t${index + 1}`;
-                if (transtornoScores[transtornoKey] !== undefined) {
+                if (transtornoScores.hasOwnProperty(transtornoKey)) {
                     transtornoScores[transtornoKey] += 1;
                 }
             }
