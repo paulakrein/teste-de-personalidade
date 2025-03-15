@@ -253,15 +253,33 @@ function submitQuiz() {
 
     const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
 
-    // Agora TODAS as perguntas pontuam, sem exceção
+    // Definição dos clusters
+    const clusters = {
+        cluster1: ["t1", "t2", "t3"],
+        cluster2: ["t4", "t5", "t6", "t7"],
+        cluster3: ["t8", "t9", "t10"]
+    };
+
+    // Percorre todas as perguntas e pontua corretamente
     questions.forEach((question, index) => {
         let answer = savedAnswers[index];
         if (answer) {
             let answerIndex = question.options.indexOf(answer);
             if (answerIndex !== -1) {
                 let transtornoKey = `t${answerIndex + 1}`;
+                
+                // Pontua +5 para o transtorno específico
                 if (transtornoScores.hasOwnProperty(transtornoKey)) {
-                    transtornoScores[transtornoKey] += 1;
+                    transtornoScores[transtornoKey] += 5;
+                }
+
+                // Pontua +2 para o cluster correspondente
+                if (answerIndex < 3) {
+                    clusters.cluster1.forEach(t => transtornoScores[t] += 2);
+                } else if (answerIndex >= 3 && answerIndex <= 6) {
+                    clusters.cluster2.forEach(t => transtornoScores[t] += 2);
+                } else {
+                    clusters.cluster3.forEach(t => transtornoScores[t] += 2);
                 }
             }
         }
