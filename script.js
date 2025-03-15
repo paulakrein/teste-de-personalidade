@@ -1,15 +1,15 @@
 
 const questions = [
-    { text: "Pergunta 1", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
+    { text: "Pergunta 1", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
     { text: "Pergunta 2", type: "slider" },
-    { text: "Pergunta 3", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
-    { text: "Pergunta 4", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
-    { text: "Pergunta 5", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
-    { text: "Pergunta 6", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
-    { text: "Pergunta 7", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
-    { text: "Pergunta 8", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
+    { text: "Pergunta 3", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 4", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 5", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 6", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 7", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 8", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
     { text: "Pergunta 9", type: "draggable", options: ["Item A", "Item B", "Item C", "Item D", "Item E"] },
-    { text: "Pergunta 10", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] }
+    { text: "Pergunta 10", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] }
 ];
 
 let currentQuestion = 0;
