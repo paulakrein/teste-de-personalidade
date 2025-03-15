@@ -125,11 +125,22 @@ document.addEventListener("DOMContentLoaded", () => {
     loadQuestion();
 });
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 function loadQuestion() {
     document.getElementById("question-text").innerText = questions[currentQuestion].text;
     let optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = "";
-
+    
+    if (questions[currentQuestion].options) {
+        shuffleArray(questions[currentQuestion].options);
+    }
+    
     if (questions[currentQuestion].type === "draggable") {
         optionsDiv.innerHTML = "<ul id='draggable-list' class='draggable-list'></ul>";
         let list = document.getElementById("draggable-list");
