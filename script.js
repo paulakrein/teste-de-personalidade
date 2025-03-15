@@ -16,6 +16,7 @@ let currentQuestion = 0;
 const answers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
 
 document.addEventListener("DOMContentLoaded", () => {
+    localStorage.removeItem("quizAnswers"); // Isso zera as respostas ao recarregar a página
     loadQuestion();
 });
 
