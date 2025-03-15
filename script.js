@@ -1,14 +1,14 @@
 const questions = [
-    { text: "Placeholder", options: [] }, // Pergunta 1
-    { text: "Placeholder", options: [] }, // Pergunta 2 (barras deslizantes)
-    { text: "Placeholder", options: [] }, // Pergunta 3
-    { text: "Placeholder", options: [] }, // Pergunta 4
-    { text: "Placeholder", options: [] }, // Pergunta 5
-    { text: "Placeholder", options: [] }, // Pergunta 6
-    { text: "Placeholder", options: [] }, // Pergunta 7
-    { text: "Placeholder", options: [] }, // Pergunta 8
-    { text: "Placeholder", options: [] }, // Pergunta 9
-    { text: "Placeholder", options: [] }  // Pergunta 10
+    { text: "Pergunta 1", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 2", options: [] }, // Pergunta 2 - Barras Deslizantes
+    { text: "Pergunta 3", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 4", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 5", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 6", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 7", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 8", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 9", options: [] }, // Placeholder
+    { text: "Pergunta 10", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] }
 ];
 
 let currentQuestion = 0;
@@ -47,6 +47,14 @@ function loadQuestion() {
                 <div class='slider-label'><span>-2</span><span>2</span></div>
             </div>
         `;
+    } else {
+        questions[currentQuestion].options.forEach((option, index) => {
+            optionsDiv.innerHTML += `
+                <label>
+                    <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
+                    ${option}
+                </label><br>`;
+        });
     }
 }
 
