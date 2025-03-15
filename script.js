@@ -305,10 +305,10 @@ function submitQuiz() {
 
     // 🔹 Pontuação da Pergunta 9 (Draggable) 🔹
     const priorityScores = {
-        "p1": { primary: 10, secondary: 4 },
-        "p2": { primary: 7, secondary: 3 },
-        "p3": { primary: 4, secondary: 2 },
-        "p4": { primary: 2, secondary: 1 },
+        "p1": { primary: 40, secondary: 10 },
+        "p2": { primary: 28, secondary: 7 },
+        "p3": { primary: 16, secondary: 4 },
+        "p4": { primary: 8, secondary: 2 },
         "p5": { primary: 0, secondary: 0 }
     };
 
