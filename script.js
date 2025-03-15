@@ -1,15 +1,15 @@
 
 const questions = [
-    { text: "Pergunta 1", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
-    { text: "Pergunta 2", options: [] }, // Pergunta 2 - Barras Deslizantes
-    { text: "Pergunta 3", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
-    { text: "Pergunta 4", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
-    { text: "Pergunta 5", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
-    { text: "Pergunta 6", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
-    { text: "Pergunta 7", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
-    { text: "Pergunta 8", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] },
+    { text: "Pergunta 1", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
+    { text: "Pergunta 2", type: "slider" },
+    { text: "Pergunta 3", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
+    { text: "Pergunta 4", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
+    { text: "Pergunta 5", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
+    { text: "Pergunta 6", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
+    { text: "Pergunta 7", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
+    { text: "Pergunta 8", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] },
     { text: "Pergunta 9", type: "draggable", options: ["Item A", "Item B", "Item C", "Item D", "Item E"] },
-    { text: "Pergunta 10", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5", "Resposta 6", "Resposta 7", "Resposta 8", "Resposta 9", "Resposta 10"] }
+    { text: "Pergunta 10", options: ["Resposta 1", "Resposta 2", "Resposta 3", "Resposta 4", "Resposta 5"] }
 ];
 
 let currentQuestion = 0;
@@ -38,6 +38,29 @@ function loadQuestion() {
             listItem.addEventListener("drop", drop);
             list.appendChild(listItem);
         });
+    } else if (questions[currentQuestion].type === "slider") {
+        optionsDiv.innerHTML = `
+            <div class='slider-container'>
+                <label>Razão 🟢🔵🔴 Emoção</label>
+                <input type='range' class='slider' id='q2a' min='-2' max='2' step='1' value='${answers["2a"] || 0}'>
+                <div class='slider-label'><span>-2</span><span>2</span></div>
+            </div>
+            <div class='slider-container'>
+                <label>Autonomia 🟢🔵🔴 Influência</label>
+                <input type='range' class='slider' id='q2b' min='-2' max='2' step='1' value='${answers["2b"] || 0}'>
+                <div class='slider-label'><span>-2</span><span>2</span></div>
+            </div>
+            <div class='slider-container'>
+                <label>Impulsividade 🟢🔵🔴 Planejamento</label>
+                <input type='range' class='slider' id='q2c' min='-2' max='2' step='1' value='${answers["2c"] || 0}'>
+                <div class='slider-label'><span>-2</span><span>2</span></div>
+            </div>
+            <div class='slider-container'>
+                <label>Flexibilidade 🟢🔵🔴 Rigor</label>
+                <input type='range' class='slider' id='q2d' min='-2' max='2' step='1' value='${answers["2d"] || 0}'>
+                <div class='slider-label'><span>-2</span><span>2</span></div>
+            </div>
+        `;
     } else {
         questions[currentQuestion].options.forEach(option => {
             optionsDiv.innerHTML += `<label>
@@ -82,6 +105,11 @@ function saveAnswer() {
             let itemText = item.textContent.trim();
             answers[`9${itemText.charAt(itemText.length - 1).toLowerCase()}`] = `p${index + 1}`;
         });
+    } else if (questions[currentQuestion].type === "slider") {
+        answers["2a"] = document.getElementById("q2a").value;
+        answers["2b"] = document.getElementById("q2b").value;
+        answers["2c"] = document.getElementById("q2c").value;
+        answers["2d"] = document.getElementById("q2d").value;
     } else {
         const selectedOption = document.querySelector(`input[name='q${currentQuestion}']:checked`);
         if (selectedOption) {
