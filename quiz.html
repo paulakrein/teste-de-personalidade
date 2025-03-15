@@ -6,11 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste de Personalidade</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Perguntas do Teste</h1>
-        <p>O teste começará em breve...</p>
+        <h1>Responda às perguntas</h1>
+        <div class="quiz-container">
+            <div class="question-nav">
+                <button class="nav-btn" onclick="goToQuestion(0)">1</button>
+                <button class="nav-btn" onclick="goToQuestion(1)">2</button>
+                <button class="nav-btn" onclick="goToQuestion(2)">3</button>
+                <button class="nav-btn" onclick="goToQuestion(3)">4</button>
+                <button class="nav-btn" onclick="goToQuestion(4)">5</button>
+                <button class="nav-btn" onclick="goToQuestion(5)">6</button>
+                <button class="nav-btn" onclick="goToQuestion(6)">7</button>
+                <button class="nav-btn" onclick="goToQuestion(8)">8</button>
+                <button class="nav-btn" onclick="goToQuestion(9)">9</button>
+                <button class="nav-btn" onclick="goToQuestion(10)">10</button>
+            </div>
+            <form id="quiz-form">
+                <div class="question-container">
+                    <p id="question-text">Pergunta 1</p>
+                    <div id="options"></div>
+                </div>
+                <button type="button" onclick="prevQuestion()">Voltar</button>
+                <button type="button" onclick="nextQuestion()">Próximo</button>
+            </form>
+            <button id="submit-btn" style="display:none;" onclick="submitQuiz()">Ver Resultado</button>
+        </div>
     </div>
 </body>
 </html>
