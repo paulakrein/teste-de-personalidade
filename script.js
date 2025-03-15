@@ -138,7 +138,15 @@ function loadQuestion() {
     optionsDiv.innerHTML = "";
     
     if (questions[currentQuestion].options) {
-        shuffleArray(questions[currentQuestion].options);
+        let shuffledOptions = [...questions[currentQuestion].options]; // 🔹 Cria uma cópia das opções
+        shuffleArray(shuffledOptions); // 🔹 Embaralha apenas a cópia, sem alterar o original
+       
+        shuffledOptions.forEach(option => {
+            optionsDiv.innerHTML += `<label>
+                <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
+                ${option}
+            </label><br>`;
+        });
     }
     
     if (questions[currentQuestion].type === "draggable") {
