@@ -12,7 +12,7 @@ const questions = [
 ];
 
 let currentQuestion = 0;
-const answers = {};
+const answers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
 
 document.addEventListener("DOMContentLoaded", () => {
     loadQuestion();
@@ -27,49 +27,33 @@ function loadQuestion() {
         optionsDiv.innerHTML = `
             <div class='slider-container'>
                 <label>Razão 🟢🔵🔴 Emoção</label>
-                <input type='range' class='slider' id='q2a' min='-2' max='2' step='1' value='0'>
+                <input type='range' class='slider' id='q2a' min='-2' max='2' step='1' value='${answers["2a"] || 0}'>
                 <div class='slider-label'><span>-2</span><span>2</span></div>
             </div>
             <div class='slider-container'>
                 <label>Autonomia 🟢🔵🔴 Influência</label>
-                <input type='range' class='slider' id='q2b' min='-2' max='2' step='1' value='0'>
+                <input type='range' class='slider' id='q2b' min='-2' max='2' step='1' value='${answers["2b"] || 0}'>
                 <div class='slider-label'><span>-2</span><span>2</span></div>
             </div>
             <div class='slider-container'>
                 <label>Impulsividade 🟢🔵🔴 Planejamento</label>
-                <input type='range' class='slider' id='q2c' min='-2' max='2' step='1' value='0'>
+                <input type='range' class='slider' id='q2c' min='-2' max='2' step='1' value='${answers["2c"] || 0}'>
                 <div class='slider-label'><span>-2</span><span>2</span></div>
             </div>
             <div class='slider-container'>
                 <label>Flexibilidade 🟢🔵🔴 Rigor</label>
-                <input type='range' class='slider' id='q2d' min='-2' max='2' step='1' value='0'>
+                <input type='range' class='slider' id='q2d' min='-2' max='2' step='1' value='${answers["2d"] || 0}'>
                 <div class='slider-label'><span>-2</span><span>2</span></div>
             </div>
         `;
     } else {
-        questions[currentQuestion].options.forEach((option, index) => {
+        questions[currentQuestion].options.forEach(option => {
             optionsDiv.innerHTML += `
                 <label>
                     <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
                     ${option}
                 </label><br>`;
         });
-    }
-}
-
-function nextQuestion() {
-    saveAnswer();
-    if (currentQuestion < questions.length - 1) {
-        currentQuestion++;
-        loadQuestion();
-    }
-}
-
-function prevQuestion() {
-    saveAnswer();
-    if (currentQuestion > 0) {
-        currentQuestion--;
-        loadQuestion();
     }
 }
 
@@ -85,11 +69,29 @@ function saveAnswer() {
             answers[currentQuestion] = selectedOption.value;
         }
     }
+    localStorage.setItem("quizAnswers", JSON.stringify(answers));
+}
+
+function nextQuestion() {
+    saveAnswer();
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+    } else {
+        submitQuiz();
+    }
+}
+
+function prevQuestion() {
+    saveAnswer();
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+    }
 }
 
 function submitQuiz() {
     saveAnswer();
-    localStorage.setItem("quizAnswers", JSON.stringify(answers));
     window.location.href = "results.html";
 }
 
