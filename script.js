@@ -254,20 +254,19 @@ function submitQuiz() {
 
     const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
 
-    // Estas são as perguntas a considerar (ignora a 2ª e a 9ª)
-    const questionsToScore = [1, 3, 4, 5, 6, 7, 8, 10];
+    // Filtra apenas as perguntas que devem pontuar (ignora pergunta 2 e pergunta 9)
+    const questionsToScore = questions.filter(q => 
+        !q.text.includes("Pergunta 2") && !q.text.includes("Pergunta 9")
+    );
 
-    questionsToScore.forEach(questionNumber => {
-        let answer = savedAnswers[questionNumber];
+    questionsToScore.forEach((question, index) => {
+        let answer = savedAnswers[index + 1]; // Ajusta para a numeração correta da pergunta
         if (answer) {
-            let index = questions.findIndex(q => q.text.includes(`Pergunta ${questionNumber}`)); // Encontra a pergunta no array
-            if (index !== -1) {
-                let answerIndex = questions[index].options.indexOf(answer); // Encontra a posição da resposta
-                if (answerIndex !== -1) {
-                    let transtornoKey = `t${answerIndex + 1}`;
-                    if (transtornoScores.hasOwnProperty(transtornoKey)) {
-                        transtornoScores[transtornoKey] += 1;
-                    }
+            let answerIndex = question.options.indexOf(answer);
+            if (answerIndex !== -1) {
+                let transtornoKey = `t${answerIndex + 1}`;
+                if (transtornoScores.hasOwnProperty(transtornoKey)) {
+                    transtornoScores[transtornoKey] += 1;
                 }
             }
         }
