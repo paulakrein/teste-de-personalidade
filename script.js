@@ -1,6 +1,14 @@
 const questions = [
-    "Pergunta 1", "Pergunta 2", "Pergunta 3", "Pergunta 4", "Pergunta 5", 
-    "Pergunta 6", "Pergunta 7", "Pergunta 8", "Pergunta 9", "Pergunta 10"
+    { text: "Placeholder", options: [] }, // Pergunta 1
+    { text: "Placeholder", options: [] }, // Pergunta 2 (barras deslizantes)
+    { text: "Placeholder", options: [] }, // Pergunta 3
+    { text: "Placeholder", options: [] }, // Pergunta 4
+    { text: "Placeholder", options: [] }, // Pergunta 5
+    { text: "Placeholder", options: [] }, // Pergunta 6
+    { text: "Placeholder", options: [] }, // Pergunta 7
+    { text: "Placeholder", options: [] }, // Pergunta 8
+    { text: "Placeholder", options: [] }, // Pergunta 9
+    { text: "Placeholder", options: [] }  // Pergunta 10
 ];
 
 let currentQuestion = 0;
@@ -12,15 +20,47 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadQuestion() {
-    document.getElementById("question-text").innerText = questions[currentQuestion];
+    document.getElementById("question-text").innerText = questions[currentQuestion].text;
     let optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = "";
-    for (let i = 1; i <= 10; i++) {
-        optionsDiv.innerHTML += `
-            <label>
-                <input type='radio' name='q${currentQuestion}' value='${i}' ${answers[currentQuestion] === i ? "checked" : ""}>
-                Opção ${i}
-            </label><br>`;
+    
+    if (currentQuestion === 1) { // Pergunta 2 - Barras Deslizantes
+        optionsDiv.innerHTML = `
+            <div class='slider-container'>
+                <label>Razão 🟢🔵🔴 Emoção</label>
+                <input type='range' class='slider' id='q2a' min='-2' max='2' step='1' value='0'>
+                <div class='slider-label'><span>-2</span><span>2</span></div>
+            </div>
+            <div class='slider-container'>
+                <label>Autonomia 🟢🔵🔴 Influência</label>
+                <input type='range' class='slider' id='q2b' min='-2' max='2' step='1' value='0'>
+                <div class='slider-label'><span>-2</span><span>2</span></div>
+            </div>
+            <div class='slider-container'>
+                <label>Impulsividade 🟢🔵🔴 Planejamento</label>
+                <input type='range' class='slider' id='q2c' min='-2' max='2' step='1' value='0'>
+                <div class='slider-label'><span>-2</span><span>2</span></div>
+            </div>
+            <div class='slider-container'>
+                <label>Flexibilidade 🟢🔵🔴 Rigor</label>
+                <input type='range' class='slider' id='q2d' min='-2' max='2' step='1' value='0'>
+                <div class='slider-label'><span>-2</span><span>2</span></div>
+            </div>
+        `;
+    }
+}
+
+function saveAnswer() {
+    if (currentQuestion === 1) { // Pergunta 2 - Barras Deslizantes
+        answers["2a"] = document.getElementById("q2a").value;
+        answers["2b"] = document.getElementById("q2b").value;
+        answers["2c"] = document.getElementById("q2c").value;
+        answers["2d"] = document.getElementById("q2d").value;
+    } else {
+        const selectedOption = document.querySelector(`input[name='q${currentQuestion}']:checked`);
+        if (selectedOption) {
+            answers[currentQuestion] = selectedOption.value;
+        }
     }
 }
 
@@ -43,34 +83,18 @@ function prevQuestion() {
     }
 }
 
-function goToQuestion(qIndex) {
-    saveAnswer();
-    currentQuestion = qIndex;
-    loadQuestion();
-}
-
-function saveAnswer() {
-    const selectedOption = document.querySelector(`input[name='q${currentQuestion}']:checked`);
-    if (selectedOption) {
-        answers[currentQuestion] = parseInt(selectedOption.value);
-    }
-}
-
-function updateNav() {
-    const navDiv = document.getElementById("question-nav");
-    if (!navDiv) return;
-    navDiv.innerHTML = "";
-    questions.forEach((_, index) => {
-        navDiv.innerHTML += `<button class='nav-btn' onclick='goToQuestion(${index})'>${index + 1}</button>`;
-    });
-}
-
 function submitQuiz() {
     saveAnswer();
+    localStorage.setItem("quizAnswers", JSON.stringify(answers));
     window.location.href = "results.html";
 }
 
-window.nextQuestion = nextQuestion;
-window.prevQuestion = prevQuestion;
-window.goToQuestion = goToQuestion;
-window.submitQuiz = submitQuiz;
+document.addEventListener("DOMContentLoaded", () => {
+    const resultsDiv = document.getElementById("results");
+    if (resultsDiv) {
+        const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
+        Object.keys(savedAnswers).forEach(qIndex => {
+            resultsDiv.innerHTML += `<p>Pergunta ${qIndex}: Você escolheu '${savedAnswers[qIndex]}'</p>`;
+        });
+    }
+});
