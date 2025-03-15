@@ -303,6 +303,43 @@ function submitQuiz() {
         }
     });
 
-    localStorage.setItem("transtornoScores", JSON.stringify(transtornoScores));
+    // 🔹 Pontuação da Pergunta 9 (Draggable) 🔹
+    const priorityScores = {
+        "p1": { primary: 5, secondary: 2 },
+        "p2": { primary: 4, secondary: 2 },
+        "p3": { primary: 3, secondary: 1 },
+        "p4": { primary: 2, secondary: 1 },
+        "p5": { primary: 1, secondary: 0 }
+    };
+
+    const question9Clusters = {
+        "9a": { primary: "cluster1", secondary: "cluster3" },
+        "9b": { primary: "cluster2", secondary: null },
+        "9c": { primary: "cluster3", secondary: null },
+        "9d": { primary: "cluster3", secondary: "cluster1" },
+        "9e": { primary: "cluster2", secondary: "cluster3" }
+    };
+
+    Object.keys(question9Clusters).forEach(option => {
+        let position = savedAnswers[option]; // Ex: "p1", "p2", etc.
+        if (position && priorityScores[position]) {
+            let clusterData = question9Clusters[option];
+
+            // Adiciona pontos ao cluster principal
+            clusters[clusterData.primary].forEach(t => {
+                transtornoScores[t] += priorityScores[position].primary;
+            });
+
+            // Adiciona pontos ao cluster secundário (se existir)
+            if (clusterData.secondary) {
+                clusters[clusterData.secondary].forEach(t => {
+                    transtornoScores[t] += priorityScores[position].secondary;
+                });
+            }
+        }
+    });
+
+    // 🔹 Agora salva os resultados e redireciona
+    localStorage.setItem("transtornoScores", JSON.stringify(transtornoScores)); 
     window.location.href = "results.html";
 }
