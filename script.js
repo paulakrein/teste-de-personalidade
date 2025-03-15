@@ -1,3 +1,4 @@
+
 const questions = [
     { text: "Pergunta 1",
         options: [
@@ -37,9 +38,7 @@ const questions = [
     ] },
     { text: "Pergunta 9",
         type: "draggable",
-        options: [
-            "Item A", "Item B", "Item C", "Item D", "Item E"
-        ]
+        options: ["Item A", "Item B", "Item C", "Item D", "Item E"]
     },
     { text: "Pergunta 10",
         options: [
@@ -49,12 +48,10 @@ const questions = [
 ];
 
 let currentQuestion = 0;
-let answers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
+const answers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
 
-// ** Garante que as respostas sejam apagadas ao recarregar a página **
 document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("quizAnswers");
-    answers = {};
     loadQuestion();
 });
 
@@ -77,6 +74,25 @@ function loadQuestion() {
             listItem.addEventListener("drop", drop);
             list.appendChild(listItem);
         });
+    } else if (questions[currentQuestion].type === "slider") {
+        optionsDiv.innerHTML = `
+            <div class='slider-container'>
+                <label>Razão 🟢🔵🔴 Emoção</label>
+                <input type='range' class='slider' id='q2a' min='-2' max='2' step='1' value='${answers["2a"] || 0}'>
+            </div>
+            <div class='slider-container'>
+                <label>Autonomia 🟢🔵🔴 Influência</label>
+                <input type='range' class='slider' id='q2b' min='-2' max='2' step='1' value='${answers["2b"] || 0}'>
+            </div>
+            <div class='slider-container'>
+                <label>Impulsividade 🟢🔵🔴 Planejamento</label>
+                <input type='range' class='slider' id='q2c' min='-2' max='2' step='1' value='${answers["2c"] || 0}'>
+            </div>
+            <div class='slider-container'>
+                <label>Flexibilidade 🟢🔵🔴 Rigor</label>
+                <input type='range' class='slider' id='q2d' min='-2' max='2' step='1' value='${answers["2d"] || 0}'>
+            </div>
+        `;
     } else {
         questions[currentQuestion].options.forEach(option => {
             optionsDiv.innerHTML += `<label>
@@ -87,48 +103,20 @@ function loadQuestion() {
     }
 }
 
-function saveAnswer() {
-    const selectedOption = document.querySelector(`input[name='q${currentQuestion}']:checked`);
-    if (selectedOption) {
-        answers[currentQuestion] = selectedOption.value;
-    }
-    localStorage.setItem("quizAnswers", JSON.stringify(answers));
-}
-
-function nextQuestion() {
-    saveAnswer();
-    if (currentQuestion < questions.length - 1) {
-        currentQuestion++;
-        loadQuestion();
-    } else {
-        submitQuiz();
-    }
-}
-
-function prevQuestion() {
-    saveAnswer();
-    if (currentQuestion > 0) {
-        currentQuestion--;
-        loadQuestion();
-    }
-}
-
 function submitQuiz() {
     saveAnswer();
 
     let transtornoScores = {
-        t1: 0, t2: 0, t3: 0, t4: 0, t5: 0, 
+        t1: 0, t2: 0, t3: 0, t4: 0, t5: 0,
         t6: 0, t7: 0, t8: 0, t9: 0, t10: 0
     };
 
     const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
 
-    // **Agora TODAS as perguntas serão pontuadas**
-    Object.keys(savedAnswers).forEach(qIndex => {
-        let answer = savedAnswers[qIndex];
+    questions.forEach((question, index) => {
+        let answer = savedAnswers[index];
         if (answer) {
-            let question = questions[qIndex]; // Captura a pergunta correta
-            let answerIndex = question.options.indexOf(answer);
+            let answerIndex = question.options ? question.options.indexOf(answer) : -1;
             if (answerIndex !== -1) {
                 let transtornoKey = `t${answerIndex + 1}`;
                 if (transtornoScores.hasOwnProperty(transtornoKey)) {
