@@ -253,12 +253,9 @@ function submitQuiz() {
 
     const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
 
-    // Ignorar apenas a pergunta 2 do frontend (índice 1 no array) e a pergunta 9 (índice 8 no array)
-    const questionsToScore = questions.map((q, index) => index).filter(index => index !== 2 && index !== 9);
-
-    questionsToScore.forEach((question, index) => {
-        let frontendIndex = index + 1; // Ajusta para a numeração do frontend (1 a 10)
-        let answer = savedAnswers[frontendIndex]; 
+    // Agora TODAS as perguntas pontuam, sem exceção
+    questions.forEach((question, index) => {
+        let answer = savedAnswers[index];
         if (answer) {
             let answerIndex = question.options.indexOf(answer);
             if (answerIndex !== -1) {
