@@ -271,16 +271,7 @@ function submitQuiz() {
     Object.keys(sliderScores).forEach(slider => {
         let value = savedAnswers[slider];
         if (value !== undefined) {
-    // admin
-            let valueStr = String(value); // 🔹 Converte para string
-            if (sliderScores[slider].hasOwnProperty(valueStr)) { // 🔹 Verifica se existe
-                let clusterPoints = sliderScores[slider][valueStr];
-    
-                clusters.cluster1.forEach(t => transtornoScores[t] += clusterPoints.c1);
-                clusters.cluster2.forEach(t => transtornoScores[t] += clusterPoints.c2);
-                clusters.cluster3.forEach(t => transtornoScores[t] += clusterPoints.c3);
-            }
-            
+            let clusterPoints = sliderScores[slider][value.toString()];
             clusters.cluster1.forEach(t => transtornoScores[t] += clusterPoints.c1);
             clusters.cluster2.forEach(t => transtornoScores[t] += clusterPoints.c2);
             clusters.cluster3.forEach(t => transtornoScores[t] += clusterPoints.c3);
