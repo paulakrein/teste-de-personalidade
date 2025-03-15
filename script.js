@@ -1,4 +1,3 @@
-
 const questions = [
     { text: "Pergunta 1",
         options: [
