@@ -305,19 +305,19 @@ function submitQuiz() {
 
     // 🔹 Pontuação da Pergunta 9 (Draggable) 🔹
     const priorityScores = {
-        "p1": { primary: 16, secondary: 6 },
+        "p1": { primary: 16, secondary: 10 },
         "p2": { primary: 10, secondary: 4 },
         "p3": { primary: 4, secondary: 2 },
         "p4": { primary: 2, secondary: 0 },
         "p5": { primary: 0, secondary: 0 }
     };
-
+// a=independencia b=lideranca e carisma c=estabilidade e proteção d=estrutura e controle e=reconhecimento e validação
     const question9Clusters = {
-        "9a": { primary: "cluster1", secondary: "cluster3" },
-        "9b": { primary: "cluster2", secondary: null },
-        "9c": { primary: "cluster3", secondary: null },
-        "9d": { primary: "cluster3", secondary: "cluster1" },
-        "9e": { primary: "cluster2", secondary: "cluster3" }
+        "9a": { primary: "cluster1", secondary: "cluster2" },
+        "9b": { primary: "cluster2", secondary: "cluster3" },
+        "9c": { primary: "cluster3", secondary: "cluster1" },
+        "9d": { primary: "cluster3", secondary: "cluster2" },
+        "9e": { primary: "cluster2", secondary: "cluster1" }
     };
 
     Object.keys(question9Clusters).forEach(option => {
