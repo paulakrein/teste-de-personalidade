@@ -13,4 +13,14 @@
         <div id="results"></div>
     </div>
 </body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const resultsDiv = document.getElementById("results");
+    const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
+
+    Object.keys(savedAnswers).forEach(qIndex => {
+        resultsDiv.innerHTML += `<p>Pergunta ${qIndex}: ${savedAnswers[qIndex]}</p>`;
+    });
+});
+</script>
 </html>
