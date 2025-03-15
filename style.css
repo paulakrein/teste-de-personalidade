@@ -5,7 +5,7 @@ body {
     padding: 0;
 }
 .container {
-    margin-top: 100px;
+    margin-top: 20%;
 }
 .start-btn {
     display: inline-block;
@@ -14,4 +14,15 @@ body {
     color: white;
     text-decoration: none;
     border-radius: 5px;
+}
+.slider-container {
+    margin: 20px 0;
+    text-align: left;
+}
+.slider {
+    width: 100%;
+}
+.slider-label {
+    display: flex;
+    justify-content: space-between;
 }
