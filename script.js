@@ -305,10 +305,10 @@ function submitQuiz() {
 
     // 🔹 Pontuação da Pergunta 9 (Draggable) 🔹
     const priorityScores = {
-        "p1": { primary: 16, secondary: 10 },
-        "p2": { primary: 10, secondary: 4 },
+        "p1": { primary: 10, secondary: 5 },
+        "p2": { primary: 7, secondary: 3 },
         "p3": { primary: 4, secondary: 2 },
-        "p4": { primary: 2, secondary: 0 },
+        "p4": { primary: 2, secondary: 1 },
         "p5": { primary: 0, secondary: 0 }
     };
 // a=independencia b=lideranca e carisma c=estabilidade e proteção d=estrutura e controle e=reconhecimento e validação
