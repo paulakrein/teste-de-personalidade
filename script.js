@@ -246,5 +246,29 @@ function prevQuestion() {
 
 function submitQuiz() {
     saveAnswer();
+
+    let transtornoScores = {
+        t1: 0, t2: 0, t3: 0, t4: 0, t5: 0, 
+        t6: 0, t7: 0, t8: 0, t9: 0, t10: 0
+    };
+
+    const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
+
+    // Percorre todas as perguntas exceto a 2 e 9
+    const questionsToScore = [1, 3, 4, 5, 6, 7, 8, 10];
+    questionsToScore.forEach(qNum => {
+        let answer = savedAnswers[qNum];
+        if (answer) {
+            let index = questions[qNum].options.indexOf(answer); // Posição da resposta
+            if (index !== -1) {
+                let transtornoKey = `t${index + 1}`;
+                if (transtornoScores[transtornoKey] !== undefined) {
+                    transtornoScores[transtornoKey] += 1;
+                }
+            }
+        }
+    });
+
+    localStorage.setItem("transtornoScores", JSON.stringify(transtornoScores));
     window.location.href = "results.html";
 }
