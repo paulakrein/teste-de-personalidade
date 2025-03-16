@@ -4,6 +4,12 @@
 	box-sizing: border-box;
 }
 
+.center-margin {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 2em;
+}
+
 body {
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
@@ -52,23 +58,41 @@ p {
 	margin: 0;
 }
 
+p.quote {
+  position: relative;
+  margin: 2em 1em;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+
+p.quote .symb {
+  font-family: "Unica One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #6482E1;
+  font-size: 4em;
+  position: absolute;
+  top: -0.4em;
+  left: -0.5em;
+}
+
 h1 {
-  color: black;
   font-family: "Unica One", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: black;
+  font-size: 2.5em;
+  text-align: center;
 }
 
 h2 {
-	margin: 0 0 0.5em 0;
-	background: radial-gradient(rgba(0, 0, 128, 0.2), rgba(0, 0, 128, 0.5));
-	line-height: 40px;
-	text-align: center;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	color: rgba(255,255,255,0.9);
+  font-family: "Unica One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #6482E1;
+  font-size: 1.5em;
+  text-align: center;
 }
 
 @media screen and (max-width: 960px) {
