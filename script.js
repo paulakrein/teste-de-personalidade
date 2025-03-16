@@ -213,15 +213,18 @@ function loadQuestion() {
         optionsDiv.innerHTML = "<ul id='draggable-list-12' class='draggable-list'></ul>";
         let list = document.getElementById("draggable-list-12");
     
-        let optionsCopy = [...questions[currentQuestion].options]; // Copy the options to maintain order
+        let optionsCopy = [...questions[currentQuestion].options]; // Copy options for randomization
         optionsCopy.forEach((item, index) => {
             let listItem = document.createElement("li");
             listItem.textContent = item;
             listItem.draggable = true;
             listItem.dataset.index = index;
-            listItem.addEventListener("dragstart", dragStart);
-            listItem.addEventListener("dragover", dragOver);
-            listItem.addEventListener("drop", drop);
+            
+            // Ensure event listeners for draggable actions
+            listItem.addEventListener("dragstart", dragStart12);
+            listItem.addEventListener("dragover", dragOver12);
+            listItem.addEventListener("drop", drop12);
+    
             list.appendChild(listItem);
         });
     }
@@ -274,6 +277,40 @@ function updateIndices() {
     });
 }
 
+function dragStart12(event) {
+    event.dataTransfer.setData("text/plain", event.target.dataset.index);
+}
+
+function dragOver12(event) {
+    event.preventDefault();
+}
+
+function drop12(event) {
+    event.preventDefault();
+    const draggedIndex = event.dataTransfer.getData("text/plain");
+    const targetIndex = event.target.dataset.index;
+    let list = document.getElementById("draggable-list-12");
+    let items = Array.from(list.children);
+
+    if (draggedIndex !== targetIndex) {
+        let draggedItem = items[draggedIndex];
+        let targetItem = items[targetIndex];
+
+        if (draggedItem && targetItem) {
+            list.insertBefore(draggedItem, targetItem);
+            updateIndices12();
+        }
+    }
+}
+
+function updateIndices12() {
+    let list = document.getElementById("draggable-list-12");
+    let items = Array.from(list.children);
+    items.forEach((item, index) => {
+        item.dataset.index = index;
+    });
+}
+
 function saveAnswer() {
     if (questions[currentQuestion].type === "draggable") {
         let items = document.querySelectorAll("#draggable-list li");
@@ -297,7 +334,7 @@ function saveAnswer() {
         let items = document.querySelectorAll("#draggable-list-12 li");
         items.forEach((item, index) => {
             let itemText = item.textContent.trim();
-            answers[`12${index + 1}`] = itemText;
+            answers[`12p${index + 1}`] = itemText; // Stores priority ranking as "12p1", "12p2", etc.
         });
     }
     else {
@@ -474,31 +511,23 @@ function submitQuiz() {
     };
 
     const positionScores12 = {
-        "121": { main: 2, secondary: 1 },  // 1º lugar → +2 para os principais, +1 para o secundário
-        "122": { main: 1, secondary: 0 },  // 2º lugar → +1 para os principais
-        "123": { main: 0, secondary: 1 }   // 3º lugar → +1 para o secundário
+        "12p1": { main: 2, secondary: 1 },  // 1st place → +2 for primary traits, +1 for secondary
+        "12p2": { main: 1, secondary: 0 },  // 2nd place → +1 for primary traits
+        "12p3": { main: 0, secondary: 1 }   // 3rd place → +1 for secondary
     };
-
-    Object.keys(priorityScores12).forEach((key, index) => {
-        let positionKey = `12${index + 1}`;
-        let selectedOption = savedAnswers[positionKey]; // Pega a escolha do usuário para essa posição
-
+    
+    Object.keys(positionScores12).forEach(positionKey => {
+        let selectedOption = savedAnswers[positionKey]; // Gets user selection
         if (selectedOption && priorityScores12[selectedOption]) {
             let points = priorityScores12[selectedOption];
-            
-            // Aplica a pontuação conforme a posição
-            if (positionScores12[positionKey]) {
-                let scoreData = positionScores12[positionKey];
-
-                // Adiciona pontos aos transtornos principais
-                points.main.forEach(t => {
-                    transtornoScores[t] += scoreData.main;
-                });
-
-                // Adiciona pontos ao transtorno secundário
-                if (points.secondary) {
-                    transtornoScores[points.secondary] += scoreData.secondary;
-                }
+            let scoreData = positionScores12[positionKey];
+    
+            // Apply scores
+            points.main.forEach(t => {
+                transtornoScores[t] += scoreData.main;
+            });
+            if (points.secondary) {
+                transtornoScores[points.secondary] += scoreData.secondary;
             }
         }
     });
