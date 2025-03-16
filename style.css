@@ -60,10 +60,11 @@ p {
 
 p.quote {
   position: relative;
-  margin: 2em 1em;
+  margin: 2.5em 1em;
   font-size: 14px;
   line-height: 1.4;
   letter-spacing: 0.5px;
+  padding-bottom: 1.5em;
 }
 
 p.quote .symb {
@@ -75,6 +76,17 @@ p.quote .symb {
   position: absolute;
   top: -0.4em;
   left: -0.5em;
+}
+
+p.quote .author {
+  font-family: "Unica One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #6482E1;
+  font-size: 1.2em;
+  position: absolute;
+  bottom: -0.4em;
+  right: -0.5em;
 }
 
 h1 {
