@@ -199,6 +199,8 @@ function shuffleArray(array) {
 
 function loadQuestion() {
     document.getElementById("question-text").innerText = questions[currentQuestion].text;
+    document.getElementById("question-counter").innerText = `${currentQuestion + 1}/${questions.length}`;
+    
     let optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = "";
 
