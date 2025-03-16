@@ -510,27 +510,34 @@ function submitQuiz() {
         "Ordem e previsibilidade, saber que tudo está bem estruturado": { main: ["t8", "t3"], secondary: "t10" }  // Obsessivo-Compulsivo, Paranoide, Evitativo
     };
 
-    const positionScores12 = {
-        "12p1": { main: 2, secondary: 1 },  // 1st place → +2 for primary traits, +1 for secondary
-        "12p2": { main: 1, secondary: 0 },  // 2nd place → +1 for primary traits
-        "12p3": { main: 0, secondary: 1 }   // 3rd place → +1 for secondary
-    };
-    
-    Object.keys(positionScores12).forEach(positionKey => {
-        let selectedOption = savedAnswers[positionKey]; // Gets user selection
-        if (selectedOption && priorityScores12[selectedOption]) {
-            let points = priorityScores12[selectedOption];
-            let scoreData = positionScores12[positionKey];
-    
-            // Apply scores
-            points.main.forEach(t => {
+// 🔹 Pontuação da Pergunta 12 (Ordenação de Prioridades)
+const positionScores12 = {
+    "12p1": { main: 2, secondary: 1 },  // 1º lugar → +2 para principais, +1 para secundário
+    "12p2": { main: 1, secondary: 0 },  // 2º lugar → +1 para principais
+    "12p3": { main: 0, secondary: 1 }   // 3º lugar → +1 para secundário
+};
+
+// 🔹 Itera sobre as respostas do usuário na Pergunta 12
+Object.keys(positionScores12).forEach(positionKey => {
+    let selectedOption = savedAnswers[positionKey];  // Obtém a opção escolhida pelo usuário
+
+    if (selectedOption && priorityScores12[selectedOption]) {
+        let points = priorityScores12[selectedOption];  // Obtém os transtornos relacionados
+        let scoreData = positionScores12[positionKey];  // Obtém os valores de pontuação
+
+        // 🔹 Adiciona pontos aos transtornos principais
+        points.main.forEach(t => {
+            if (transtornoScores.hasOwnProperty(t)) {
                 transtornoScores[t] += scoreData.main;
-            });
-            if (points.secondary) {
-                transtornoScores[points.secondary] += scoreData.secondary;
             }
+        });
+
+        // 🔹 Adiciona pontos ao transtorno secundário
+        if (points.secondary && transtornoScores.hasOwnProperty(points.secondary)) {
+            transtornoScores[points.secondary] += scoreData.secondary;
         }
-    });
+    }
+});
     
     // 🔹 Critério de Desempate (Pergunta 12)
     let scoresArray = Object.entries(transtornoScores);
