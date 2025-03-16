@@ -13,12 +13,16 @@
         <div class="quiz-container">
             <div class="question-nav" id="question-nav"></div>
             <form id="quiz-form">
-                <div class="question-container">
-                    <p id="question-text">Pergunta 1</p>
-                    <div id="options"></div>
-                </div>
-                <button type="button" onclick="prevQuestion()">Voltar</button>
-                <button type="button" onclick="nextQuestion()">Próximo</button>
+              <div class="question-container">
+                <p id="question-text">Pergunta 1</p>
+                <section id="answer-inner">
+                <div id="options"></div>
+                </section>
+              </div>
+            
+            <button type="button" onclick="prevQuestion()">Voltar</button>
+            <button type="button" onclick="nextQuestion()">Próximo</button>
+            
             </form>
             <button id="submit-btn" style="display:none;" onclick="submitQuiz()">Ver Resultado</button>
         </div>
