@@ -197,7 +197,13 @@ function shuffleArray(array) {
                 .map(({ value }) => value);
 }
 
+function updateQuestionCounter() {
+    document.getElementById("question-counter").innerText = `${currentQuestion + 1}/${questions.length}`;
+}
+
 function loadQuestion() {
+    updateQuestionCounter(); // 🔹 Atualiza o contador de perguntas sempre que carregar uma nova pergunta
+
     document.getElementById("question-text").innerText = questions[currentQuestion].text;
     let optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = "";
@@ -433,6 +439,8 @@ function nextQuestion() {
     if (currentQuestion < questions.length - 1) {
         currentQuestion++;
         
+      updateQuestionCounter(); // 🔹 Atualiza o contador ao avançar para a próxima pergunta
+
         // 🔹 Faz a rolagem para o topo da página
         window.scrollTo({ top: 0, behavior: "smooth" });
         
@@ -446,6 +454,9 @@ function prevQuestion() {
     saveAnswer();
     if (currentQuestion > 0) {
         currentQuestion--;
+      
+    updateQuestionCounter(); // 🔹 Atualiza o contador ao voltar para a pergunta anterior
+  
         loadQuestion();
     } else {
         window.location.href = "index.html"; // 🔹 Redireciona para a página inicial se estiver na primeira pergunta
