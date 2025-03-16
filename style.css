@@ -156,6 +156,14 @@ p.quote .author {
 .btn-container button {
   background: none;
   border: none;
+  color: #4A90E2;
+  cursor: pointer;
+}
+
+.btn-container button:hover {
+  background: none;
+  border: none;
+  color: #2277DA;
 }
 
 @media screen and (max-width: 960px) {
