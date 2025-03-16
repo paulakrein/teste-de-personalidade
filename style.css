@@ -13,7 +13,7 @@
 body {
   font-family: "Lora", serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
 	color: #1D3557;
 	background: #FDFFFC;
@@ -65,7 +65,7 @@ h1 {
 }
 
 h2 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.4em;
   text-align: center;
   letter-spacing: -0.012em;
@@ -97,11 +97,12 @@ p {
 p.quote {
   font-family: "Merriweather", serif;
   position: relative;
-  margin: 2.5em 1em;
+  margin: 2.5em 1em 5em;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.6;
   letter-spacing: 0.5px;
   padding-bottom: 1.5em;
+  font-weight: 500;
 }
 
 p.quote .symb {
