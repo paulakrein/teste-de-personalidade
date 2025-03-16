@@ -463,32 +463,32 @@ function submitQuiz() {
     // 🔹 Pontuação das Barras da Pergunta 11 🔹
     const slider11Scores = {
         "11a": {
-            "1": { t1: 2, t6: 2, t3: 1 },  // Antissocial, Narcisista, Borderline
-            "2": { t2: 2, t7: 1 },  // Paranoide, Histriônico
-            "3": { t4: 1, t9: 1 },  // Esquizotípico, Dependente
-            "4": { t5: 2, t8: 1 },  // Obs. Compulsivo, Esquizoide
+            "1": { t7: 2, t6: 2, t4: 1 },  // Antissocial, Narcisista, Borderline
+            "2": { t3: 2, t5: 1 },  // Paranoide, Histriônico
+            "3": { t2: 1, t9: 1 },  // Esquizotípico, Dependente
+            "4": { t8: 2, t1: 1 },  // Obsessivo-Compulsivo, Esquizoide
             "5": { t10: 2, t9: 2 }  // Evitativo, Dependente
         },
         "11b": {
-            "1": { t8: 2, t2: 2 },  // Esquizoide, Paranoide
-            "2": { t5: 2, t10: 1 },  // Obs. Compulsivo, Evitativo
-            "3": { t4: 1, t9: 1 },  // Esquizotípico, Dependente
-            "4": { t6: 1, t7: 1 },  // Narcisista, Histriônico
-            "5": { t3: 2, t7: 2, t1: 1 }  // Borderline, Histriônico, Antissocial
+            "1": { t1: 2, t3: 2 },  // Esquizoide, Paranoide
+            "2": { t8: 2, t10: 1 },  // Obsessivo-Compulsivo, Evitativo
+            "3": { t2: 1, t9: 1 },  // Esquizotípico, Dependente
+            "4": { t6: 1, t5: 1 },  // Narcisista, Histriônico
+            "5": { t4: 2, t5: 2, t7: 1 }  // Borderline, Histriônico, Antissocial
         },
         "11c": {
-            "1": { t9: 2, t3: 2 },  // Dependente, Borderline
-            "2": { t5: 1, t4: 1 },  // Obs. Compulsivo, Esquizotípico
-            "3": { t8: 1, t7: 1 },  // Esquizoide, Histriônico
-            "4": { t2: 2, t6: 1 },  // Paranoide, Narcisista
-            "5": { t1: 2, t6: 2, t2: 1 }  // Antissocial, Narcisista, Paranoide
+            "1": { t9: 2, t3: 2 },  // Dependente, Paranoide
+            "2": { t8: 1, t2: 1 },  // Obsessivo-Compulsivo, Esquizotípico
+            "3": { t1: 2, t7: 1 },  // Esquizoide, Antissocial
+            "4": { t3: 2, t6: 1 },  // Paranoide, Narcisista
+            "5": { t7: 2, t6: 2, t4: 1 }  // Antissocial, Narcisista, Borderline
         },
         "11d": {
             "1": { t9: 2, t10: 2 },  // Dependente, Evitativo
-            "2": { t5: 1, t8: 1 },  // Obs. Compulsivo, Esquizoide
-            "3": { t4: 1, t7: 1 },  // Esquizotípico, Histriônico
-            "4": { t6: 2, t2: 1 },  // Narcisista, Paranoide
-            "5": { t1: 2, t6: 2, t3: 1 }  // Antissocial, Narcisista, Borderline
+            "2": { t8: 1, t1: 1 },  // Obsessivo-Compulsivo, Esquizoide
+            "3": { t2: 1, t4: 1 },  // Esquizotípico, Borderline
+            "4": { t3: 2, t6: 1 },  // Paranoide, Narcisista
+            "5": { t7: 2, t6: 2, t4: 1 }  // Antissocial, Narcisista, Borderline
         }
     };
 
@@ -503,11 +503,11 @@ function submitQuiz() {
 
     // 🔹 Pontuação da Pergunta 12 (Ordenação de Prioridades)
     const priorityScores12 = {
-        "Independência e controle sobre o que acontece comigo": { main: ["t1", "t6"], secondary: "t2" },  // Antissocial, Narcisista, Paranoide
-        "Segurança e estabilidade, evitando erros e imprevistos": { main: ["t9", "t10"], secondary: "t5" },  // Dependente, Evitativo, Obsessivo-Compulsivo
-        "Relacionamentos e aprovação das pessoas ao meu redor": { main: ["t7", "t3"], secondary: "t9" },  // Histriônico, Borderline, Dependente
-        "Criatividade, novidade e liberdade para explorar novas ideias": { main: ["t4", "t8"], secondary: "t1" },  // Esquizotípico, Esquizoide, Antissocial
-        "Ordem e previsibilidade, saber que tudo está bem estruturado": { main: ["t5", "t2"], secondary: "t10" }  // Obsessivo-Compulsivo, Paranoide, Evitativo
+        "Independência e controle sobre o que acontece comigo": { main: ["t7", "t6"], secondary: "t3" },  // Antissocial, Narcisista, Paranoide
+        "Segurança e estabilidade, evitando erros e imprevistos": { main: ["t9", "t10"], secondary: "t8" },  // Dependente, Evitativo, Obsessivo-Compulsivo
+        "Relacionamentos e aprovação das pessoas ao meu redor": { main: ["t5", "t4"], secondary: "t9" },  // Histriônico, Borderline, Dependente
+        "Criatividade, novidade e liberdade para explorar novas ideias": { main: ["t2", "t1"], secondary: "t7" },  // Esquizotípico, Esquizoide, Antissocial
+        "Ordem e previsibilidade, saber que tudo está bem estruturado": { main: ["t8", "t3"], secondary: "t10" }  // Obsessivo-Compulsivo, Paranoide, Evitativo
     };
 
     const positionScores12 = {
@@ -516,16 +516,20 @@ function submitQuiz() {
         "12p3": { main: 0, secondary: 1 }   // 3rd place → +1 for secondary
     };
     
-    Object.keys(positionScores12).forEach(positionKey => {
-        let selectedOption = savedAnswers[positionKey]; // Gets user selection
+    Object.keys(priorityScores12).forEach((key, index) => {
+        let positionKey = `12p${index + 1}`;
+        let selectedOption = savedAnswers[positionKey]; 
+    
         if (selectedOption && priorityScores12[selectedOption]) {
             let points = priorityScores12[selectedOption];
             let scoreData = positionScores12[positionKey];
     
-            // Apply scores
+            // Adiciona pontos aos transtornos principais
             points.main.forEach(t => {
                 transtornoScores[t] += scoreData.main;
             });
+    
+            // Adiciona pontos ao transtorno secundário
             if (points.secondary) {
                 transtornoScores[points.secondary] += scoreData.secondary;
             }
