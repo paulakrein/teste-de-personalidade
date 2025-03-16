@@ -78,7 +78,7 @@ h1 {
 
 h2 {
   font-weight: 500;
-  font-size: 1.4em;
+  font-size: 1.2em;
   text-align: center;
   letter-spacing: -0.012em;
   line-height: 1.65;
@@ -87,7 +87,7 @@ h2 {
 
 h3 {
   font-weight: 400;
-  font-size: 1.15em;
+  font-size: 1em;
   text-align: center;
   letter-spacing: -0.012em;
   color: #1D3557;
@@ -139,7 +139,7 @@ p.quote .symb {
 }
 
 p.quote .author {
-  font-size: 1.2em;
+  font-size: 1.1em;
   position: absolute;
   bottom: -0.4em;
   right: -0.5em;
