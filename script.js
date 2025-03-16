@@ -532,6 +532,40 @@ function submitQuiz() {
         }
     });
     
+    // 🔹 Critério de Desempate (Pergunta 12)
+    let scoresArray = Object.entries(transtornoScores);
+
+    // 1️⃣ Ordena os transtornos pela pontuação
+    scoresArray.sort((a, b) => b[1] - a[1]);
+
+    // 2️⃣ Verifica se há empate entre os dois transtornos mais pontuados
+    if (scoresArray.length > 1 && scoresArray[0][1] === scoresArray[1][1]) {
+        let tiedTranstornos = [scoresArray[0][0], scoresArray[1][0]]; // Pegamos os transtornos empatados
+
+        // 3️⃣ Se um deles pontuou no 1º lugar da Pergunta 12, recebe +1 ponto extra
+        let firstPlace = savedAnswers["12p1"]; 
+        if (firstPlace && priorityScores12[firstPlace]) {
+            let firstTranstornos = priorityScores12[firstPlace].main; // Os principais do 1º lugar
+            let winner = firstTranstornos.find(t => tiedTranstornos.includes(t));
+            if (winner) {
+                transtornoScores[winner] += 1; // Desempate!
+            } else {
+                // 4️⃣ Se nenhum deles pontuou no 1º lugar, verificamos o 2º lugar
+                let secondPlace = savedAnswers["12p2"];
+                if (secondPlace && priorityScores12[secondPlace]) {
+                    let secondTranstornos = priorityScores12[secondPlace].main;
+                    let winner = secondTranstornos.find(t => tiedTranstornos.includes(t));
+                    if (winner) {
+                        transtornoScores[winner] += 1; // Desempate!
+                    } else {
+                        // 5️⃣ Se ainda houver empate, usamos a ordem de prioridade fixa
+                        transtornoScores[tiedTranstornos[0]] += 1; // O que apareceu primeiro vence
+                    }
+                }
+            }
+        }
+    }
+    
     // 🔹 Agora salva os resultados e redireciona
     localStorage.setItem("transtornoScores", JSON.stringify(transtornoScores)); 
     window.location.href = "results.html";
