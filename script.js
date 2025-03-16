@@ -425,7 +425,8 @@ function prevQuestion() {
     if (currentQuestion > 0) {
         currentQuestion--;
         loadQuestion();
-    }
+    } else {
+        window.location.href = "index.html"; // 🔹 Redireciona para a página inicial se estiver na primeira pergunta
 }
 
 // 🔹 Função para encontrar o melhor arquétipo considerando os Clusters corretos
