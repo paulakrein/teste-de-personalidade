@@ -154,11 +154,8 @@ p.quote .author {
 }
 
 .btn-container button {
-  margin: 1em 2em;
-  width: 2em;
-  height: 2em;
-  border-radius: 50%;
-  font-size: 2em;
+  background: none;
+  border: none;
 }
 
 @media screen and (max-width: 960px) {
