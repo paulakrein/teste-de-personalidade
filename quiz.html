@@ -8,6 +8,7 @@
     <script defer src="/script.js"></script>
 </head>
 <body>
+
     <div class="container">
         <h1 id="question-counter">1/12</h1>
         <div class="quiz-container">
@@ -19,13 +20,14 @@
                 <div id="options"></div>
                 </section>
               </div>
-            
-            <button type="button" onclick="prevQuestion()">Voltar</button>
-            <button type="button" onclick="nextQuestion()">Próximo</button>
-            
+<div class="btn-container">
+            <button type="button" onclick="prevQuestion()">←</button>
+            <button type="button" onclick="nextQuestion()">→</button>
+</div>       
             </form>
             <button id="submit-btn" style="display:none;" onclick="submitQuiz()">Ver Resultado</button>
         </div>
     </div>
+    
 </body>
 </html>
