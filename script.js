@@ -115,7 +115,16 @@ const questions = [
         "Resposta 9",
         "Resposta 10"
     ] },
-    { text: "Pergunta 11: Como você lida com conflitos e frustrações?", type: "slider11" }
+    { text: "Pergunta 11: Como você lida com conflitos e frustrações?", type: "slider11" },
+    { text: "Pergunta 12: O que é mais importante para você em qualquer situação?", type: "draggable12",
+        options: [
+            "Independência e controle sobre o que acontece comigo",
+            "Segurança e estabilidade, evitando erros e imprevistos",
+            "Relacionamentos e aprovação das pessoas ao meu redor",
+            "Criatividade, novidade e liberdade para explorar novas ideias",
+            "Ordem e previsibilidade, saber que tudo está bem estruturado"
+        ]
+    }
 ];
 
 let currentQuestion = 0;
@@ -199,7 +208,22 @@ function loadQuestion() {
                 <div class='slider-label'><span>1</span><span>5</span></div>
             </div>
         `;
-    }    
+    }
+    else if (questions[currentQuestion].type === "draggable12") {
+        optionsDiv.innerHTML = "<ul id='draggable-list-12' class='draggable-list'></ul>";
+        let list = document.getElementById("draggable-list-12");
+
+        questions[currentQuestion].options.forEach((item, index) => {
+            let listItem = document.createElement("li");
+            listItem.textContent = item;
+            listItem.draggable = true;
+            listItem.dataset.index = index;
+            listItem.addEventListener("dragstart", dragStart);
+            listItem.addEventListener("dragover", dragOver);
+            listItem.addEventListener("drop", drop);
+            list.appendChild(listItem);
+        });
+    }  
     else {
         // SHUFFLE
         // if (questions[currentQuestion].options) {
@@ -267,6 +291,13 @@ function saveAnswer() {
         answers["11b"] = document.getElementById("q11b").value;
         answers["11c"] = document.getElementById("q11c").value;
         answers["11d"] = document.getElementById("q11d").value;
+    }
+    else if (questions[currentQuestion].type === "draggable12") {
+        let items = document.querySelectorAll("#draggable-list-12 li");
+        items.forEach((item, index) => {
+            let itemText = item.textContent.trim();
+            answers[`12${index + 1}`] = itemText;
+        });
     }
     else {
         const selectedOption = document.querySelector(`input[name='q${currentQuestion}']:checked`);
@@ -432,6 +463,45 @@ function submitQuiz() {
         }
     });
 
+    // 🔹 Pontuação da Pergunta 12 (Ordenação de Prioridades)
+    const priorityScores12 = {
+        "Independência e controle sobre o que acontece comigo": { main: ["t1", "t6"], secondary: "t2" },  // Antissocial, Narcisista, Paranoide
+        "Segurança e estabilidade, evitando erros e imprevistos": { main: ["t9", "t10"], secondary: "t5" },  // Dependente, Evitativo, Obsessivo-Compulsivo
+        "Relacionamentos e aprovação das pessoas ao meu redor": { main: ["t7", "t3"], secondary: "t9" },  // Histriônico, Borderline, Dependente
+        "Criatividade, novidade e liberdade para explorar novas ideias": { main: ["t4", "t8"], secondary: "t1" },  // Esquizotípico, Esquizoide, Antissocial
+        "Ordem e previsibilidade, saber que tudo está bem estruturado": { main: ["t5", "t2"], secondary: "t10" }  // Obsessivo-Compulsivo, Paranoide, Evitativo
+    };
+
+    const positionScores12 = {
+        "121": { main: 2, secondary: 1 },  // 1º lugar → +2 para os principais, +1 para o secundário
+        "122": { main: 1, secondary: 0 },  // 2º lugar → +1 para os principais
+        "123": { main: 0, secondary: 1 }   // 3º lugar → +1 para o secundário
+    };
+
+    Object.keys(priorityScores12).forEach((key, index) => {
+        let positionKey = `12${index + 1}`;
+        let selectedOption = savedAnswers[positionKey]; // Pega a escolha do usuário para essa posição
+
+        if (selectedOption && priorityScores12[selectedOption]) {
+            let points = priorityScores12[selectedOption];
+            
+            // Aplica a pontuação conforme a posição
+            if (positionScores12[positionKey]) {
+                let scoreData = positionScores12[positionKey];
+
+                // Adiciona pontos aos transtornos principais
+                points.main.forEach(t => {
+                    transtornoScores[t] += scoreData.main;
+                });
+
+                // Adiciona pontos ao transtorno secundário
+                if (points.secondary) {
+                    transtornoScores[points.secondary] += scoreData.secondary;
+                }
+            }
+        }
+    });
+    
     // 🔹 Agora salva os resultados e redireciona
     localStorage.setItem("transtornoScores", JSON.stringify(transtornoScores)); 
     window.location.href = "results.html";
