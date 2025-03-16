@@ -19,6 +19,12 @@ body {
   background: #FAFBFA;
 }
 
+a {
+	text-decoration: none;
+}
+
+/* QUESTIONS */
+
 .grid {
 	padding: 1em 1em 0 1em;
 	margin: 0;
@@ -27,27 +33,33 @@ body {
 	column-rule: 2px outset rgba(0, 0, 128, 0.3);
 }
 
+/* .module input[type="radio"] {
+  display: none;
+} */
+
 .module {
 	display: inline-block;
 	margin: 10px 0 1em 0;
 	list-style: none;
-	background: rgba(0, 255, 0, 0.3);
+	background: #fff;
 	padding: 20px;
-	box-shadow: 0 8px 6px -6px rgba(0, 0, 128, 0.3), 0px -8px 6px -6px rgba(0, 0, 128, 0.2);
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.02);
+  width: 100%;
+  border: 2px solid black;
 }
-
-/* .module input[type="radio"] {
-  display: none;
-} */
 
 .module:has(input:checked) {
   background-color: #4caf50;
   color: white;
 }
 
-a {
-	text-decoration: none;
+.quiz-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 1.8em;
 }
+
+/* INDEX */
 
 a.start-btn,
 h1, h2, h3 {
