@@ -1,3 +1,14 @@
+// t1 Esquizoide
+// t2 Esquizotípico 
+// t3 Paranoide
+// t4 Borderline
+// t5 Histriônico
+// t6 Narcisista
+// t7 Anti-social
+// t8 Obsessivo-compulsivo
+// t9 Dependente
+// t10 Evitativo
+
 const questions = [
     { text: "Se você tivesse que escrever uma bio curta e sincera para um perfil anônimo, o que diria?",
         options: [
@@ -10,14 +21,14 @@ const questions = [
         "É simples assim: a vida é um jogo, e eu jogo para ganhar.",
         "Se eu me propus a algo, que seja bem feito.",
         "Não sou bom em decidir sobre essas coisas… O que você acha?",
-        "Se eu soubesse que ninguém julgaria, até escreveria mais…"
+        "Se eu soubesse que ninguém julgaria, até falaria mais…"
     ] },
     { text: "Você está diante de uma decisão importante, como costuma lidar com isso?", type: "slider" },
     { text: "Quando alguém se aproxima querendo ser seu amigo, como você reage?",
         options: [
         "Se for alguém mais na dele e que respeite meu espaço, daí tudo bem.",
         "É algo desconfortável, pois é difícil saber o que as pessoas querem e esperam.",
-        "Não sei… preciso observar melhor o comportamento dela pra ter mais segurança.",
+        "Não sei… Preciso observar melhor o comportamento dela pra ter mais segurança.",
         "Se essa pessoa se interessar de verdade, me aproximo e me apego com facilidade.",
         "Quanto mais amigos melhor… Gosto de conhecer pessoas novas, espero que sejam divertidas.",
         "Acho que não é todo mundo que merece atenção, mas eu gosto quando me admiram e se interessam por mim.",
@@ -28,92 +39,92 @@ const questions = [
     ] },
     { text: "Você está passando por um período difícil. Como lida com isso?",
         options: [
-        "Resposta 1",
-        "Resposta 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5",
-        "Resposta 6",
-        "Resposta 7",
-        "Resposta 8",
-        "Resposta 9",
-        "Resposta 10"
+        "Passo por isso sozinho, como sempre. E está tudo bem, vai se resolver, é assim que as coisas são.",
+        "Fico preso em pensamentos, analisando sinais e padrões no mundo, tentando entender o que significa.",
+        "Redobro minha atenção e analiso tudo ao meu redor com mais cuidado.",
+        "Preciso de alguém para me ouvir e me lembrar de que as coisas vão ficar bem.",
+        "Compartilho com amigos… Preciso sentir que estou sendo ouvido.",
+        "Não perco tempo me lamentando… Sei que é temporário, que tenho capacidade pra resolver e que tudo será um crescimento no fim.",
+        "As pessoas se complicam muito. A situação parece difícil? Mudo meu caminho e pronto.",
+        "Me concentro no que posso controlar, e planejo pra resolver da forma mais eficiente possível.",
+        "Preciso do apoio das pessoas pra me ajudarem a tomar decisões.",
+        "É difícil pedir ajuda, mesmo quando preciso."
     ] },
-    { text: "Pergunta 5",
+    { text: "Você está em uma conversa e alguém diz algo com que você discorda. Como reage?",
         options: [
-        "Resposta 1",
-        "Resposta 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5",
-        "Resposta 6",
-        "Resposta 7",
-        "Resposta 8",
-        "Resposta 9",
-        "Resposta 10"
+        "Provavelmente não direi nada porque não vejo motivo pra discutir.",
+        "Eu explico, mas ninguém nunca me entende.",
+        "Não quero que outros influenciem o que eu penso, então defendo firmemente minhas opiniões.",
+        "Se for alguém importante pra mim, fico angustiado tentando entender por que discordamos.",
+        "Gosto de debater, desde que me escutem também.",
+        "Gosto de discutir, e com frequência convenço os outros, pois falo com segurança e propriedade.",
+        "Gosto de testar até onde as pessoas vão para defender o ponto de vista delas.",
+        "Apresento argumentos lógicos e bem estruturados.",
+        "Concordo fácil com pessoas confiantes ou com quem eu gosto.",
+        "Se for uma conversa difícil, desvio do assunto."
     ] },
-    { text: "Pergunta 6",
+    { text: "Você entra em um grupo novo. Como se sente e age?",
         options: [
-        "Resposta 1",
-        "Resposta 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5",
-        "Resposta 6",
-        "Resposta 7",
-        "Resposta 8",
-        "Resposta 9",
-        "Resposta 10"
+        "Se eu puder evitar interações desnecessárias, melhor.",
+        "Tenho curiosidade em ficar observando os padrões de comportamento das pessoas.",
+        "Me preocupa a ideia de que possam estar falando de mim sem eu saber.",
+        "Me sinto deslocado, mas quero muito ser aceito.",
+        "Acompanho o tom do grupo, mas sempre levo energia com um toque especial meu.",
+        "Observo primeiro quem vale a pena, e então me conecto com as pessoas certas.",
+        "Identifico as dinâmicas do grupo para poder ter controle.",
+        "Se o grupo for muito desorganizado vou tentar colocar alguma ordem.",
+        "Espero que alguém me inclua nas conversas, pois tenho medo de me intrometer.",
+        "Só participo se perceber que é um ambiente seguro e receptivo."
     ] },
-    { text: "Pergunta 7",
+    { text: "O que pode realmente te tirar do sério?",
         options: [
-        "Resposta 1",
-        "Resposta 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5",
-        "Resposta 6",
-        "Resposta 7",
-        "Resposta 8",
-        "Resposta 9",
-        "Resposta 10"
+        "Ser forçado a interagir quando não estou afim.",
+        "Quando não consigo expressar direito minhas ideias, ou noto que minhas experiências não são compartilhadas.",
+        "Quando percebo que estão tentando me passar para trás.",
+        "Quando sinto que estou sendo deixado de lado.",
+        "Ser interrompido no meio de uma fala importante.",
+        "Perder para alguém menos competente que eu.",
+        "Gente sensível demais e que faz drama por qualquer coisa.",
+        "Mudanças de última hora que bagunçam os planos.",
+        "Ser deixado sozinho para lidar com um problema.",
+        "Ser criticado ou humilhado em público."
     ] },
     { text: "Pergunta 8",
         options: [
-        "Resposta 1",
-        "Resposta 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5",
-        "Resposta 6",
-        "Resposta 7",
-        "Resposta 8",
-        "Resposta 9",
-        "Resposta 10"
+        "Tanto faz. Nunca estive muito apegado aos planos de qualquer jeito.",
+        "Genial! E se isso mudar as coisas de um jeito inusitado, e me trazer algo que eu nem sabia que precisava?",
+        "Estranho... Por que isso aconteceu justo agora? O que está por trás disso?",
+        "Se eu estava animado para algo e os planos mudam, sinto por um tempo que tudo perdeu o sentido.",
+        "Ótimo! Mudanças são boas pois quebram o tédio da rotina.",
+        "Meu plano original ainda é melhor, só preciso encontrar um jeito de aplicá-lo nas novas circunstâncias.",
+        "Se eu não gostar, ignoro os limitantes e faço as coisas do meu jeito de qualquer forma.",
+        "Preciso reorganizar tudo do zero, e gasto um tempão nisso.",
+        "Eu travo e não consigo tomar novas decisões, então procuro alguém pra me ajudar.",
+        "Fico ansioso e tento me preparar para o pior cenário possível."
     ] },
-    { text: "Pergunta 9",
+    { text: "quando você está dentro de um grupo, o que é mais importante para você? Coloque em ordem de prioridade.",
         type: "draggable",
         options:
         [
-            "Item A",
-            "Item B",
-            "Item C",
-            "Item D",
-            "Item E"
+            "Independência",
+            "Liderança e Carisma",
+            "Estabilidade e Proteção",
+            "Estrutura e Controle",
+            "Reconhecimento e Validação"
         ]
     },
-    { text: "Pergunta 10",
+    { text: "Se sua mente fosse um lugar, como ela seria?",
         options: [
-        "Resposta 1",
-        "Resposta 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5",
-        "Resposta 6",
-        "Resposta 7",
-        "Resposta 8",
-        "Resposta 9",
-        "Resposta 10"
+        "Uma biblioteca silenciosa, onde só eu posso entrar e explorar.",
+        "Um reino mágico underground, onde as leis da lógica não funcionam da mesma forma.",
+        "Um tabuleiro de xadrez sem limites, onde preciso antecipar todos os movimentos possíveis.",
+        "Um palácio feito de mosaicos coloridos - belos, diversos, frágeis, sempre prestes a se quebrar.",
+        "Um festival de arte, música e teatro, com programação nova todos os dias.",
+        "Uma torre muito alta, com vista para tudo e todos.",
+        "Uma casa de pôquer clandestina, onde só vence quem arrisca alto, pensa rápido e blefa melhor.",
+        "Um relógio suíço, preciso, impecável, prático e eficiente.",
+        "Um barzinho de samba, vibrante e animado quando cheio de gente que se gosta.",
+        "Um tribunal de justiça, onde todos os movimentos são analisados e julgados."
     ] },
     { text: "Pergunta 11: Como você lida com conflitos e frustrações?", type: "slider11" },
     { text: "Pergunta 12: O que é mais importante para você em qualquer situação?", type: "draggable12",
