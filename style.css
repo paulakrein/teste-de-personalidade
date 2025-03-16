@@ -122,8 +122,8 @@ p {
 p.quote {
   font-family: "Merriweather", serif;
   position: relative;
-  margin: 3em auto 5.5em;
-  font-size: 13.5px;
+  margin: 5em auto 5.5em;
+  font-size: 15px;
   line-height: 1.6;
   letter-spacing: 0.5px;
   padding: 0 10px 2em;
