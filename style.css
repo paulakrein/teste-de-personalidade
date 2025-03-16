@@ -143,7 +143,8 @@ p.quote .author {
   position: absolute;
   bottom: -0.4em;
   right: -0.5em;
-	color: #4A90E2;
+  color: #1D3557;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 960px) {
