@@ -516,20 +516,16 @@ function submitQuiz() {
         "12p3": { main: 0, secondary: 1 }   // 3rd place → +1 for secondary
     };
     
-    Object.keys(priorityScores12).forEach((key, index) => {
-        let positionKey = `12p${index + 1}`;
-        let selectedOption = savedAnswers[positionKey]; 
-    
+    Object.keys(positionScores12).forEach(positionKey => {
+        let selectedOption = savedAnswers[positionKey]; // Gets user selection
         if (selectedOption && priorityScores12[selectedOption]) {
             let points = priorityScores12[selectedOption];
             let scoreData = positionScores12[positionKey];
     
-            // Adiciona pontos aos transtornos principais
+            // Apply scores
             points.main.forEach(t => {
                 transtornoScores[t] += scoreData.main;
             });
-    
-            // Adiciona pontos ao transtorno secundário
             if (points.secondary) {
                 transtornoScores[points.secondary] += scoreData.secondary;
             }
