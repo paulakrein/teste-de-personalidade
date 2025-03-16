@@ -50,7 +50,7 @@ a {
 }
 
 a.start-btn,
-h1, h2 {
+h1, h2, h3 {
   font-family: "Poppins", sans-serif;
   font-style: normal;
 }
@@ -70,6 +70,14 @@ h2 {
   text-align: center;
   letter-spacing: -0.012em;
   line-height: 1.4;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 1.2em;
+  text-align: center;
+  letter-spacing: -0.012em;
+  color: #495D77;
 }
 
 a.start-btn {
