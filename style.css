@@ -153,23 +153,27 @@ p.quote .author {
 /* Slider */
 .slider-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
-    max-width: 700px; /* Ajuste conforme necessário */
+    max-width: 500px; /* Mantém um tamanho adequado */
     margin: 10px auto;
 }
 
-.slider-container label {
-    flex: 1;
-    text-align: left;
-    white-space: nowrap;
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
 }
 
 .slider-wrapper {
-    flex: 2;
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 350px;
     gap: 10px;
 }
 
@@ -189,11 +193,27 @@ p.quote .author {
     background: #bbb;
 }
 
-.slider-label {
-    flex: 1;
-    text-align: right;
-    white-space: nowrap;
+/* MEDIA QUERY PARA MOBILE */
+@media (max-width: 480px) {
+    .slider-container {
+        flex-direction: column;
+        align-items: center;
+        max-width: 90%;
+    }
+
+    .slider-labels {
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        text-align: center;
+    }
+
+    .slider-wrapper {
+        width: 100%;
+    }
 }
+
 
 /* bottom btn */
 
