@@ -424,6 +424,10 @@ function prevQuestion() {
     saveAnswer();
     if (currentQuestion > 0) {
         currentQuestion--;
+        
+        // 🔹 Faz a rolagem para o topo da página
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
         loadQuestion();
     } else {
         window.location.href = "index.html"; // 🔹 Redireciona para a página inicial se estiver na primeira pergunta
