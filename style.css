@@ -158,12 +158,21 @@ p.quote .author {
   border: none;
   color: #4A90E2;
   cursor: pointer;
+  transition: all 0.3s ease; /* Adiciona uma transição suave */
 }
 
 .btn-container button:hover {
   background: none;
   border: none;
   color: #2277DA;
+}
+
+.btn-container button svg {
+    fill: #4A90E2; /* Cor padrão */
+}
+
+.btn-container button:hover svg {
+    fill: #2277DA; /* Cor no hover */
 }
 
 @media screen and (max-width: 960px) {
