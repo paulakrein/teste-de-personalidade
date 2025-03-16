@@ -220,66 +220,72 @@ function loadQuestion() {
         });
     }
     else if (questions[currentQuestion].type === "slider") {
-      optionsDiv.innerHTML = `
-          <div class='slider-container'>
-              <label>Razão</label>
-              <div class="slider-wrapper">
-                  <input type='range' class='slider' id='q2a' min='-2' max='2' step='1' value='${answers["2a"] || 0}'>
-                  <span class="slider-label">Emoção</span>
-              </div>
-          </div>
-          <div class='slider-container'>
-              <label>Autonomia</label>
-              <div class="slider-wrapper">
-                  <input type='range' class='slider' id='q2b' min='-2' max='2' step='1' value='${answers["2b"] || 0}'>
-                  <span class="slider-label">Influência</span>
-              </div>
-          </div>
-          <div class='slider-container'>
-              <label>Impulsividade</label>
-              <div class="slider-wrapper">
-                  <input type='range' class='slider' id='q2c' min='-2' max='2' step='1' value='${answers["2c"] || 0}'>
-                  <span class="slider-label">Planejamento</span>
-              </div>
-          </div>
-          <div class='slider-container'>
-              <label>Flexibilidade</label>
-              <div class="slider-wrapper">
-                  <input type='range' class='slider' id='q2d' min='-2' max='2' step='1' value='${answers["2d"] || 0}'>
-                  <span class="slider-label">Rigor</span>
-              </div>
-          </div>
-      `;
-  }
+    optionsDiv.innerHTML = `
+        <div class='slider-container'>
+            <div class="slider-labels">
+                <span>Razão</span>
+                <span>Emoção</span>
+            </div>
+            <input type='range' class='slider' id='q2a' min='-2' max='2' step='1' value='${answers["2a"] || 0}'>
+        </div>
+
+        <div class='slider-container'>
+            <div class="slider-labels">
+                <span>Autonomia</span>
+                <span>Influência</span>
+            </div>
+            <input type='range' class='slider' id='q2b' min='-2' max='2' step='1' value='${answers["2b"] || 0}'>
+        </div>
+
+        <div class='slider-container'>
+            <div class="slider-labels">
+                <span>Impulsividade</span>
+                <span>Planejamento</span>
+            </div>
+            <input type='range' class='slider' id='q2c' min='-2' max='2' step='1' value='${answers["2c"] || 0}'>
+        </div>
+
+        <div class='slider-container'>
+            <div class="slider-labels">
+                <span>Flexibilidade</span>
+                <span>Rigor</span>
+            </div>
+            <input type='range' class='slider' id='q2d' min='-2' max='2' step='1' value='${answers["2d"] || 0}'>
+        </div>
+    `;
+}
    else if (questions[currentQuestion].type === "slider11") {
     optionsDiv.innerHTML = `
         <div class='slider-container'>
-            <label>Evito o confronto</label>
-            <div class="slider-wrapper">
-                <input type='range' class='slider' id='q11a' min='1' max='5' step='1' value='${answers["11a"] || 3}'>
-                <span class="slider-label">Enfrento de cabeça</span>
+            <div class="slider-labels">
+                <span>Evito o confronto</span>
+                <span>Enfrento de cabeça</span>
             </div>
+            <input type='range' class='slider' id='q11a' min='1' max='5' step='1' value='${answers["11a"] || 3}'>
         </div>
+
         <div class='slider-container'>
-            <label>Reprimo o que sinto</label>
-            <div class="slider-wrapper">
-                <input type='range' class='slider' id='q11b' min='1' max='5' step='1' value='${answers["11b"] || 3}'>
-                <span class="slider-label">Expresso tudo intensamente</span>
+            <div class="slider-labels">
+                <span>Reprimo o que sinto</span>
+                <span>Expresso tudo intensamente</span>
             </div>
+            <input type='range' class='slider' id='q11b' min='1' max='5' step='1' value='${answers["11b"] || 3}'>
         </div>
+
         <div class='slider-container'>
-            <label>A culpa é minha</label>
-            <div class="slider-wrapper">
-                <input type='range' class='slider' id='q11c' min='1' max='5' step='1' value='${answers["11c"] || 3}'>
-                <span class="slider-label">A culpa é dos outros</span>
+            <div class="slider-labels">
+                <span>A culpa é minha</span>
+                <span>A culpa é dos outros</span>
             </div>
+            <input type='range' class='slider' id='q11c' min='1' max='5' step='1' value='${answers["11c"] || 3}'>
         </div>
+
         <div class='slider-container'>
-            <label>Eu aceito ordens</label>
-            <div class="slider-wrapper">
-                <input type='range' class='slider' id='q11d' min='1' max='5' step='1' value='${answers["11d"] || 3}'>
-                <span class="slider-label">Eu desafio autoridade</span>
+            <div class="slider-labels">
+                <span>Eu aceito ordens</span>
+                <span>Eu desafio autoridade</span>
             </div>
+            <input type='range' class='slider' id='q11d' min='1' max='5' step='1' value='${answers["11d"] || 3}'>
         </div>
     `;
 }
