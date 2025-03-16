@@ -212,8 +212,9 @@ function loadQuestion() {
     else if (questions[currentQuestion].type === "draggable12") {
         optionsDiv.innerHTML = "<ul id='draggable-list-12' class='draggable-list'></ul>";
         let list = document.getElementById("draggable-list-12");
-
-        questions[currentQuestion].options.forEach((item, index) => {
+    
+        let optionsCopy = [...questions[currentQuestion].options]; // Copy the options to maintain order
+        optionsCopy.forEach((item, index) => {
             let listItem = document.createElement("li");
             listItem.textContent = item;
             listItem.draggable = true;
@@ -223,7 +224,7 @@ function loadQuestion() {
             listItem.addEventListener("drop", drop);
             list.appendChild(listItem);
         });
-    }  
+    }
     else {
         // SHUFFLE
         // if (questions[currentQuestion].options) {
