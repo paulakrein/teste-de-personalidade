@@ -33,9 +33,9 @@ a {
 	column-rule: 2px outset rgba(0, 0, 128, 0.3);
 }
 
-/* .module input[type="radio"] {
+.module input[type="radio"] {
   display: none;
-} */
+}
 
 .module {
 	display: inline-block;
