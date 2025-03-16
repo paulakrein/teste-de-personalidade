@@ -69,7 +69,7 @@ h2 {
   font-size: 1.4em;
   text-align: center;
   letter-spacing: -0.012em;
-  line-height: 1.4;
+  line-height: 1.65;
 }
 
 h3 {
@@ -107,10 +107,10 @@ p.quote {
   font-family: "Merriweather", serif;
   position: relative;
   margin: 3em auto 5.5em;
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.6;
   letter-spacing: 0.5px;
-  padding-bottom: 2em;
+  padding: 0 10px 2em;
   font-weight: 500;
   max-width: 520px;
 }
