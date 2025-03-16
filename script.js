@@ -410,6 +410,10 @@ function nextQuestion() {
     saveAnswer();
     if (currentQuestion < questions.length - 1) {
         currentQuestion++;
+        
+        // 🔹 Faz a rolagem para o topo da página
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        
         loadQuestion();
     } else {
         submitQuiz();
