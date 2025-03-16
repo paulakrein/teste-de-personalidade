@@ -199,8 +199,6 @@ function shuffleArray(array) {
 
 function loadQuestion() {
     document.getElementById("question-text").innerText = questions[currentQuestion].text;
-    document.getElementById("question-counter").innerText = `${currentQuestion + 1}/${questions.length}`;
-    
     let optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = "";
 
@@ -222,53 +220,69 @@ function loadQuestion() {
         });
     }
     else if (questions[currentQuestion].type === "slider") {
-        optionsDiv.innerHTML = `
-            <div class='slider-container'>
-                <label>Razão 🟢🔵🔴 Emoção</label>
-                <input type='range' class='slider' id='q2a' min='-2' max='2' step='1' value='${answers["2a"] || 0}'>
-                <div class='slider-label'><span>-2</span><span>2</span></div>
-            </div>
-            <div class='slider-container'>
-                <label>Autonomia 🟢🔵🔴 Influência</label>
-                <input type='range' class='slider' id='q2b' min='-2' max='2' step='1' value='${answers["2b"] || 0}'>
-                <div class='slider-label'><span>-2</span><span>2</span></div>
-            </div>
-            <div class='slider-container'>
-                <label>Impulsividade 🟢🔵🔴 Planejamento</label>
-                <input type='range' class='slider' id='q2c' min='-2' max='2' step='1' value='${answers["2c"] || 0}'>
-                <div class='slider-label'><span>-2</span><span>2</span></div>
-            </div>
-            <div class='slider-container'>
-                <label>Flexibilidade 🟢🔵🔴 Rigor</label>
-                <input type='range' class='slider' id='q2d' min='-2' max='2' step='1' value='${answers["2d"] || 0}'>
-                <div class='slider-label'><span>-2</span><span>2</span></div>
-            </div>
-        `;
-    }
-    else if (questions[currentQuestion].type === "slider11") {
-        optionsDiv.innerHTML = `
-            <div class='slider-container'>
-                <label>Evito o confronto 🟢🔵🔴 Enfrento de cabeça</label>
+      optionsDiv.innerHTML = `
+          <div class='slider-container'>
+              <label>Razão</label>
+              <div class="slider-wrapper">
+                  <input type='range' class='slider' id='q2a' min='-2' max='2' step='1' value='${answers["2a"] || 0}'>
+                  <span class="slider-label">Emoção</span>
+              </div>
+          </div>
+          <div class='slider-container'>
+              <label>Autonomia</label>
+              <div class="slider-wrapper">
+                  <input type='range' class='slider' id='q2b' min='-2' max='2' step='1' value='${answers["2b"] || 0}'>
+                  <span class="slider-label">Influência</span>
+              </div>
+          </div>
+          <div class='slider-container'>
+              <label>Impulsividade</label>
+              <div class="slider-wrapper">
+                  <input type='range' class='slider' id='q2c' min='-2' max='2' step='1' value='${answers["2c"] || 0}'>
+                  <span class="slider-label">Planejamento</span>
+              </div>
+          </div>
+          <div class='slider-container'>
+              <label>Flexibilidade</label>
+              <div class="slider-wrapper">
+                  <input type='range' class='slider' id='q2d' min='-2' max='2' step='1' value='${answers["2d"] || 0}'>
+                  <span class="slider-label">Rigor</span>
+              </div>
+          </div>
+      `;
+  }
+   else if (questions[currentQuestion].type === "slider11") {
+    optionsDiv.innerHTML = `
+        <div class='slider-container'>
+            <label>Evito o confronto</label>
+            <div class="slider-wrapper">
                 <input type='range' class='slider' id='q11a' min='1' max='5' step='1' value='${answers["11a"] || 3}'>
-                <div class='slider-label'><span>1</span><span>5</span></div>
+                <span class="slider-label">Enfrento de cabeça</span>
             </div>
-            <div class='slider-container'>
-                <label>Reprimo o que sinto 🟢🔵🔴 Expresso tudo intensamente</label>
+        </div>
+        <div class='slider-container'>
+            <label>Reprimo o que sinto</label>
+            <div class="slider-wrapper">
                 <input type='range' class='slider' id='q11b' min='1' max='5' step='1' value='${answers["11b"] || 3}'>
-                <div class='slider-label'><span>1</span><span>5</span></div>
+                <span class="slider-label">Expresso tudo intensamente</span>
             </div>
-            <div class='slider-container'>
-                <label>A culpa é minha 🟢🔵🔴 A culpa é dos outros</label>
+        </div>
+        <div class='slider-container'>
+            <label>A culpa é minha</label>
+            <div class="slider-wrapper">
                 <input type='range' class='slider' id='q11c' min='1' max='5' step='1' value='${answers["11c"] || 3}'>
-                <div class='slider-label'><span>1</span><span>5</span></div>
+                <span class="slider-label">A culpa é dos outros</span>
             </div>
-            <div class='slider-container'>
-                <label>Eu aceito ordens 🟢🔵🔴 Eu desafio autoridade</label>
+        </div>
+        <div class='slider-container'>
+            <label>Eu aceito ordens</label>
+            <div class="slider-wrapper">
                 <input type='range' class='slider' id='q11d' min='1' max='5' step='1' value='${answers["11d"] || 3}'>
-                <div class='slider-label'><span>1</span><span>5</span></div>
+                <span class="slider-label">Eu desafio autoridade</span>
             </div>
-        `;
-    }
+        </div>
+    `;
+}
     else if (questions[currentQuestion].type === "draggable12") {
         optionsDiv.innerHTML = "<ul id='draggable-list-12' class='draggable-list'></ul>";
         let list = document.getElementById("draggable-list-12");
@@ -426,10 +440,6 @@ function prevQuestion() {
     saveAnswer();
     if (currentQuestion > 0) {
         currentQuestion--;
-        
-        // 🔹 Faz a rolagem para o topo da página
-        window.scrollTo({ top: 0, behavior: "smooth" });
-
         loadQuestion();
     } else {
         window.location.href = "index.html"; // 🔹 Redireciona para a página inicial se estiver na primeira pergunta
