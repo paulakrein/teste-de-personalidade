@@ -47,11 +47,11 @@ const archetypes = [
     { name: "🌊 O Coração Frágil", match: ["t10", "t9", "t4"] }
 ];
 
-// 🔹 Definição dos Clusters
+// Definição dos clusters
 const clusters = {
-    clusterA: ["t1", "t2", "t3"],  // Excêntricos
-    clusterB: ["t4", "t5", "t6", "t7"],  // Dramáticos
-    clusterC: ["t8", "t9", "t10"]  // Ansiosos
+    cluster1: ["t1", "t2", "t3"],
+    cluster2: ["t4", "t5", "t6", "t7"],
+    cluster3: ["t8", "t9", "t10"]
 };
 
 const questions = [
@@ -420,7 +420,7 @@ function prevQuestion() {
     }
 }
 
-// 🔹 Função para encontrar o melhor arquétipo considerando Clusters 🔹
+// 🔹 Função para encontrar o melhor arquétipo considerando os Clusters corretos
 function getArchetype(transtornoScores) {
     // 1️⃣ Ordena os transtornos por pontuação (do maior para o menor)
     let sortedTranstornos = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
@@ -441,7 +441,7 @@ function getArchetype(transtornoScores) {
         );
     }
 
-    // 5️⃣ Se ainda não encontrar, usa Clusters para encontrar um arquétipo compatível
+    // 5️⃣ Se ainda não encontrar, usa Clusters (substituindo ClusterA, ClusterB, ClusterC por Cluster1, Cluster2, Cluster3)
     if (!bestMatch) {
         let primaryCluster = Object.keys(clusters).find(cluster => clusters[cluster].includes(primaryTranstorno));
         let secondaryClusters = secondaryTranstornos.map(st => Object.keys(clusters).find(cluster => clusters[cluster].includes(st)));
@@ -460,6 +460,7 @@ function getArchetype(transtornoScores) {
     // Retorna o nome do arquétipo encontrado
     return bestMatch ? bestMatch.name : "🔍 Arquétipo desconhecido";
 }
+
 
 function submitQuiz() {
     saveAnswer();
