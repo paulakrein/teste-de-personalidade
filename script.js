@@ -114,7 +114,8 @@ const questions = [
         "Resposta 8",
         "Resposta 9",
         "Resposta 10"
-    ] }
+    ] },
+    { text: "Pergunta 11: Como você lida com conflitos e frustrações?", type: "slider11" }
 ];
 
 let currentQuestion = 0;
@@ -150,7 +151,8 @@ function loadQuestion() {
             listItem.addEventListener("drop", drop);
             list.appendChild(listItem);
         });
-    } else if (questions[currentQuestion].type === "slider") {
+    }
+    else if (questions[currentQuestion].type === "slider") {
         optionsDiv.innerHTML = `
             <div class='slider-container'>
                 <label>Razão 🟢🔵🔴 Emoção</label>
@@ -173,7 +175,32 @@ function loadQuestion() {
                 <div class='slider-label'><span>-2</span><span>2</span></div>
             </div>
         `;
-    } else {
+    }
+    else if (questions[currentQuestion].type === "slider11") {
+        optionsDiv.innerHTML = `
+            <div class='slider-container'>
+                <label>Evito o confronto 🟢🔵🔴 Enfrento de cabeça</label>
+                <input type='range' class='slider' id='q11a' min='1' max='5' step='1' value='${answers["11a"] || 3}'>
+                <div class='slider-label'><span>1</span><span>5</span></div>
+            </div>
+            <div class='slider-container'>
+                <label>Reprimo o que sinto 🟢🔵🔴 Expresso tudo intensamente</label>
+                <input type='range' class='slider' id='q11b' min='1' max='5' step='1' value='${answers["11b"] || 3}'>
+                <div class='slider-label'><span>1</span><span>5</span></div>
+            </div>
+            <div class='slider-container'>
+                <label>A culpa é minha 🟢🔵🔴 A culpa é dos outros</label>
+                <input type='range' class='slider' id='q11c' min='1' max='5' step='1' value='${answers["11c"] || 3}'>
+                <div class='slider-label'><span>1</span><span>5</span></div>
+            </div>
+            <div class='slider-container'>
+                <label>Eu aceito ordens 🟢🔵🔴 Eu desafio autoridade</label>
+                <input type='range' class='slider' id='q11d' min='1' max='5' step='1' value='${answers["11d"] || 3}'>
+                <div class='slider-label'><span>1</span><span>5</span></div>
+            </div>
+        `;
+    }    
+    else {
         // SHUFFLE
         // if (questions[currentQuestion].options) {
         //     let shuffledOptions = shuffleArray([...questions[currentQuestion].options]); // 🔹 Embaralha uma cópia, sem alterar o original
@@ -234,7 +261,14 @@ function saveAnswer() {
         answers["2b"] = document.getElementById("q2b").value;
         answers["2c"] = document.getElementById("q2c").value;
         answers["2d"] = document.getElementById("q2d").value;
-    } else {
+    }
+    else if (questions[currentQuestion].type === "slider11") {
+        answers["11a"] = document.getElementById("q11a").value;
+        answers["11b"] = document.getElementById("q11b").value;
+        answers["11c"] = document.getElementById("q11c").value;
+        answers["11d"] = document.getElementById("q11d").value;
+    }
+    else {
         const selectedOption = document.querySelector(`input[name='q${currentQuestion}']:checked`);
         if (selectedOption) {
             answers[currentQuestion] = selectedOption.value;
@@ -354,6 +388,47 @@ function submitQuiz() {
                     transtornoScores[t] += priorityScores[position].secondary;
                 });
             }
+        }
+    });
+
+    // 🔹 Pontuação das Barras da Pergunta 11 🔹
+    const slider11Scores = {
+        "11a": {
+            "1": { t1: 2, t6: 2, t3: 1 },  // Antissocial, Narcisista, Borderline
+            "2": { t2: 2, t7: 1 },  // Paranoide, Histriônico
+            "3": { t4: 1, t9: 1 },  // Esquizotípico, Dependente
+            "4": { t5: 2, t8: 1 },  // Obs. Compulsivo, Esquizoide
+            "5": { t10: 2, t9: 2 }  // Evitativo, Dependente
+        },
+        "11b": {
+            "1": { t8: 2, t2: 2 },  // Esquizoide, Paranoide
+            "2": { t5: 2, t10: 1 },  // Obs. Compulsivo, Evitativo
+            "3": { t4: 1, t9: 1 },  // Esquizotípico, Dependente
+            "4": { t6: 1, t7: 1 },  // Narcisista, Histriônico
+            "5": { t3: 2, t7: 2, t1: 1 }  // Borderline, Histriônico, Antissocial
+        },
+        "11c": {
+            "1": { t9: 2, t3: 2 },  // Dependente, Borderline
+            "2": { t5: 1, t4: 1 },  // Obs. Compulsivo, Esquizotípico
+            "3": { t8: 1, t7: 1 },  // Esquizoide, Histriônico
+            "4": { t2: 2, t6: 1 },  // Paranoide, Narcisista
+            "5": { t1: 2, t6: 2, t2: 1 }  // Antissocial, Narcisista, Paranoide
+        },
+        "11d": {
+            "1": { t9: 2, t10: 2 },  // Dependente, Evitativo
+            "2": { t5: 1, t8: 1 },  // Obs. Compulsivo, Esquizoide
+            "3": { t4: 1, t7: 1 },  // Esquizotípico, Histriônico
+            "4": { t6: 2, t2: 1 },  // Narcisista, Paranoide
+            "5": { t1: 2, t6: 2, t3: 1 }  // Antissocial, Narcisista, Borderline
+        }
+    };
+
+    ["11a", "11b", "11c", "11d"].forEach(slider => {
+        let value = savedAnswers[slider];
+        if (value && slider11Scores[slider][value]) {
+            Object.keys(slider11Scores[slider][value]).forEach(t => {
+                transtornoScores[t] += slider11Scores[slider][value][t];
+            });
         }
     });
 
