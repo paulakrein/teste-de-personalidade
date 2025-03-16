@@ -78,11 +78,12 @@ h3 {
   text-align: center;
   letter-spacing: -0.012em;
   color: #495D77;
+  margin-top: -0.6em;
 }
 
 a.start-btn {
   display: table;
-  margin: 0.5em auto;
+  margin: 0 auto;
   background: #E6545F;
   padding: 1.5em 3.5em;
   text-align: center;
