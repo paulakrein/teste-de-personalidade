@@ -65,7 +65,7 @@ h1 {
 }
 
 h2 {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.4em;
   text-align: center;
   letter-spacing: -0.012em;
@@ -74,7 +74,7 @@ h2 {
 
 a.start-btn {
   display: table;
-  margin: auto;
+  margin: 0.5em auto;
   background: #E6545F;
   padding: 1.5em 3.5em;
   text-align: center;
@@ -97,12 +97,13 @@ p {
 p.quote {
   font-family: "Merriweather", serif;
   position: relative;
-  margin: 2.5em 1em 5em;
+  margin: 2.5em auto 6em;
   font-size: 14px;
   line-height: 1.6;
   letter-spacing: 0.5px;
   padding-bottom: 1.5em;
   font-weight: 500;
+  max-width: 520px;
 }
 
 p.quote .symb {
