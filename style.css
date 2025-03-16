@@ -41,15 +41,17 @@ a {
 	display: inline-block;
 	margin: 10px 0 1em 0;
 	list-style: none;
-	background: #fff;
+	background: #F7F9FB;
 	padding: 20px;
 	box-shadow: 1px 1px 3px rgba(0,0,0,0.02);
   width: 100%;
-  border: 2px solid black;
+  border: 1px solid #E0E7EF;
+  border-radius: 5px;
 }
 
 .module:has(input:checked) {
-  background-color: #4caf50;
+  background-color: #4A90E2;
+  border: 1px solid #2277DA;
   color: white;
 }
 
@@ -156,7 +158,7 @@ p.quote .author {
 .btn-container button {
   background: none;
   border: none;
-  color: #4A90E2;
+  color: #E6545F;
   cursor: pointer;
   transition: all 0.3s ease; /* Adiciona uma transição suave */
 }
@@ -164,15 +166,15 @@ p.quote .author {
 .btn-container button:hover {
   background: none;
   border: none;
-  color: #2277DA;
+  color: #FE727E;
 }
 
 .btn-container button svg {
-    fill: #4A90E2; /* Cor padrão */
+    fill: #E6545F; /* Cor padrão */
 }
 
 .btn-container button:hover svg {
-    fill: #2277DA; /* Cor no hover */
+    fill: #FE727E; /* Cor no hover */
 }
 
 @media screen and (max-width: 960px) {
