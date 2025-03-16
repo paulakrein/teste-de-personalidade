@@ -1,177 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Personalidade</title>
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/script.js"></script>
+</head>
+<body>
 
-* {
-	box-sizing: border-box;
-}
-
-.center-margin {
-  margin: 0 auto;
-  max-width: 720px;
-  padding: 1em 2em 1.8em;
-}
-
-body {
-  font-family: "Lora", serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-  color: #333333;
-  background: #FFF;
-}
-
-a {
-	text-decoration: none;
-}
-
-/* QUESTIONS */
-
-.grid {
-	padding: 1em 1em 0 1em;
-	margin: 0;
-	column-count: 4;
-	column-gap: 2em;
-	column-rule: 2px outset rgba(0, 0, 128, 0.3);
-}
-
-/* .module input[type="radio"] {
-  display: none;
-} */
-
-.module {
-	display: inline-block;
-	margin: 10px 0 1em 0;
-	list-style: none;
-	background: #fff;
-	padding: 20px;
-	box-shadow: 1px 1px 3px rgba(0,0,0,0.02);
-  width: 100%;
-  border: 2px solid black;
-}
-
-.module:has(input:checked) {
-  background-color: #4caf50;
-  color: white;
-}
-
-.quiz-container {
-  max-width: 1300px;
-  margin: auto;
-  padding: 0 1.5em;
-}
-
-/* INDEX */
-
-a.start-btn,
-h1, h2, h3 {
-  font-family: "Poppins", sans-serif;
-  font-style: normal;
-}
-
-h1 {
-  color: #333333;
-  font-weight: 400;
-  font-size: 2.2em;
-  letter-spacing: -0.03em;
-  text-align: center;
-  line-height: 1.25;
-}
-
-h2 {
-  font-weight: 500;
-  font-size: 1.15em;
-  text-align: center;
-  letter-spacing: -0.012em;
-  line-height: 1.4;
-	color: #1D3557;
-}
-
-h3 {
-  font-weight: 400;
-  font-size: 1em;
-  text-align: center;
-  letter-spacing: -0.012em;
-  color: #1D3557;
-  opacity: 0.8;
-  margin-top: -0.6em;
-  padding-bottom: 2em;
-}
-
-a.start-btn {
-  display: table;
-  margin: 0 auto;
-  background: #E6545F;
-  padding: 1.2em 3.4em;
-  text-align: center;
-  color: white;
-  font-size: 1.3em;
-  letter-spacing: 0.1em;
-  line-height: 1.8;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-a.start-btn:hover {
-  background: #FE727B;
-}
-
-p {
-	margin: 0;
-  line-height: 1.6;
-}
-
-p.quote {
-  font-family: "Merriweather", serif;
-  position: relative;
-  margin: 3.5em auto 2.5em;
-  font-size: 15px;
-  line-height: 1.6;
-  letter-spacing: 0.5px;
-  padding: 0 20px 2em;
-  font-weight: 500;
-  max-width: 520px;
-}
-
-p.quote .symb {
-  font-size: 4em;
-  position: absolute;
-  top: -0.3em;
-  left: -0.3em;
-	color: #4A90E2;
-}
-
-p.quote .author {
-  font-size: 1.1em;
-  position: absolute;
-  bottom: -0.4em;
-  right: -0.5em;
-  color: #1D3557;
-  opacity: 0.8;
-}
-
-.btn-container {
-  display: table;
-  margin: 2em auto;
-}
-
-.btn-container button {
-  background: none;
-  border: none;
-}
-
-@media screen and (max-width: 960px) {
-	.grid {
-		column-count: 3;
-	}
-}
-
-@media screen and (max-width: 600px) {
-	.grid {
-		column-count: 2;
-	}
-}
-
-@media screen and (max-width: 400px) {
-	.grid {
-		column-count: 1;
-	}
-}
+    <div class="container">
+        <h1 id="question-counter">1/12</h1>
+        <div class="quiz-container">
+            <div class="question-nav" id="question-nav"></div>
+            <form id="quiz-form">
+              <div class="question-container">
+                <p id="question-text">Pergunta 1</p>
+                <section id="answer-inner">
+                <div id="options"></div>
+                </section>
+              </div>
+<div class="btn-container">
+            <button type="button" onclick="prevQuestion()"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10m-.47-13.53a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72H16a.75.75 0 0 0 0-1.5H9.81l1.72-1.72a.75.75 0 0 0 0-1.06" clip-rule="evenodd"/></svg></button>
+            <button type="button" onclick="nextQuestion()"><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.47-13.53a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H8a.75.75 0 0 1 0-1.5h6.19l-1.72-1.72a.75.75 0 0 1 0-1.06" clip-rule="evenodd"/></svg></button>
+</div>       
+            </form>
+            <button id="submit-btn" style="display:none;" onclick="submitQuiz()">Ver Resultado</button>
+        </div>
+    </div>
+    
+</body>
+</html>
