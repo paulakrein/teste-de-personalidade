@@ -8,6 +8,51 @@
 // t8 Obsessivo-compulsivo
 // t9 Dependente
 // t10 Evitativo
+// 🔹 Mapeamento de transtornos para arquétipos 🔹
+
+// 🔹 Mapeamento de transtornos para os 36 arquétipos 🔹
+const archetypes = [
+    { name: "🧙 O Eremita", match: ["t1", "t2", "t10"] }, 
+    { name: "🔮 O Visionário", match: ["t2", "t4", "t6"] }, 
+    { name: "🛡️ O Guardião Desconfiado", match: ["t3", "t2", "t8"] }, 
+    { name: "🌑 O Forasteiro", match: ["t1", "t10", "t9"] }, 
+    { name: "👁️ O Investigador Oculto", match: ["t3", "t7", "t6"] }, 
+    { name: "🕸️ O Estranho Encantador", match: ["t2", "t5", "t6"] }, 
+    { name: "🎭 O Rei do Palco", match: ["t5", "t6", "t7"] }, 
+    { name: "💔 O Príncipe Trágico", match: ["t4", "t5", "t9"] }, 
+    { name: "🕶️ O Mestre das Sombras", match: ["t7", "t6", "t3"] }, 
+    { name: "🔥 O Incendiário", match: ["t4", "t5", "t7"] }, 
+    { name: "👑 O Imperador", match: ["t6", "t8", "t5"] }, 
+    { name: "🃏 O Caos Personificado", match: ["t7", "t4", "t2"] }, 
+    { name: "🔪 O Predador Social", match: ["t7", "t8", "t3"] }, 
+    { name: "💃 O Encantador Fatal", match: ["t5", "t6", "t4"] }, 
+    { name: "📜 O Guardião das Regras", match: ["t8", "t3", "t9"] }, 
+    { name: "🌀 O Prisioneiro da Dúvida", match: ["t10", "t8", "t9"] }, 
+    { name: "🕊️ O Seguidor Leal", match: ["t9", "t5", "t10"] }, 
+    { name: "🛠️ O Perfeccionista Incansável", match: ["t8", "t6", "t4"] }, 
+    { name: "🧩 O Estrategista Silencioso", match: ["t10", "t8", "t3"] }, 
+    { name: "🌙 O Fantasma Social", match: ["t10", "t4", "t1"] },
+    { name: "📖 O Filósofo Recluso", match: ["t1", "t8", "t10"] },
+    { name: "🌀 O Andarilho dos Sonhos", match: ["t2", "t9", "t4"] },
+    { name: "🕵️ O Decodificador de Mistérios", match: ["t3", "t1", "t8"] },
+    { name: "🎨 O Artista do Caos", match: ["t5", "t4", "t2"] },
+    { name: "🌀 O Furacão Imprevisível", match: ["t4", "t7", "t5"] },
+    { name: "🎤 O Manipulador de Multidões", match: ["t6", "t5", "t7"] },
+    { name: "🔥 O Fogo Indomável", match: ["t4", "t6", "t7"] },
+    { name: "📜 O Discípulo da Disciplina", match: ["t8", "t9", "t3"] },
+    { name: "🧭 O Navegador da Precaução", match: ["t10", "t3", "t8"] },
+    { name: "🌍 O Diplomata Invisível", match: ["t9", "t6", "t5"] },
+    { name: "🛑 O Medroso Incorrigível", match: ["t10", "t9", "t3"] },
+    { name: "🕰️ O Controlador do Tempo", match: ["t8", "t6", "t2"] },
+    { name: "🌊 O Coração Frágil", match: ["t10", "t9", "t4"] }
+];
+
+// 🔹 Definição dos Clusters
+const clusters = {
+    clusterA: ["t1", "t2", "t3"],  // Excêntricos
+    clusterB: ["t4", "t5", "t6", "t7"],  // Dramáticos
+    clusterC: ["t8", "t9", "t10"]  // Ansiosos
+};
 
 const questions = [
     { text: "Se você tivesse que escrever uma bio curta e sincera para um perfil anônimo, o que diria?",
@@ -375,6 +420,47 @@ function prevQuestion() {
     }
 }
 
+// 🔹 Função para encontrar o melhor arquétipo considerando Clusters 🔹
+function getArchetype(transtornoScores) {
+    // 1️⃣ Ordena os transtornos por pontuação (do maior para o menor)
+    let sortedTranstornos = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
+
+    // 2️⃣ Seleciona os três transtornos mais pontuados
+    let top3 = [sortedTranstornos[0][0], sortedTranstornos[1][0], sortedTranstornos[2][0]];
+    let primaryTranstorno = top3[0];  // O transtorno principal
+    let secondaryTranstornos = [top3[1], top3[2]];  // Os dois transtornos secundários
+
+    // 3️⃣ Procura um arquétipo que tenha exatamente esses três transtornos
+    let bestMatch = archetypes.find(a => a.match.every(t => top3.includes(t)));
+
+    // 4️⃣ Se não encontrar um match exato, tenta um arquétipo que tenha o transtorno principal + pelo menos um secundário
+    if (!bestMatch) {
+        bestMatch = archetypes.find(a => 
+            a.match.includes(primaryTranstorno) &&
+            (a.match.includes(secondaryTranstornos[0]) || a.match.includes(secondaryTranstornos[1]))
+        );
+    }
+
+    // 5️⃣ Se ainda não encontrar, usa Clusters para encontrar um arquétipo compatível
+    if (!bestMatch) {
+        let primaryCluster = Object.keys(clusters).find(cluster => clusters[cluster].includes(primaryTranstorno));
+        let secondaryClusters = secondaryTranstornos.map(st => Object.keys(clusters).find(cluster => clusters[cluster].includes(st)));
+
+        bestMatch = archetypes.find(a => 
+            a.match.includes(primaryTranstorno) &&
+            secondaryClusters.some(cluster => a.match.some(t => clusters[cluster]?.includes(t)))
+        );
+    }
+
+    // 6️⃣ Se ainda não houver correspondência, usa um arquétipo que tenha **apenas** o transtorno principal
+    if (!bestMatch) {
+        bestMatch = archetypes.find(a => a.match.includes(primaryTranstorno));
+    }
+
+    // Retorna o nome do arquétipo encontrado
+    return bestMatch ? bestMatch.name : "🔍 Arquétipo desconhecido";
+}
+
 function submitQuiz() {
     saveAnswer();
 
@@ -384,13 +470,6 @@ function submitQuiz() {
     };
 
     const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
-
-    // Definição dos clusters
-    const clusters = {
-        cluster1: ["t1", "t2", "t3"],
-        cluster2: ["t4", "t5", "t6", "t7"],
-        cluster3: ["t8", "t9", "t10"]
-    };
     
     // 🔹 Pontuação das Barras da Pergunta 2 🔹
     const sliderScores = {
@@ -583,6 +662,13 @@ Object.keys(positionScores12).forEach(positionKey => {
             }
         }
     }
+
+    // 🔹 Após calcular os transtornos, encontra o arquétipo correspondente 🔹
+    let chosenArchetype = getArchetype(transtornoScores);
+
+    // 🔹 Salva o arquétipo junto com os transtornos no localStorage 🔹
+    localStorage.setItem("chosenArchetype", chosenArchetype);
+
     
     // 🔹 Agora salva os resultados e redireciona
     localStorage.setItem("transtornoScores", JSON.stringify(transtornoScores)); 
