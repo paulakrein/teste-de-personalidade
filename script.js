@@ -202,6 +202,8 @@ function loadQuestion() {
     let optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = "";
 
+    document.getElementById('answer-inner').classList.remove('grid');
+  
     if (questions[currentQuestion].type === "draggable") {
         optionsDiv.innerHTML = "<ul id='draggable-list' class='draggable-list'></ul>";
         let list = document.getElementById("draggable-list");
@@ -285,6 +287,8 @@ function loadQuestion() {
         });
     }
     else {
+      document.getElementById('answer-inner').classList.add('grid');
+      
         // SHUFFLE
         // if (questions[currentQuestion].options) {
         //     let shuffledOptions = shuffleArray([...questions[currentQuestion].options]); // 🔹 Embaralha uma cópia, sem alterar o original
@@ -298,7 +302,7 @@ function loadQuestion() {
         // }
         // DO NOT SHUFFLE for testing
         questions[currentQuestion].options.forEach(option => {
-            optionsDiv.innerHTML += `<label>
+            optionsDiv.innerHTML += `<label class="module">
                 <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
                 ${option}
             </label><br>`;
