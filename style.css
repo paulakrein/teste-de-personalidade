@@ -90,7 +90,8 @@ h3 {
   font-size: 1.15em;
   text-align: center;
   letter-spacing: -0.012em;
-  color: #4A90E2;
+  color: #1D3557;
+  opacity: 0.8;
   margin-top: -0.6em;
 }
 
@@ -114,6 +115,7 @@ a.start-btn:hover {
 
 p {
 	margin: 0;
+  line-height: 1.6;
 }
 
 p.quote {
