@@ -89,7 +89,7 @@ const questions = [
         "Ser deixado sozinho para lidar com um problema.",
         "Ser criticado ou humilhado em público."
     ] },
-    { text: "Pergunta 8",
+    { text: "Algo inesperado acontece e muda totalmente seus planos. Como você reage?",
         options: [
         "Tanto faz. Nunca estive muito apegado aos planos de qualquer jeito.",
         "Genial! E se isso mudar as coisas de um jeito inusitado, e me trazer algo que eu nem sabia que precisava?",
