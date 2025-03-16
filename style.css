@@ -15,7 +15,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-	color: #1D3557;
+	color: #000;
 	background: #FDFFFC;
 }
 
@@ -70,11 +70,12 @@ h2 {
   text-align: center;
   letter-spacing: -0.012em;
   line-height: 1.65;
+	color: #1D3557;
 }
 
 h3 {
   font-weight: 400;
-  font-size: 1.2em;
+  font-size: 1.15em;
   text-align: center;
   letter-spacing: -0.012em;
   color: #495D77;
@@ -120,6 +121,7 @@ p.quote .symb {
   position: absolute;
   top: -0.4em;
   left: -0.5em;
+	color: #1D3557;
 }
 
 p.quote .author {
@@ -127,6 +129,7 @@ p.quote .author {
   position: absolute;
   bottom: -0.4em;
   right: -0.5em;
+	color: #1D3557;
 }
 
 @media screen and (max-width: 960px) {
