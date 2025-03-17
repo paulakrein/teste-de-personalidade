@@ -529,7 +529,7 @@ function drawDecagonChart(transtornoScores) {
     const maxRadius = Math.min(width, height) / 2 - 20;
     const levels = 5;
     const colors = ["#FF9478", "#F69FD1", "#839DEF", "#00C9EA", "#00EFF7", "#00EFEA", "#00EE9C", "#9EFF00", "#FFFF39", "#FFE00C"];
-    const borderColor = "#E375A8";
+    const borderColor = "transparent";
     const borderOpacity = 0.2;
 
     ctx.clearRect(0, 0, width, height);
