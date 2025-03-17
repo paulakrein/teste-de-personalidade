@@ -70,7 +70,7 @@
     place-items: center;
     height: 70vh;
     max-width: 720px;
-    padding: 0 2em 2em;
+    padding: 0 2em 5em;
     margin: 10vh auto;
 }
 
@@ -78,7 +78,7 @@
 @media (max-height: 800px) {
   .center-margin {
     height: auto;
-    margin: auto;
+    margin: 0 auto;
   }
 }
 
