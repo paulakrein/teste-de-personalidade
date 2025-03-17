@@ -504,6 +504,92 @@ function getArchetype(transtornoScores) {
     return bestMatch ? bestMatch.name : "🔍 Arquétipo desconhecido";
 }
 
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let transtornoScores = JSON.parse(localStorage.getItem("transtornoScores"));
+    if (transtornoScores) {
+        // Garante que os valores sejam números
+        Object.keys(transtornoScores).forEach(key => {
+            transtornoScores[key] = Number(transtornoScores[key]);
+        });
+        drawDecagonChart(transtornoScores);
+    }
+});
+
+function drawDecagonChart(transtornoScores) {
+    const canvas = document.getElementById("chartCanvas");
+    const ctx = canvas.getContext("2d");
+    
+    const width = canvas.width;
+    const height = canvas.height;
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const maxRadius = Math.min(width, height) / 2 - 20;
+    const levels = 5;
+    const colors = ["#FF9478", "#F69FD1", "#839DEF", "#00C9EA", "#00EFF7", "#00EFEA", "#00EE9C", "#9EFF00", "#FFFF39", "#FFE00C"];
+    const borderColor = "#E375A8";
+    const borderOpacity = 0.2;
+
+    ctx.clearRect(0, 0, width, height);
+
+    // Define a pontuação mínima e máxima para normalizar os níveis
+    let scores = Object.values(transtornoScores);
+    let minScore = Math.min(...scores);
+    let maxScore = Math.max(...scores);
+    let scoreRange = maxScore - minScore || 1; // Evita divisão por zero
+    
+    function getNormalizedLevel(score) {
+        return Math.round(((score - minScore) / scoreRange) * (levels - 1)) + 1;
+    }
+
+    // Desenha os 10 triângulos de fundo
+    for (let i = 0; i < 10; i++) {
+        let angle = (Math.PI * 2 * i) / 10;
+        let nextAngle = (Math.PI * 2 * (i + 1)) / 10;
+        let color = colors[i];
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(centerX + maxRadius * Math.cos(angle), centerY + maxRadius * Math.sin(angle));
+        ctx.lineTo(centerX + maxRadius * Math.cos(nextAngle), centerY + maxRadius * Math.sin(nextAngle));
+        ctx.closePath();
+        ctx.fillStyle = color + "4D"; // Opacidade de 30%
+        ctx.fill();
+
+        ctx.strokeStyle = borderColor;
+        ctx.globalAlpha = borderOpacity;
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+    }
+
+    // Desenha os triângulos internos baseados na pontuação do usuário
+    for (let i = 0; i < 10; i++) {
+        let angle = (Math.PI * 2 * i) / 10;
+        let nextAngle = (Math.PI * 2 * (i + 1)) / 10;
+        let color = colors[i];
+
+        let level = getNormalizedLevel(transtornoScores[`t${i + 1}`]);
+        let fillRadius = (level / levels) * maxRadius;
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(centerX + fillRadius * Math.cos(angle), centerY + fillRadius * Math.sin(angle));
+        ctx.lineTo(centerX + fillRadius * Math.cos(nextAngle), centerY + fillRadius * Math.sin(nextAngle));
+        ctx.closePath();
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+}
+
+
+
+
+
+
+
+
 function submitQuiz() {
     saveAnswer();
 
