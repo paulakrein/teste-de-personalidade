@@ -73,12 +73,12 @@
 /* 🔹 No desktop: exibir em duas colunas perfeitamente alinhadas */
 @media (min-width: 600px) {
     .center-margin {
-      display: flex;
+      display: grid;
       flex-direction: column;
       justify-content: center; /* Centraliza verticalmente */
       align-items: center; /* Centraliza horizontalmente */
       text-align: center; /* Garante alinhamento do texto */
-      height: 100vw; /* 🔹 Faz a div ocupar toda a altura da tela */
+      height: 100vh; /* 🔹 Faz a div ocupar toda a altura da tela */
       max-width: 720px;
     }
 }
