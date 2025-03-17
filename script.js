@@ -44,7 +44,20 @@ const archetypes = [
     { name: "🌍 O Diplomata Invisível", match: ["t9", "t6", "t5"] },
     { name: "🛑 O Medroso Incorrigível", match: ["t10", "t9", "t3"] },
     { name: "🕰️ O Controlador do Tempo", match: ["t8", "t6", "t2"] },
-    { name: "🌊 O Coração Frágil", match: ["t10", "t9", "t4"] }
+    { name: "🌊 O Coração Frágil", match: ["t10", "t9", "t4"] },
+    { name: "🦉 O Sábio Silencioso", match: ["t1", "t3", "t8"] },
+    { name: "🎭 O Dramaturgo da Vida", match: ["t5", "t2", "t4"] },
+    { name: "🛡️ O Defensor Implacável", match: ["t3", "t7", "t9"] },
+    { name: "⚡ O Rebelde Incontrolável", match: ["t4", "t7", "t6"] },
+    { name: "🌠 O Viajante das Possibilidades", match: ["t2", "t8", "t6"] },
+    { name: "🧪 O Cientista do Caos", match: ["t2", "t3", "t9"] },
+    { name: "🔗 O Elo Inquebrantável", match: ["t9", "t6", "t8"] },
+    { name: "🎩 O Ilusionista da Realidade", match: ["t5", "t3", "t7"] },
+    { name: "🌀 O Mestre dos Contrastes", match: ["t2", "t5", "t9"] },
+    { name: "🌟 O Iluminado", match: ["t1", "t2", "t6"] },
+    { name: "💣 O Caótico Destrutivo", match: ["t4", "t7", "t9"] },
+    { name: "👤 O Enigma", match: ["t3", "t8", "t10"] },
+    { name: "⚖️ O Balanceador de Forças", match: ["t6", "t9", "t10"] }
 ];
 
 // Definição dos clusters
@@ -467,18 +480,14 @@ function prevQuestion() {
 
 // 🔹 Função para encontrar o melhor arquétipo considerando os Clusters corretos
 function getArchetype(transtornoScores) {
-    // 1️⃣ Ordena os transtornos por pontuação (do maior para o menor)
     let sortedTranstornos = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
 
-    // 2️⃣ Seleciona os três transtornos mais pontuados
     let top3 = [sortedTranstornos[0][0], sortedTranstornos[1][0], sortedTranstornos[2][0]];
-    let primaryTranstorno = top3[0];  // O transtorno principal
-    let secondaryTranstornos = [top3[1], top3[2]];  // Os dois transtornos secundários
+    let primaryTranstorno = top3[0];  
+    let secondaryTranstornos = [top3[1], top3[2]];
 
-    // 3️⃣ Procura um arquétipo que tenha exatamente esses três transtornos
     let bestMatch = archetypes.find(a => a.match.every(t => top3.includes(t)));
 
-    // 4️⃣ Se não encontrar um match exato, tenta um arquétipo que tenha o transtorno principal + pelo menos um secundário
     if (!bestMatch) {
         bestMatch = archetypes.find(a => 
             a.match.includes(primaryTranstorno) &&
@@ -486,23 +495,10 @@ function getArchetype(transtornoScores) {
         );
     }
 
-    // 5️⃣ Se ainda não encontrar, usa Clusters (substituindo ClusterA, ClusterB, ClusterC por Cluster1, Cluster2, Cluster3)
-    if (!bestMatch) {
-        let primaryCluster = Object.keys(clusters).find(cluster => clusters[cluster].includes(primaryTranstorno));
-        let secondaryClusters = secondaryTranstornos.map(st => Object.keys(clusters).find(cluster => clusters[cluster].includes(st)));
-
-        bestMatch = archetypes.find(a => 
-            a.match.includes(primaryTranstorno) &&
-            secondaryClusters.some(cluster => a.match.some(t => clusters[cluster]?.includes(t)))
-        );
-    }
-
-    // 6️⃣ Se ainda não houver correspondência, usa um arquétipo que tenha **apenas** o transtorno principal
     if (!bestMatch) {
         bestMatch = archetypes.find(a => a.match.includes(primaryTranstorno));
     }
 
-    // Retorna o nome do arquétipo encontrado
     return bestMatch ? bestMatch.name : "🔍 Arquétipo desconhecido";
 }
 
