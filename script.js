@@ -522,22 +522,26 @@ document.addEventListener("DOMContentLoaded", function () {
 function drawDecagonChart(transtornoScores) {
     const canvas = document.getElementById("chartCanvas");
     const ctx = canvas.getContext("2d");
-    
-    const width = canvas.width;
-    const height = canvas.height;
+
+    // Improve resolution for high-DPI screens
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = 600 * dpr;
+    canvas.height = 600 * dpr;
+    ctx.scale(dpr, dpr);
+
+    const width = 600;  // Fixed width for better quality
+    const height = 600; // Fixed height for better quality
     const centerX = width / 2;
     const centerY = height / 2;
     const maxRadius = Math.min(width, height) / 2 - 20;
     const levels = 5;
     const colors = ["#FF9478", "#F69FD1", "#839DEF", "#00C9EA", "#00EFF7", "#00EFEA", "#00EE9C", "#9EFF00", "#FFFF39", "#FFE00C"];
-    const borderColor = "transparent";
-    const borderOpacity = 0.2;
-
-    ctx.clearRect(0, 0, width, height);
     
-    // Draw grid lines for the levels
-    ctx.strokeStyle = "#888888"; // Black color for the grid
-    ctx.globalAlpha = 1; // Set opacity for visibility
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw grid lines
+    ctx.strokeStyle = "#888888"; // Darker lines for clarity
+    ctx.globalAlpha = 1; // Ensures sharp visibility
 
     for (let i = 1; i <= levels; i++) {
         let radius = (i / levels) * maxRadius;
@@ -557,39 +561,17 @@ function drawDecagonChart(transtornoScores) {
         ctx.closePath();
         ctx.stroke();
     }
-    ctx.globalAlpha = 1; // Reset opacity
-    
-    // Define a pontuação mínima e máxima para normalizar os níveis
+
+    // Draw filled areas based on transtornoScores
     let scores = Object.values(transtornoScores);
     let minScore = Math.min(...scores);
     let maxScore = Math.max(...scores);
-    let scoreRange = maxScore - minScore || 1; // Evita divisão por zero
-    
+    let scoreRange = maxScore - minScore || 1;
+
     function getNormalizedLevel(score) {
         return Math.round(((score - minScore) / scoreRange) * (levels - 1)) + 1;
     }
 
-    // Desenha os 10 triângulos de fundo
-    for (let i = 0; i < 10; i++) {
-        let angle = (Math.PI * 2 * i) / 10;
-        let nextAngle = (Math.PI * 2 * (i + 1)) / 10;
-        let color = colors[i];
-
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.lineTo(centerX + maxRadius * Math.cos(angle), centerY + maxRadius * Math.sin(angle));
-        ctx.lineTo(centerX + maxRadius * Math.cos(nextAngle), centerY + maxRadius * Math.sin(nextAngle));
-        ctx.closePath();
-        ctx.fillStyle = color + "4D"; // Opacidade de 30%
-        ctx.fill();
-
-        ctx.strokeStyle = borderColor;
-        ctx.globalAlpha = borderOpacity;
-        ctx.stroke();
-        ctx.globalAlpha = 1;
-    }
-
-    // Desenha os triângulos internos baseados na pontuação do usuário
     for (let i = 0; i < 10; i++) {
         let angle = (Math.PI * 2 * i) / 10;
         let nextAngle = (Math.PI * 2 * (i + 1)) / 10;
@@ -608,8 +590,10 @@ function drawDecagonChart(transtornoScores) {
     }
 }
 
-
-
+// Resize on window resize
+window.addEventListener("resize", () => {
+    drawDecagonChart(JSON.parse(localStorage.getItem("transtornoScores")));
+});
 
 
 
