@@ -533,10 +533,10 @@ function drawDecagonChart(transtornoScores) {
     const borderOpacity = 0.2;
 
     ctx.clearRect(0, 0, width, height);
-
+    
     // Draw grid lines for the levels
-    ctx.strokeStyle = "#FFFFFF"; // White color for the grid
-    ctx.globalAlpha = 0.9; // Set opacity for visibility
+    ctx.strokeStyle = "#FDFFFC"; // Black color for the grid
+    ctx.globalAlpha = 0.8; // Set opacity for visibility
 
     for (let i = 1; i <= levels; i++) {
         let radius = (i / levels) * maxRadius;
