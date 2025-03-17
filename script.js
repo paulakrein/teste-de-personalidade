@@ -57,7 +57,9 @@ const archetypes = [
     { name: "🌟 O Iluminado", match: ["t1", "t2", "t6"] },
     { name: "💣 O Caótico Destrutivo", match: ["t4", "t7", "t9"] },
     { name: "👤 O Enigma", match: ["t3", "t8", "t10"] },
-    { name: "⚖️ O Balanceador de Forças", match: ["t6", "t9", "t10"] }
+    { name: "⚖️ O Balanceador de Forças", match: ["t6", "t9", "t10"] },
+    { name: "🎭 O Espelho das Emoções", match: ["t4", "t5", "t6"] },
+    { name: "🧬 O Criador de Realidades", match: ["t2", "t7", "t9"] }
 ];
 
 // Definição dos clusters
