@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Exibir o arquétipo antes da pontuação
     const chosenArchetype = localStorage.getItem("chosenArchetype") || "🔍 Arquétipo desconhecido";
-    resultsDiv.innerHTML += `<h2>Seu Arquétipo:</h2><h3>${chosenArchetype}</h3>`;
+    resultsDiv.innerHTML += `<h2 class="res-pg">Seu Arquétipo:</h2><h3>${chosenArchetype}</h3>`;
     
     // Exibir pontuação final para cada transtorno
     resultsDiv.innerHTML += `<h2>Seu Resultado:</h2>`;
