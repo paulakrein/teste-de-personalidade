@@ -321,7 +321,7 @@ input[type="range"]::-moz-range-thumb {
     padding: 0;
     max-width: 500px; /* Ajuste para centralizar melhor */
     margin: 20px auto;
-    border: 6px dashed #fe727e; /* Borda pontilhada */
+    border: 8px dashed #e0e7ef; /* Borda pontilhada */
     border-radius: 8px;
     background-color: #f7f9fb;
 }
@@ -332,7 +332,7 @@ input[type="range"]::-moz-range-thumb {
     padding: 15px;
     margin: 16px;
     cursor: grab;
-    border: 1px solid #E6545F;
+    border: 1px solid #c8d2e0;
     border-radius: 5px;
     font-size: 16px;
     font-weight: 500;
@@ -348,7 +348,9 @@ input[type="range"]::-moz-range-thumb {
 
 /* Efeito ao passar o mouse */
 .draggable-item:hover {
-    background: #ffe5e5;
+    background: #4a90e2;
+    border: 1px solid #2277da;
+    color: white;
 }
 
 /* Efeito ao soltar um item */
