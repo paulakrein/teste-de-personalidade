@@ -522,6 +522,14 @@ function drawDecagonChart(transtornoScores) {
     const canvas = document.getElementById("chartCanvas");
     const ctx = canvas.getContext("2d");
     
+    // 🔹 Ajustar o tamanho do canvas para alta resolução
+    const scale = window.devicePixelRatio || 1; // Pega a densidade de pixels do dispositivo
+    canvas.width = 400 * scale; // Ajusta a largura em pixels reais
+    canvas.height = 400 * scale; // Ajusta a altura em pixels reais
+    canvas.style.width = "400px"; // Mantém o tamanho visual correto
+    canvas.style.height = "400px"; // Mantém o tamanho visual correto
+    ctx.scale(scale, scale); // Aplica a escala no contexto de desenho
+    
     const width = canvas.width;
     const height = canvas.height;
     const centerX = width / 2;
