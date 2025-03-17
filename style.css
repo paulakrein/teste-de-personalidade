@@ -259,7 +259,7 @@ p.quote .author {
     -webkit-appearance: none;
     appearance: none;
     height: 5px;
-    background: #e0f1f3;
+    background: #E0E7EF;
     border-radius: 5px;
     outline: none;
     transition: 0.2s;
@@ -283,7 +283,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .slider:hover {
-    background: #E0E7EF;
+    background: #C8D2E0;
 }
 
 /* MEDIA QUERY PARA MOBILE */
