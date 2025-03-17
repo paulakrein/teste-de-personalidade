@@ -78,7 +78,7 @@
       justify-content: center; /* Centraliza verticalmente */
       align-items: center; /* Centraliza horizontalmente */
       text-align: center; /* Garante alinhamento do texto */
-      height: 100vh; /* 🔹 Faz a div ocupar toda a altura da tela */
+      height: calc(100vh-100px); /* 🔹 Faz a div ocupar toda a altura da tela */
       max-width: 720px;
   }
 }
