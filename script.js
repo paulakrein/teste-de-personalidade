@@ -534,6 +534,30 @@ function drawDecagonChart(transtornoScores) {
 
     ctx.clearRect(0, 0, width, height);
 
+    // Draw grid lines for the levels
+    ctx.strokeStyle = "#000000"; // Black color for the grid
+    ctx.globalAlpha = 0.8; // Set opacity for visibility
+
+    for (let i = 1; i <= levels; i++) {
+        let radius = (i / levels) * maxRadius;
+        ctx.beginPath();
+        for (let j = 0; j < 10; j++) {
+            let angle = (Math.PI * 2 * j) / 10;
+            let nextAngle = (Math.PI * 2 * (j + 1)) / 10;
+
+            let x1 = centerX + radius * Math.cos(angle);
+            let y1 = centerY + radius * Math.sin(angle);
+            let x2 = centerX + radius * Math.cos(nextAngle);
+            let y2 = centerY + radius * Math.sin(nextAngle);
+
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+        }
+        ctx.closePath();
+        ctx.stroke();
+    }
+    ctx.globalAlpha = 1; // Reset opacity
+    
     // Define a pontuação mínima e máxima para normalizar os níveis
     let scores = Object.values(transtornoScores);
     let minScore = Math.min(...scores);
