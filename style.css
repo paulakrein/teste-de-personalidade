@@ -40,7 +40,7 @@
         gap: 0px; /* 🔹 Reduz o espaço no mobile */
     }
     .legend-column {
-        width: 265px; /* 🔹 Permite ajuste dinâmico em telas pequenas */
+        width: 200px; /* 🔹 Permite ajuste dinâmico em telas pequenas */
     }
 }
 
