@@ -306,6 +306,7 @@ function loadQuestion() {
             listItem.textContent = item;
             listItem.draggable = true;
             listItem.dataset.index = index;
+          listItem.classList.add("draggable-item"); // Adiciona classe para estilização
             
             // Ensure event listeners for draggable actions
             listItem.addEventListener("dragstart", dragStart12);
