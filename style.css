@@ -66,13 +66,13 @@
 }
 
 .center-margin {
-  display: grid;
-  place-items: center; /* 🔹 Centraliza perfeitamente */
-  text-align: center;
-  min-height: 100vh; /* 🔹 Evita que o conteúdo fique maior que a tela */
-  margin: 0 auto;
-  max-width: 720px;
-  padding: 1em 2em 1.8em;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    min-height: 75vh;
+    margin: 10vh auto;
+    max-width: 720px;
+    padding: 1em 2em 1.8em;
 }
 
 /* 🔹 Ajuste para telas menores */
