@@ -69,8 +69,8 @@
     display: grid;
     place-items: center;
     max-width: 720px;
-    padding: 0 2em 5em;
     margin: 0 auto;
+    padding: 0 2em;
 }
 
 /* 🔹 Ajuste para telas menores */
