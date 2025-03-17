@@ -62,6 +62,7 @@ const archetypes = [
     { name: "🧬 O Criador de Realidades", match: ["t2", "t7", "t9"] }
 ];
 
+
 // Definição dos clusters
 const clusters = {
     cluster1: ["t1", "t2", "t3"],
