@@ -535,7 +535,7 @@ function drawDecagonChart(transtornoScores) {
     ctx.clearRect(0, 0, width, height);
     
     // Draw grid lines for the levels
-    ctx.strokeStyle = "#FDFFFC"; // Black color for the grid
+    ctx.strokeStyle = "#000000"; // Black color for the grid
     ctx.globalAlpha = 0.8; // Set opacity for visibility
 
     for (let i = 1; i <= levels; i++) {
