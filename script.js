@@ -504,7 +504,6 @@ function getArchetype(transtornoScores) {
     return bestMatch ? bestMatch.name : "🔍 Arquétipo desconhecido";
 }
 
-
 // 🔹 Função para desenhar o gráfico decágono corretamente, agora preenchendo os triângulos internos corretamente
 function drawDecagonChart(transtornoScores) {
     const canvas = document.getElementById("decagonChart");
