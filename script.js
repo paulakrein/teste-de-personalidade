@@ -504,7 +504,6 @@ function getArchetype(transtornoScores) {
     return bestMatch ? bestMatch.name : "🔍 Arquétipo desconhecido";
 }
 
-
 // 🔹 Função para desenhar o gráfico decágono corretamente
 function drawDecagonChart(transtornoScores) {
     const canvas = document.getElementById("decagonChart");
@@ -517,7 +516,7 @@ function drawDecagonChart(transtornoScores) {
     const centerY = height / 2;
     const maxRadius = width * 0.4; // Define o tamanho máximo do gráfico
 
-    // Cores dos transtornos (30% opacidade para o fundo)
+    // Cores dos transtornos
     const colors = {
         t1: "#839DEF", t2: "#00C9EA", t3: "#00EFF7", t4: "#00EFEA",
         t5: "#00EE9C", t6: "#9EFF00", t7: "#FFFF39", t8: "#FFE00C",
@@ -570,10 +569,10 @@ function drawDecagonChart(transtornoScores) {
         let angle = ((Math.PI * 2) / 10) * i - Math.PI / 2;
         let transtorno = `t${i + 1}`;
         let scoreLevel = normalizedScores[transtorno]; // Obtém o nível de pontuação (1 a 5)
-        let innerRadius = (maxRadius / 5) * scoreLevel; // Define a altura do preenchimento
+        let fillRadius = (maxRadius / 5) * scoreLevel; // Define a altura do preenchimento
 
-        let x1 = centerX + innerRadius * Math.cos(angle);
-        let y1 = centerY + innerRadius * Math.sin(angle);
+        let x1 = centerX + fillRadius * Math.cos(angle);
+        let y1 = centerY + fillRadius * Math.sin(angle);
         let x2 = centerX + maxRadius * Math.cos(angle);
         let y2 = centerY + maxRadius * Math.sin(angle);
 
