@@ -71,16 +71,6 @@
   padding: 1em 2em 1.8em;
 }
 
-/* 🔹 No desktop: descer um pouco */
-@media (min-width: 600px) {
-  .center-margin {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -50% -50%;
-  }
-}
-
 body {
   font-family: "Lora", serif;
   font-optical-sizing: auto;
