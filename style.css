@@ -66,24 +66,20 @@
 }
 
 .center-margin {
-    display: grid;
-    place-items: center;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 2em;
-}
-
-/* 🔹 Ajuste para telas menores */
-@media (max-height: 800px) {
-  .center-margin {
-    max-height: 700px;
-  }
+  margin: 0 auto;
+  padding: 1em 2em 1.8em;
 }
 
 /* 🔹 Ajuste para telas grandes */
 @media (min-height: 801px) {
   .center-margin {
-    max-height: 100vh;
+      display: grid;
+      flex-direction: column;
+      justify-content: center; /* Centraliza verticalmente */
+      align-items: center; /* Centraliza horizontalmente */
+      text-align: center; /* Garante alinhamento do texto */
+      height: 100vh; /* 🔹 Faz a div ocupar toda a altura da tela */
+      max-width: 720px;
   }
 }
 
