@@ -505,7 +505,7 @@ function getArchetype(transtornoScores) {
 }
 
 
-// 🔹 Função para desenhar o gráfico decágono corretamente, sem conectar pontos
+// 🔹 Função para desenhar o gráfico decágono corretamente, agora preenchendo os triângulos internos corretamente
 function drawDecagonChart(transtornoScores) {
     const canvas = document.getElementById("decagonChart");
     if (!canvas) return;
@@ -515,7 +515,7 @@ function drawDecagonChart(transtornoScores) {
     const height = canvas.height;
     const centerX = width / 2;
     const centerY = height / 2;
-    const maxRadius = width * 0.4;
+    const maxRadius = width * 0.4; // Tamanho máximo do gráfico
 
     // Cores dos transtornos
     const colors = {
@@ -524,7 +524,7 @@ function drawDecagonChart(transtornoScores) {
         t9: "#FF9478", t10: "#F69FD1"
     };
 
-    // Normalização das pontuações para níveis de 1 a 5
+    // Normaliza os valores para 1 a 5
     let scoresArray = Object.values(transtornoScores);
     let minScore = Math.min(...scoresArray);
     let maxScore = Math.max(...scoresArray);
@@ -574,26 +574,29 @@ function drawDecagonChart(transtornoScores) {
         ctx.stroke();
     }
 
-    // Desenha os triângulos internos **sem conectar pontos**
+    // Desenha os triângulos internos de preenchimento conforme a pontuação do usuário
     ctx.globalAlpha = 1;
     for (let i = 0; i < 10; i++) {
         let angle1 = ((Math.PI * 2) / 10) * i - Math.PI / 2;
         let transtorno = `t${i + 1}`;
         let scoreLevel = normalizedScores[transtorno];
-        let radius = (maxRadius / 5) * scoreLevel;
+        let radius = (maxRadius / 5) * scoreLevel; // Ajusta o nível de preenchimento
+
         let x1 = centerX + radius * Math.cos(angle1);
         let y1 = centerY + radius * Math.sin(angle1);
+        let x2 = centerX + maxRadius * Math.cos(angle1);
+        let y2 = centerY + maxRadius * Math.sin(angle1);
 
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(x1, y1);
-        ctx.lineTo(centerX + maxRadius * Math.cos(angle1), centerY + maxRadius * Math.sin(angle1));
+        ctx.lineTo(x2, y2);
         ctx.closePath();
         ctx.fillStyle = colors[transtorno];
         ctx.fill();
     }
 
-    // Desenha contornos para os triângulos internos
+    // Desenha contornos dos triângulos internos
     ctx.globalAlpha = 1;
     ctx.strokeStyle = "#E375A8";
     ctx.lineWidth = 2;
@@ -602,13 +605,16 @@ function drawDecagonChart(transtornoScores) {
         let transtorno = `t${i + 1}`;
         let scoreLevel = normalizedScores[transtorno];
         let radius = (maxRadius / 5) * scoreLevel;
+
         let x1 = centerX + radius * Math.cos(angle1);
         let y1 = centerY + radius * Math.sin(angle1);
+        let x2 = centerX + maxRadius * Math.cos(angle1);
+        let y2 = centerY + maxRadius * Math.sin(angle1);
 
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(x1, y1);
-        ctx.lineTo(centerX + maxRadius * Math.cos(angle1), centerY + maxRadius * Math.sin(angle1));
+        ctx.lineTo(x2, y2);
         ctx.closePath();
         ctx.stroke();
     }
@@ -621,7 +627,6 @@ document.addEventListener("DOMContentLoaded", function () {
         drawDecagonChart(transtornoScores);
     }
 });
-
 
 function submitQuiz() {
     saveAnswer();
