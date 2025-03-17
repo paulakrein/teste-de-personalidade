@@ -504,6 +504,8 @@ function getArchetype(transtornoScores) {
     return bestMatch ? bestMatch.name : "🔍 Arquétipo desconhecido";
 }
 
+
+// 🔹 Função para desenhar o gráfico decágono corretamente
 function drawDecagonChart(transtornoScores) {
     const canvas = document.getElementById("decagonChart");
     if (!canvas) return;
@@ -515,14 +517,14 @@ function drawDecagonChart(transtornoScores) {
     const centerY = height / 2;
     const maxRadius = width * 0.4; // Define o tamanho máximo do gráfico
 
-    // Cores dos transtornos
+    // Cores dos transtornos (30% opacidade para o fundo)
     const colors = {
         t1: "#839DEF", t2: "#00C9EA", t3: "#00EFF7", t4: "#00EFEA",
         t5: "#00EE9C", t6: "#9EFF00", t7: "#FFFF39", t8: "#FFE00C",
         t9: "#FF9478", t10: "#F69FD1"
     };
 
-    // Normaliza os valores para níveis de 1 a 5
+    // 🔹 Normalizar os valores para níveis de 1 a 5
     let scoresArray = Object.values(transtornoScores);
     let minScore = Math.min(...scoresArray);
     let maxScore = Math.max(...scoresArray);
@@ -530,31 +532,61 @@ function drawDecagonChart(transtornoScores) {
 
     for (let key in transtornoScores) {
         let score = transtornoScores[key];
-        let normalizedValue = Math.round(1 + 4 * (score - minScore) / (maxScore - minScore));
-        normalizedScores[key] = normalizedValue;
+        let level = Math.ceil(5 * (score - minScore) / (maxScore - minScore)); // Normaliza para níveis de 1 a 5
+        if (level < 1) level = 1;
+        if (level > 5) level = 5;
+        normalizedScores[key] = level;
     }
 
-    // Limpa o canvas antes de desenhar
+    console.log("🎯 Pontuações normalizadas:", normalizedScores);
+
+    // 🔹 Limpa o canvas antes de desenhar
     ctx.clearRect(0, 0, width, height);
 
-    // 🔹 Desenha os triângulos-base com opacidade de 30% (o fundo)
+    // 🔹 Desenha os triângulos-base (opacidade 30%)
     ctx.globalAlpha = 0.3;
     for (let i = 0; i < 10; i++) {
-        let angle1 = ((Math.PI * 2) / 10) * i - Math.PI / 2;
-        let angle2 = ((Math.PI * 2) / 10) * ((i + 1) % 10) - Math.PI / 2;
+        let angle = ((Math.PI * 2) / 10) * i - Math.PI / 2;
         let transtorno = `t${i + 1}`;
         let color = colors[transtorno];
 
+        let x1 = centerX + maxRadius * Math.cos(angle);
+        let y1 = centerY + maxRadius * Math.sin(angle);
+        let x2 = centerX + maxRadius * Math.cos(angle + Math.PI / 5);
+        let y2 = centerY + maxRadius * Math.sin(angle + Math.PI / 5);
+
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
-        ctx.lineTo(centerX + maxRadius * Math.cos(angle1), centerY + maxRadius * Math.sin(angle1));
-        ctx.lineTo(centerX + maxRadius * Math.cos(angle2), centerY + maxRadius * Math.sin(angle2));
+        ctx.lineTo(x1, y1);
+        ctx.lineTo(x2, y2);
         ctx.closePath();
         ctx.fillStyle = color;
         ctx.fill();
     }
 
-    // 🔹 Desenha os níveis de referência do decágono (opacidade 20%)
+    // 🔹 Desenha os triângulos internos conforme a pontuação do usuário (opacidade 100%)
+    ctx.globalAlpha = 1;
+    for (let i = 0; i < 10; i++) {
+        let angle = ((Math.PI * 2) / 10) * i - Math.PI / 2;
+        let transtorno = `t${i + 1}`;
+        let scoreLevel = normalizedScores[transtorno]; // Obtém o nível de pontuação (1 a 5)
+        let innerRadius = (maxRadius / 5) * scoreLevel; // Define a altura do preenchimento
+
+        let x1 = centerX + innerRadius * Math.cos(angle);
+        let y1 = centerY + innerRadius * Math.sin(angle);
+        let x2 = centerX + maxRadius * Math.cos(angle);
+        let y2 = centerY + maxRadius * Math.sin(angle);
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.closePath();
+        ctx.fillStyle = colors[transtorno];
+        ctx.fill();
+    }
+
+    // 🔹 Desenha as linhas das grades do decágono (opacidade 20%)
     ctx.strokeStyle = "rgba(227, 117, 168, 0.2)";
     ctx.lineWidth = 1;
     for (let level = 1; level <= 5; level++) {
@@ -572,42 +604,20 @@ function drawDecagonChart(transtornoScores) {
         ctx.stroke();
     }
 
-    // 🔹 Preenchendo os triângulos internos conforme a pontuação do usuário
-    ctx.globalAlpha = 1;
-    for (let i = 0; i < 10; i++) {
-        let angle1 = ((Math.PI * 2) / 10) * i - Math.PI / 2;
-        let transtorno = `t${i + 1}`;
-        let scoreLevel = normalizedScores[transtorno]; // Obtém o nível de pontuação (1 a 5)
-        let fillRadius = (maxRadius / 5) * scoreLevel; // Define o tamanho do preenchimento
-
-        let x1 = centerX + fillRadius * Math.cos(angle1);
-        let y1 = centerY + fillRadius * Math.sin(angle1);
-        let x2 = centerX + maxRadius * Math.cos(angle1);
-        let y2 = centerY + maxRadius * Math.sin(angle1);
-
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.lineTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.closePath();
-        ctx.fillStyle = colors[transtorno];
-        ctx.fill();
-    }
-
     // 🔹 Desenha os contornos dos triângulos internos
     ctx.globalAlpha = 1;
     ctx.strokeStyle = "#E375A8";
     ctx.lineWidth = 2;
     for (let i = 0; i < 10; i++) {
-        let angle1 = ((Math.PI * 2) / 10) * i - Math.PI / 2;
+        let angle = ((Math.PI * 2) / 10) * i - Math.PI / 2;
         let transtorno = `t${i + 1}`;
         let scoreLevel = normalizedScores[transtorno];
-        let fillRadius = (maxRadius / 5) * scoreLevel;
+        let innerRadius = (maxRadius / 5) * scoreLevel;
 
-        let x1 = centerX + fillRadius * Math.cos(angle1);
-        let y1 = centerY + fillRadius * Math.sin(angle1);
-        let x2 = centerX + maxRadius * Math.cos(angle1);
-        let y2 = centerY + maxRadius * Math.sin(angle1);
+        let x1 = centerX + innerRadius * Math.cos(angle);
+        let y1 = centerY + innerRadius * Math.sin(angle);
+        let x2 = centerX + maxRadius * Math.cos(angle);
+        let y2 = centerY + maxRadius * Math.sin(angle);
 
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
@@ -621,10 +631,16 @@ function drawDecagonChart(transtornoScores) {
 // 🔹 Chamar a função ao carregar a página de resultados
 document.addEventListener("DOMContentLoaded", function () {
     let transtornoScores = JSON.parse(localStorage.getItem("transtornoScores"));
+
+    console.log("📊 Dados carregados do localStorage:", transtornoScores); // TESTE
+
     if (transtornoScores) {
         drawDecagonChart(transtornoScores);
+    } else {
+        console.error("⚠️ Erro: transtornoScores não carregou corretamente.");
     }
 });
+
 
 function submitQuiz() {
     saveAnswer();
