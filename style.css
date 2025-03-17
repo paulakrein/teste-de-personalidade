@@ -26,7 +26,7 @@
     align-items: center; /* Mantém os quadrados alinhados ao texto */
     gap: 8px; /* Espaço entre quadrado e texto */
     font-size: 14px;
-    width: 160px; /* 🔹 Garante alinhamento à esquerda */
+    width: 200px; /* 🔹 Garante alinhamento à esquerda */
     text-align: left; /* 🔹 Mantém o texto à esquerda */
 }
 
