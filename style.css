@@ -75,7 +75,7 @@
 }
 
 /* 🔹 Ajuste para telas menores */
-@media (max-height: 600px) {
+@media (max-height: 800px) {
   .center-margin {
     min-height: auto;
     margin: auto;
