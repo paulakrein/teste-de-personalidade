@@ -220,6 +220,50 @@ p.quote .author {
    text-align: center;
    padding: 0.2em 0 0.5em;
 }
+/* DRAG & DROP  */
+
+/* Estiliza a lista de arrastar e soltar */
+.draggable-list {
+    list-style: none;
+    padding: 0;
+    max-width: 500px; /* Ajuste para centralizar melhor */
+    margin: 20px auto;
+    border: 2px dashed #E6545F; /* Borda pontilhada */
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Estiliza os itens dentro da lista */
+.draggable-item {
+    background: white;
+    padding: 15px;
+    margin: 5px 10px;
+    cursor: grab;
+    border: 1px solid #E6545F;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    transition: background 0.2s, transform 0.1s ease-in-out;
+}
+
+/* Efeito ao arrastar */
+.draggable-item:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+}
+
+/* Efeito ao passar o mouse */
+.draggable-item:hover {
+    background: #ffe5e5;
+}
+
+/* Efeito ao soltar um item */
+.draggable-item.drag-over {
+    background: #E6545F;
+    color: white;
+}
+
 
 /* bottom btn */
 
