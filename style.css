@@ -13,12 +13,36 @@
     aspect-ratio: 1/1;
 }
 
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    display: inline-block;
+    flex-shrink: 0; /* 🔹 Impede que os quadrados se redimensionem */
+}
+
 .legend-container {
     display: flex;
-    flex-direction: column; /* Mantém a lista vertical */
-    align-items: center; /* Centraliza a seção da legenda */
-    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os itens no desktop */
+    gap: 15px 30px; /* Espaço entre os itens */
     margin-top: 20px;
+    max-width: 600px;
+}
+
+/* 🔹 Legenda horizontal no desktop */
+@media (min-width: 600px) {
+    .legend-container {
+        flex-direction: row;
+    }
+}
+
+/* 🔹 Legenda vertical no celular */
+@media (max-width: 599px) {
+    .legend-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .legend-item {
@@ -26,17 +50,17 @@
     align-items: center; /* Mantém os quadrados alinhados ao texto */
     gap: 12px; /* Espaço entre quadrado e texto */
     font-size: 1.15em;
+    white-space: nowrap;
+    line-height: 1.5;
     width: 230px; /* 🔹 Garante alinhamento à esquerda */
     text-align: left; /* 🔹 Mantém o texto à esquerda */
-    line-height: 1.5;
-}
+}    
 
 .legend-color {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 3px;
     display: inline-block;
-    flex-shrink: 0; /* 🔹 Impede que os quadrados se redimensionem */
 }
 
 .res-pg {
