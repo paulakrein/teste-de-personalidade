@@ -74,7 +74,9 @@
 /* 🔹 No desktop: descer um pouco */
 @media (min-width: 600px) {
   .center-margin {
-  	margin-top: 3em;
+    position: absolute;
+    top: 50%;
+    margin-top: -50%;
   }
 }
 
