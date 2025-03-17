@@ -48,7 +48,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 1.4em;
     width: 100%; /* 🔹 Mantém largura fixa dentro da coluna */
 }
 
