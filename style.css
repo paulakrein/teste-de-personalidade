@@ -323,7 +323,7 @@ input[type="range"]::-moz-range-thumb {
     margin: 20px auto;
     border: 8px dashed #fe727e; /* Borda pontilhada */
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #f7f9fb;
 }
 
 /* Estiliza os itens dentro da lista */
