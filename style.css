@@ -214,7 +214,7 @@ p.quote .symb {
   position: absolute;
   top: -0.3em;
   left: -0.3em;
-	color: #4A90E2;
+  color: #4A90E2;
 }
 
 p.quote .author {
@@ -265,9 +265,16 @@ p.quote .author {
     transition: 0.2s;
 }
 
-input[type="range"]::-webkit-slider-thumb,
-input[type="range"]::-moz-range-thumb {
+input[type="range"]::-webkit-slider-thumb {
     appearance: none;
+    width: 20px;
+    height: 20px;
+    background: red; /* 🔹 Cor vermelha */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
     background: red; /* 🔹 Cor vermelha */
