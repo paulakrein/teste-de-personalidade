@@ -26,7 +26,7 @@
     flex-wrap: wrap;
     justify-content: center; /* Centraliza os itens no desktop */
     gap: 15px 30px; /* Espaço entre os itens */
-    margin-top: 20px;
+    margin: 20px auto;
     max-width: 600px;
 }
 
@@ -49,9 +49,9 @@
     display: flex;
     align-items: center; /* Mantém os quadrados alinhados ao texto */
     gap: 12px; /* Espaço entre quadrado e texto */
-    font-size: 1.15em;
+    font-size: 1.1em;
     white-space: nowrap;
-    line-height: 1.5;
+    line-height: 1.35;
     width: 230px; /* 🔹 Garante alinhamento à esquerda */
     text-align: left; /* 🔹 Mantém o texto à esquerda */
 }    
