@@ -210,21 +210,22 @@ function loadQuestion() {
 
     document.getElementById('answer-inner').classList.remove('grid');
   
-    if (questions[currentQuestion].type === "draggable") {
-        optionsDiv.innerHTML = "<ul id='draggable-list' class='draggable-list'></ul>";
-        let list = document.getElementById("draggable-list");
+  if (questions[currentQuestion].type === "draggable") {
+      optionsDiv.innerHTML = "<ul id='draggable-list' class='draggable-list'></ul>";
+      let list = document.getElementById("draggable-list");
 
-        questions[currentQuestion].options.forEach((item, index) => {
-            let listItem = document.createElement("li");
-            listItem.textContent = item;
-            listItem.draggable = true;
-            listItem.dataset.index = index;
-            listItem.addEventListener("dragstart", dragStart);
-            listItem.addEventListener("dragover", dragOver);
-            listItem.addEventListener("drop", drop);
-            list.appendChild(listItem);
-        });
-    }
+      questions[currentQuestion].options.forEach((item, index) => {
+          let listItem = document.createElement("li");
+          listItem.textContent = item;
+          listItem.draggable = true;
+          listItem.dataset.index = index;
+          listItem.classList.add("draggable-item"); // Adiciona classe para estilização
+          listItem.addEventListener("dragstart", dragStart);
+          listItem.addEventListener("dragover", dragOver);
+          listItem.addEventListener("drop", drop);
+          list.appendChild(listItem);
+      });
+  }
     else if (questions[currentQuestion].type === "slider") {
     optionsDiv.innerHTML = `
         <div class='slider-container'>
