@@ -68,17 +68,22 @@
 .center-margin {
     display: grid;
     place-items: center;
-    height: 70vh;
     max-width: 720px;
     padding: 0 2em 5em;
-    margin: 10vh auto;
+    margin: 0 auto;
 }
 
 /* 🔹 Ajuste para telas menores */
 @media (max-height: 800px) {
   .center-margin {
-    height: auto;
-    margin: 0 auto;
+    max-height: 790px;
+  }
+}
+
+/* 🔹 Ajuste para telas grandes */
+@media (min-height: 801px) {
+  .center-margin {
+    max-height: 70vh;
   }
 }
 
