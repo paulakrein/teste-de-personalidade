@@ -294,15 +294,6 @@ p.quote .author {
     fill: #FE727E; /* Cor no hover */
 }
 
-/* DECAGON CHART */
-
-#decagonChart {
-    display: block;
-    margin: 20px auto;
-    max-width: 400px;
-    border-radius: 50%;
-}
-
 
 @media screen and (max-width: 960px) {
 	.grid {
