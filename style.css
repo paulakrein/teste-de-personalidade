@@ -66,21 +66,21 @@
 }
 
 .center-margin {
+  display: grid;
+  place-items: center; /* 🔹 Centraliza perfeitamente */
+  text-align: center;
+  min-height: 100vh; /* 🔹 Evita que o conteúdo fique maior que a tela */
   margin: 0 auto;
+  max-width: 720px;
   padding: 1em 2em 1.8em;
 }
 
-/* 🔹 No desktop: exibir em duas colunas perfeitamente alinhadas */
-@media (min-width: 600px) {
-    .center-margin {
-      display: grid;
-      flex-direction: column;
-      justify-content: center; /* Centraliza verticalmente */
-      align-items: center; /* Centraliza horizontalmente */
-      text-align: center; /* Garante alinhamento do texto */
-      height: 100vh; /* 🔹 Faz a div ocupar toda a altura da tela */
-      max-width: 720px;
-    }
+/* 🔹 Ajuste para telas menores */
+@media (max-height: 600px) {
+  .center-margin {
+    min-height: auto;
+    padding: 3em 2em;
+  }
 }
 
 body {
