@@ -39,6 +39,11 @@
     flex-shrink: 0; /* 🔹 Impede que os quadrados se redimensionem */
 }
 
+.res-pg {
+    line-height: 1.4;
+    margin: 2em auto;
+}
+
 /* 🔹 Layout muda para vertical no celular */
 @media (max-width: 600px) {
     .legend-container {
