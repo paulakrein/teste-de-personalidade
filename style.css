@@ -73,13 +73,13 @@
 /* 🔹 Ajuste para telas grandes */
 @media (min-height: 801px) {
   .center-margin {
-	  display: grid;
-	  place-items: center; /* 🔹 Centraliza perfeitamente */
-	  text-align: center;
-	  min-height: 90vh; /* 🔹 Evita que o conteúdo fique maior que a tela */
-	  margin: 0 auto;
-	  max-width: 720px;
-	  padding: 1em 2em 1.8em;
+        display: grid;
+        min-height: calc(100vh - 100px);
+        margin: 0 auto;
+        max-width: 720px;
+        padding: 0 2em;
+        place-items: center;
+        place-content: center;
   }
 }
 
