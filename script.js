@@ -571,23 +571,25 @@ function drawDecagonChart(transtornoScores) {
     function getNormalizedLevel(score) {
         return Math.round(((score - minScore) / scoreRange) * (levels - 1)) + 1;
     }
-
+    
+        // 🔹 Desenha os 10 triângulos de fundo com transparência
     for (let i = 0; i < 10; i++) {
         let angle = (Math.PI * 2 * i) / 10;
         let nextAngle = (Math.PI * 2 * (i + 1)) / 10;
         let color = colors[i];
-
-        let level = getNormalizedLevel(transtornoScores[`t${i + 1}`]);
-        let fillRadius = (level / levels) * maxRadius;
-
+    
+        ctx.globalAlpha = 0.3; // 🔹 Define transparência de 30% para os triângulos de fundo
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
-        ctx.lineTo(centerX + fillRadius * Math.cos(angle), centerY + fillRadius * Math.sin(angle));
-        ctx.lineTo(centerX + fillRadius * Math.cos(nextAngle), centerY + fillRadius * Math.sin(nextAngle));
+        ctx.lineTo(centerX + maxRadius * Math.cos(angle), centerY + maxRadius * Math.sin(angle));
+        ctx.lineTo(centerX + maxRadius * Math.cos(nextAngle), centerY + maxRadius * Math.sin(nextAngle));
         ctx.closePath();
-        ctx.fillStyle = color;
+        ctx.fillStyle = color + "4D"; // 🔹 Mantém opacidade de 30%
         ctx.fill();
     }
+
+    // 🔹 Após desenhar o fundo, restaura a opacidade total para os próximos elementos
+    ctx.globalAlpha = 1;
 }
 
 // Resize on window resize
