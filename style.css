@@ -17,7 +17,7 @@
     flex-wrap: wrap;
     justify-content: center; /* Centraliza as colunas */
     gap: 50px; /* Espaço fixo entre as colunas */
-    margin: 20px auto;
+    margin: auto;
     max-width: 500px;
 }
 
