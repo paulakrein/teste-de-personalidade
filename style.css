@@ -321,7 +321,7 @@ input[type="range"]::-moz-range-thumb {
     padding: 0;
     max-width: 500px; /* Ajuste para centralizar melhor */
     margin: 20px auto;
-    border: 8px dashed #fe727e; /* Borda pontilhada */
+    border: 6px dashed #fe727e; /* Borda pontilhada */
     border-radius: 8px;
     background-color: #f7f9fb;
 }
