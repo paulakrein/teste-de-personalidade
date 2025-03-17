@@ -24,15 +24,15 @@
 .legend-item {
     display: flex;
     align-items: center; /* Mantém os quadrados alinhados ao texto */
-    gap: 8px; /* Espaço entre quadrado e texto */
-    font-size: 14px;
-    width: 200px; /* 🔹 Garante alinhamento à esquerda */
+    gap: 12px; /* Espaço entre quadrado e texto */
+    font-size: 1.15em;
+    width: 230px; /* 🔹 Garante alinhamento à esquerda */
     text-align: left; /* 🔹 Mantém o texto à esquerda */
 }
 
 .legend-color {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 3px;
     display: inline-block;
     flex-shrink: 0; /* 🔹 Impede que os quadrados se redimensionem */
