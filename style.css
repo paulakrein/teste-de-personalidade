@@ -8,8 +8,9 @@
     display: block;
     margin: 20px auto;
     width: 100%;
-    max-width: 400px; /* Ajusta o tamanho máximo */
+    max-width: 600px; /* Ajusta o tamanho máximo */
     height: auto;
+    aspect-ratio: 1/1;
 }
 
 .center-margin {
