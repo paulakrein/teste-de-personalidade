@@ -7,6 +7,9 @@
 #chartCanvas {
     display: block;
     margin: 20px auto;
+    width: 100%;
+    max-width: 400px; /* Ajusta o tamanho máximo */
+    height: auto;
 }
 
 .center-margin {
