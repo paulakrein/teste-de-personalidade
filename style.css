@@ -28,6 +28,7 @@
     font-size: 1.15em;
     width: 230px; /* 🔹 Garante alinhamento à esquerda */
     text-align: left; /* 🔹 Mantém o texto à esquerda */
+    line-height: 1.35;
 }
 
 .legend-color {
