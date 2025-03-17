@@ -28,7 +28,7 @@
         flex-direction: column;
         gap: 8px;
         align-items: flex-start; /* 🔹 Mantém alinhado à esquerda */
-        width: 200px; /* 🔹 Define um tamanho fixo para evitar desalinhamento */
+        width: auto; /* 🔹 Define um tamanho fixo para evitar desalinhamento */
     }
 }
 
@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 16px;
+    font-size: 1.4em;
     width: 100%; /* 🔹 Mantém largura fixa dentro da coluna */
 }
 
