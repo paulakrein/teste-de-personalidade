@@ -321,7 +321,7 @@ input[type="range"]::-moz-range-thumb {
     padding: 0;
     max-width: 500px; /* Ajuste para centralizar melhor */
     margin: 20px auto;
-    border: 2px dashed #E6545F; /* Borda pontilhada */
+    border: 8px dashed #fe727e; /* Borda pontilhada */
     border-radius: 8px;
     background-color: #f9f9f9;
 }
@@ -330,7 +330,7 @@ input[type="range"]::-moz-range-thumb {
 .draggable-item {
     background: white;
     padding: 15px;
-    margin: 5px 10px;
+    margin: 16px;
     cursor: grab;
     border: 1px solid #E6545F;
     border-radius: 5px;
