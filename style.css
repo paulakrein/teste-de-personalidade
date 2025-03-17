@@ -66,15 +66,21 @@
 }
 
 .center-margin {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centraliza verticalmente */
-  align-items: center; /* Centraliza horizontalmente */
-  text-align: center; /* Garante alinhamento do texto */
-  height: 100vh; /* 🔹 Faz a div ocupar toda a altura da tela */
   margin: 0 auto;
   max-width: 720px;
   padding: 1em 2em 1.8em;
+}
+
+/* 🔹 No desktop: exibir em duas colunas perfeitamente alinhadas */
+@media (min-width: 600px) {
+    .center-margin {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Centraliza verticalmente */
+      align-items: center; /* Centraliza horizontalmente */
+      text-align: center; /* Garante alinhamento do texto */
+      height: 100vw; /* 🔹 Faz a div ocupar toda a altura da tela */
+    }
 }
 
 body {
