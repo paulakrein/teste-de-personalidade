@@ -15,19 +15,19 @@
 
 .legend-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    flex-direction: column; /* Mantém a lista vertical */
+    align-items: center; /* Centraliza a seção da legenda */
+    gap: 5px;
     margin-top: 20px;
-    max-width: 600px;
 }
 
 .legend-item {
     display: flex;
-    align-items: center;
-    gap: 5px;
+    align-items: center; /* Mantém os quadrados alinhados ao texto */
+    gap: 8px; /* Espaço entre quadrado e texto */
     font-size: 14px;
-    white-space: nowrap;
+    width: 160px; /* 🔹 Garante alinhamento à esquerda */
+    text-align: left; /* 🔹 Mantém o texto à esquerda */
 }
 
 .legend-color {
@@ -35,6 +35,7 @@
     height: 15px;
     border-radius: 3px;
     display: inline-block;
+    flex-shrink: 0; /* 🔹 Impede que os quadrados se redimensionem */
 }
 
 /* 🔹 Layout muda para vertical no celular */
