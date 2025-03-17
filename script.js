@@ -505,33 +505,26 @@ function getArchetype(transtornoScores) {
 }
 
 
-// 🔹 Configuração do gráfico decágono
+// 🔹 Função para desenhar o gráfico decágono corretamente
 function drawDecagonChart(transtornoScores) {
     const canvas = document.getElementById("decagonChart");
-    if (!canvas) return; // Se o canvas não existir, não faz nada.
+    if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
     const width = canvas.width;
     const height = canvas.height;
     const centerX = width / 2;
     const centerY = height / 2;
-    const maxRadius = width * 0.4; // Ajusta o tamanho geral do gráfico
+    const maxRadius = width * 0.4;
 
-    // Cores correspondentes aos transtornos
+    // Cores dos transtornos
     const colors = {
-        t1: "#839DEF", // Esquizoide
-        t2: "#00C9EA", // Esquizotípico
-        t3: "#00EFF7", // Paranoide
-        t4: "#00EFEA", // Borderline
-        t5: "#00EE9C", // Histriônico
-        t6: "#9EFF00", // Narcisista
-        t7: "#FFFF39", // Antissocial
-        t8: "#FFE00C", // Obsessivo-Compulsivo
-        t9: "#FF9478", // Dependente
-        t10: "#F69FD1" // Evitativo
+        t1: "#839DEF", t2: "#00C9EA", t3: "#00EFF7", t4: "#00EFEA",
+        t5: "#00EE9C", t6: "#9EFF00", t7: "#FFFF39", t8: "#FFE00C",
+        t9: "#FF9478", t10: "#F69FD1"
     };
 
-    // Converte as pontuações para um intervalo de 1 a 5
+    // Normalização das pontuações para níveis de 1 a 5
     let scoresArray = Object.values(transtornoScores);
     let minScore = Math.min(...scoresArray);
     let maxScore = Math.max(...scoresArray);
@@ -546,10 +539,26 @@ function drawDecagonChart(transtornoScores) {
     // Limpa o canvas
     ctx.clearRect(0, 0, width, height);
 
-    // Desenha as linhas da grade (decágono base)
-    ctx.strokeStyle = "rgba(227, 117, 168, 0.2)"; // Cor das linhas rosa com opacidade de 20%
-    ctx.lineWidth = 1;
+    // Desenha os triângulos-base com opacidade de 30%
+    ctx.globalAlpha = 0.3;
+    for (let i = 0; i < 10; i++) {
+        let angle1 = ((Math.PI * 2) / 10) * i - Math.PI / 2;
+        let angle2 = ((Math.PI * 2) / 10) * ((i + 1) % 10) - Math.PI / 2;
+        let transtorno = `t${i + 1}`;
+        let color = colors[transtorno];
 
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(centerX + maxRadius * Math.cos(angle1), centerY + maxRadius * Math.sin(angle1));
+        ctx.lineTo(centerX + maxRadius * Math.cos(angle2), centerY + maxRadius * Math.sin(angle2));
+        ctx.closePath();
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+
+    // Desenha as grades do decágono base (opacidade 20%)
+    ctx.strokeStyle = "rgba(227, 117, 168, 0.2)";
+    ctx.lineWidth = 1;
     for (let level = 1; level <= 5; level++) {
         ctx.beginPath();
         for (let i = 0; i < 10; i++) {
@@ -558,19 +567,15 @@ function drawDecagonChart(transtornoScores) {
             let x = centerX + radius * Math.cos(angle);
             let y = centerY + radius * Math.sin(angle);
 
-            if (i === 0) {
-                ctx.moveTo(x, y);
-            } else {
-                ctx.lineTo(x, y);
-            }
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
         }
         ctx.closePath();
         ctx.stroke();
     }
 
-    // Preenche cada triângulo conforme a pontuação do transtorno
-    ctx.globalAlpha = 0.3; // Define opacidade inicial
-
+    // Desenha os triângulos de preenchimento conforme a pontuação do usuário
+    ctx.globalAlpha = 1;
     let points = [];
     for (let i = 0; i < 10; i++) {
         let angle = ((Math.PI * 2) / 10) * i - Math.PI / 2;
@@ -582,30 +587,27 @@ function drawDecagonChart(transtornoScores) {
         points.push({ x, y, color: colors[transtorno] });
     }
 
-    // Desenha os preenchimentos individuais para cada transtorno
-    for (let i = 0; i < 10; i++) {
-        let nextIndex = (i + 1) % 10;
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.lineTo(points[i].x, points[i].y);
-        ctx.lineTo(points[nextIndex].x, points[nextIndex].y);
-        ctx.closePath();
-        ctx.fillStyle = points[i].color;
-        ctx.globalAlpha = 1; // Opacidade total para os triângulos preenchidos
-        ctx.fill();
+    // Conectar os pontos corretamente
+    ctx.beginPath();
+    for (let i = 0; i < points.length; i++) {
+        if (i === 0) ctx.moveTo(points[i].x, points[i].y);
+        else ctx.lineTo(points[i].x, points[i].y);
     }
-
-    ctx.globalAlpha = 1; // Restaura opacidade padrão
+    ctx.closePath();
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)"; // Preenchimento leve para destaque
+    ctx.fill();
+    ctx.strokeStyle = "#E375A8";
+    ctx.lineWidth = 2;
+    ctx.stroke();
 }
 
-// 🔹 Função para exibir o gráfico quando a página de resultados carregar
+// 🔹 Chamar a função ao carregar a página de resultados
 document.addEventListener("DOMContentLoaded", function () {
     let transtornoScores = JSON.parse(localStorage.getItem("transtornoScores"));
     if (transtornoScores) {
         drawDecagonChart(transtornoScores);
     }
 });
-
 
 function submitQuiz() {
     saveAnswer();
