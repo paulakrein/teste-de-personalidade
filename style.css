@@ -68,7 +68,7 @@
 .center-margin {
     display: grid;
     place-items: center;
-    height: 70vh;
+    min-height: 70vh;
     max-width: 720px;
     padding: 1em 2em 1.8em;
     margin: 10vh auto;
