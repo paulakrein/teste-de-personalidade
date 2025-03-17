@@ -25,19 +25,25 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Centraliza os itens no desktop */
-    gap: 15px 30px; /* Espaço entre os itens */
-    margin: 20px auto;
-    max-width: 600px;
+    gap: 20px; /* Espaço entre os itens */
+    margin: 20px;
+/*     max-width: 600px; */
 }
 
-/* 🔹 Legenda horizontal no desktop */
+/* 🔹 No desktop: exibir em duas colunas */
 @media (min-width: 600px) {
     .legend-container {
         flex-direction: row;
+        max-width: 500px;
+    }
+    .legend-column {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 }
 
-/* 🔹 Legenda vertical no celular */
+/* 🔹 No celular: manter em coluna única */
 @media (max-width: 599px) {
     .legend-container {
         flex-direction: column;
@@ -50,10 +56,6 @@
     align-items: center; /* Mantém os quadrados alinhados ao texto */
     gap: 12px; /* Espaço entre quadrado e texto */
     font-size: 1.1em;
-    white-space: nowrap;
-    line-height: 1.35;
-    width: 230px; /* 🔹 Garante alinhamento à esquerda */
-    text-align: left; /* 🔹 Mantém o texto à esquerda */
 }    
 
 .legend-color {
