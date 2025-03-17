@@ -538,7 +538,7 @@ function drawDecagonChart(transtornoScores) {
     // Limpa o canvas
     ctx.clearRect(0, 0, width, height);
 
-    // Desenha os triângulos-base com opacidade de 30%
+    // 🔹 Desenha os triângulos-base com opacidade de 30% (o fundo)
     ctx.globalAlpha = 0.3;
     for (let i = 0; i < 10; i++) {
         let angle1 = ((Math.PI * 2) / 10) * i - Math.PI / 2;
@@ -555,7 +555,7 @@ function drawDecagonChart(transtornoScores) {
         ctx.fill();
     }
 
-    // Desenha as grades do decágono base (opacidade 20%)
+    // 🔹 Desenha as grades do decágono base (opacidade 20%)
     ctx.strokeStyle = "rgba(227, 117, 168, 0.2)";
     ctx.lineWidth = 1;
     for (let level = 1; level <= 5; level++) {
@@ -573,13 +573,13 @@ function drawDecagonChart(transtornoScores) {
         ctx.stroke();
     }
 
-    // Desenha os triângulos internos de preenchimento conforme a pontuação do usuário
+    // 🔹 Desenha os triângulos internos (Níveis de pontuação)
     ctx.globalAlpha = 1;
     for (let i = 0; i < 10; i++) {
         let angle1 = ((Math.PI * 2) / 10) * i - Math.PI / 2;
         let transtorno = `t${i + 1}`;
-        let scoreLevel = normalizedScores[transtorno];
-        let radius = (maxRadius / 5) * scoreLevel; // Ajusta o nível de preenchimento
+        let scoreLevel = normalizedScores[transtorno]; // Obtém o nível de pontuação (1 a 5)
+        let radius = (maxRadius / 5) * scoreLevel; // Define o raio de preenchimento dentro do triângulo
 
         let x1 = centerX + radius * Math.cos(angle1);
         let y1 = centerY + radius * Math.sin(angle1);
@@ -595,7 +595,7 @@ function drawDecagonChart(transtornoScores) {
         ctx.fill();
     }
 
-    // Desenha contornos dos triângulos internos
+    // 🔹 Desenha os contornos dos triângulos internos
     ctx.globalAlpha = 1;
     ctx.strokeStyle = "#E375A8";
     ctx.lineWidth = 2;
