@@ -67,7 +67,6 @@
 
 .center-margin {
   margin: 0 auto;
-  max-width: 720px;
   padding: 1em 2em 1.8em;
 }
 
@@ -80,6 +79,7 @@
       align-items: center; /* Centraliza horizontalmente */
       text-align: center; /* Garante alinhamento do texto */
       height: 100vw; /* 🔹 Faz a div ocupar toda a altura da tela */
+      max-width: 720px;
     }
 }
 
