@@ -4,6 +4,14 @@
 	box-sizing: border-box;
 }
 
+#chartCanvas {
+    display: block;
+    margin: 20px auto;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+}
+
 .center-margin {
   margin: 0 auto;
   max-width: 720px;
