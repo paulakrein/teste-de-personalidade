@@ -76,14 +76,14 @@
 /* 🔹 Ajuste para telas menores */
 @media (max-height: 800px) {
   .center-margin {
-    max-height: 790px;
+    max-height: 700px;
   }
 }
 
 /* 🔹 Ajuste para telas grandes */
 @media (min-height: 801px) {
   .center-margin {
-    max-height: 70vh;
+    max-height: 100vh;
   }
 }
 
