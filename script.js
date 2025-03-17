@@ -505,7 +505,7 @@ function getArchetype(transtornoScores) {
 }
 
 
-// 🔹 Função para desenhar o gráfico decágono corretamente
+// 🔹 Função para desenhar o gráfico decágono corretamente, sem conectar pontos
 function drawDecagonChart(transtornoScores) {
     const canvas = document.getElementById("decagonChart");
     if (!canvas) return;
@@ -574,31 +574,44 @@ function drawDecagonChart(transtornoScores) {
         ctx.stroke();
     }
 
-    // Desenha os triângulos de preenchimento conforme a pontuação do usuário
+    // Desenha os triângulos internos **sem conectar pontos**
     ctx.globalAlpha = 1;
-    let points = [];
     for (let i = 0; i < 10; i++) {
-        let angle = ((Math.PI * 2) / 10) * i - Math.PI / 2;
+        let angle1 = ((Math.PI * 2) / 10) * i - Math.PI / 2;
         let transtorno = `t${i + 1}`;
         let scoreLevel = normalizedScores[transtorno];
         let radius = (maxRadius / 5) * scoreLevel;
-        let x = centerX + radius * Math.cos(angle);
-        let y = centerY + radius * Math.sin(angle);
-        points.push({ x, y, color: colors[transtorno] });
+        let x1 = centerX + radius * Math.cos(angle1);
+        let y1 = centerY + radius * Math.sin(angle1);
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(x1, y1);
+        ctx.lineTo(centerX + maxRadius * Math.cos(angle1), centerY + maxRadius * Math.sin(angle1));
+        ctx.closePath();
+        ctx.fillStyle = colors[transtorno];
+        ctx.fill();
     }
 
-    // Conectar os pontos corretamente
-    ctx.beginPath();
-    for (let i = 0; i < points.length; i++) {
-        if (i === 0) ctx.moveTo(points[i].x, points[i].y);
-        else ctx.lineTo(points[i].x, points[i].y);
-    }
-    ctx.closePath();
-    ctx.fillStyle = "rgba(0, 0, 0, 0.2)"; // Preenchimento leve para destaque
-    ctx.fill();
+    // Desenha contornos para os triângulos internos
+    ctx.globalAlpha = 1;
     ctx.strokeStyle = "#E375A8";
     ctx.lineWidth = 2;
-    ctx.stroke();
+    for (let i = 0; i < 10; i++) {
+        let angle1 = ((Math.PI * 2) / 10) * i - Math.PI / 2;
+        let transtorno = `t${i + 1}`;
+        let scoreLevel = normalizedScores[transtorno];
+        let radius = (maxRadius / 5) * scoreLevel;
+        let x1 = centerX + radius * Math.cos(angle1);
+        let y1 = centerY + radius * Math.sin(angle1);
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(x1, y1);
+        ctx.lineTo(centerX + maxRadius * Math.cos(angle1), centerY + maxRadius * Math.sin(angle1));
+        ctx.closePath();
+        ctx.stroke();
+    }
 }
 
 // 🔹 Chamar a função ao carregar a página de resultados
@@ -608,6 +621,7 @@ document.addEventListener("DOMContentLoaded", function () {
         drawDecagonChart(transtornoScores);
     }
 });
+
 
 function submitQuiz() {
     saveAnswer();
