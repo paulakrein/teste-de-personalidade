@@ -584,8 +584,9 @@ function drawDecagonChart(transtornoScores) {
         ctx.lineTo(centerX + maxRadius * Math.cos(angle), centerY + maxRadius * Math.sin(angle));
         ctx.lineTo(centerX + maxRadius * Math.cos(nextAngle), centerY + maxRadius * Math.sin(nextAngle));
         ctx.closePath();
-        ctx.fillStyle = color + "4D"; // 🔹 Mantém opacidade de 30%
-        ctx.fill();
+        ctx.fillStyle = color; // 🔹 Mantém a cor sólida sem transparência para os valores reais
+ctx.globalAlpha = 1; // 🔹 Garante que os triângulos internos fiquem bem visíveis
+ctx.fill();
     }
 
     // 🔹 Após desenhar o fundo, restaura a opacidade total para os próximos elementos
