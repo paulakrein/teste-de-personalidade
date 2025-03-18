@@ -481,31 +481,47 @@ function prevQuestion() {
     }
 }
 
-// 🔹 Função para encontrar o melhor arquétipo considerando os Clusters corretos
+// // 🔹 Função para encontrar o melhor arquétipo considerando os Clusters corretos
+// function getArchetype(transtornoScores) {
+//     let sortedTranstornos = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
+
+//     let top3 = [sortedTranstornos[0][0], sortedTranstornos[1][0], sortedTranstornos[2][0]];
+//     let primaryTranstorno = top3[0];  
+//     let secondaryTranstornos = [top3[1], top3[2]];
+
+//     let bestMatch = archetypes.find(a => a.match.every(t => top3.includes(t)));
+
+//     if (!bestMatch) {
+//         bestMatch = archetypes.find(a => 
+//             a.match.includes(primaryTranstorno) &&
+//             (a.match.includes(secondaryTranstornos[0]) || a.match.includes(secondaryTranstornos[1]))
+//         );
+//     }
+
+//     if (!bestMatch) {
+//         bestMatch = archetypes.find(a => a.match.includes(primaryTranstorno));
+//     }
+
+//     return bestMatch ? bestMatch.name : "🔍 Arquétipo desconhecido";
+// }
+
 function getArchetype(transtornoScores) {
-    let sortedTranstornos = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
+    // Ordena transtornos da maior para a menor pontuação
+    const sortedTranstornos = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
 
-    let top3 = [sortedTranstornos[0][0], sortedTranstornos[1][0], sortedTranstornos[2][0]];
-    let primaryTranstorno = top3[0];  
-    let secondaryTranstornos = [top3[1], top3[2]];
+    // Define o principal e os dois secundários
+    const primary = sortedTranstornos[0][0];
+    const secondary1 = sortedTranstornos[1][0];
+    const secondary2 = sortedTranstornos[2][0];
 
-    let bestMatch = archetypes.find(a => a.match.every(t => top3.includes(t)));
+    // Procura o arquétipo EXATO: primário na frente e secundários (qualquer ordem)
+    const bestMatch = archetypes.find(a =>
+        a.match[0] === primary &&
+        ((a.match[1] === secondary1 && a.match[2] === secondary2) || (a.match[1] === secondary2 && a.match[2] === secondary1))
+    );
 
-    if (!bestMatch) {
-        bestMatch = archetypes.find(a => 
-            a.match.includes(primaryTranstorno) &&
-            (a.match.includes(secondaryTranstornos[0]) || a.match.includes(secondaryTranstornos[1]))
-        );
-    }
-
-    if (!bestMatch) {
-        bestMatch = archetypes.find(a => a.match.includes(primaryTranstorno));
-    }
-
-    return bestMatch ? bestMatch.name : "🔍 Arquétipo desconhecido";
+    return bestMatch ? bestMatch.name : "Perfil não arquetípico";
 }
-
-
 
 
 document.addEventListener("DOMContentLoaded", function () {
