@@ -51,8 +51,44 @@ document.addEventListener("DOMContentLoaded", () => {
     resultsDiv.innerHTML += `<h2 class="res-pg">Seu Arquétipo:</h2><h1>${chosenArchetypeName}</h1>`;
     
     if (archetypeObj) {
-        resultsDiv.innerHTML += `<p class="archetype-description quote"><span class="symb">"</span>${archetypeObj.description}</p>`;
+        resultsDiv.innerHTML += `<p class="archetype-description quote">${archetypeObj.description}</p>`;
     }
+
+    // Ordena os transtornos pela pontuação
+    const sortedScores = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
+    const traitNames = {
+      t1: "Esquizoide",
+      t2: "Esquizotípico",
+      t3: "Paranoide",
+      t4: "Borderline",
+      t5: "Histriônico",
+      t6: "Narcisista",
+      t7: "Antissocial",
+      t8: "Obsessivo-Compulsivo",
+      t9: "Dependente",
+      t10: "Evitativo"
+    };
+    
+    // Define o primário (único)
+    const primaryScore = sortedScores[0][1];
+    const primaryTrait = `${traitNames[sortedScores[0][0]]} (${sortedScores[0][0]})`;
+    
+    // Agora encontra todos os secundários empatados (pontuação igual ao segundo ou terceiro)
+    let secondaryTraits = [];
+    const secondScore = sortedScores[1][1];
+    
+    for (let i = 1; i < sortedScores.length; i++) {
+      if (sortedScores[i][1] === secondScore || sortedScores[i][1] === sortedScores[2][1]) {
+        secondaryTraits.push(`${traitNames[sortedScores[i][0]]} (${sortedScores[i][0]})`);
+      } else if (sortedScores[i][1] < sortedScores[2][1]) {
+        break; // Já podemos parar de iterar
+      }
+    }
+    
+    resultsDiv.innerHTML += `
+      <h2 class="res-pg">Traço Primário:</h2><p>${primaryTrait}</p>
+      <h2 class="res-pg">Traços Secundários:</h2><p>${secondaryTraits.join(', ')}</p>
+    `;
     
     // // Exibir pontuação final para cada transtorno
     // resultsDiv.innerHTML += `<h2>Seu Resultado:</h2>`;
