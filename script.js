@@ -717,7 +717,7 @@ for (let i = 0; i < 10; i++) {
     ctx.lineTo(centerX + maxRadius * Math.cos(angle), centerY + maxRadius * Math.sin(angle));
     ctx.lineTo(centerX + maxRadius * Math.cos(nextAngle), centerY + maxRadius * Math.sin(nextAngle));
     ctx.closePath();
-    ctx.fillStyle = color + "4D"; // Opacity of 30%
+    ctx.fillStyle = color;
     ctx.fill();
 }
 ctx.globalAlpha = 1; // Reset opacity for main shapes
