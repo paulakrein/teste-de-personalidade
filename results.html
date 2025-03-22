@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Resultados</h1>
+        <h2 class="res-title">Resultados</h2>
         <canvas id="chartCanvas" width="400" height="400"></canvas>
         
         <div class="legend-container">
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const chosenArchetypeName = localStorage.getItem("chosenArchetype") || "Perfil não arquetípico";
     const archetypeObj = archetypes.find(a => a.name === chosenArchetypeName);
     
-    resultsDiv.innerHTML += `<h2 class="res-pg">Seu Arquétipo:</h2><h3>${chosenArchetypeName}</h3>`;
+    resultsDiv.innerHTML += `<h2 class="res-pg">Seu Arquétipo:</h2><h1>${chosenArchetypeName}</h1>`;
     
     if (archetypeObj) {
         resultsDiv.innerHTML += `<p class="archetype-description">${archetypeObj.description}</p>`;
