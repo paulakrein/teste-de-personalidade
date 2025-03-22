@@ -74,6 +74,10 @@
   padding: 0 1.5em;
 }
 
+#results {
+  padding-bottom: 5em;
+}
+
 /* 🔹 Ajuste para telas grandes */
 @media (min-height: 801px) {
   .center-margin {
