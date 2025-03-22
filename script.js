@@ -620,27 +620,33 @@ function getArchetype(transtornoScores) {
     const top3 = [primary, secondary1, secondary2];
     const primaryScore = sorted[0][1];
     const secondScore = sorted[1][1];
-    const dominanceThreshold = 10; // threshold de dominância ajustado para 10
+    const dominanceThreshold = 10; 
 
-    // Se o traço primário domina muito, força o arquétipo puro
+    // 🔥 Pureza
     if (primaryScore - secondScore >= dominanceThreshold) {
         const pure = archetypes.find(a => a.match.length === 1 && a.match.includes(primary));
         if (pure) return pure.name;
     }
 
-    // Perfect Match (all 3 traits present in archetype)
-    let match = archetypes.find(a => top3.every(t => a.match.includes(t)) && a.match.length === top3.length);
+    // ✅ Perfect Match (all 3 top traits and no more)
+    let match = archetypes.find(a => top3.every(t => a.match.includes(t)) && a.match.length === 3);
     if (match) return match.name;
 
-    // Strong Match (primary + at least one secondary present)
-    match = archetypes.find(a => a.match.includes(primary) && (a.match.includes(secondary1) || a.match.includes(secondary2)));
-    if (match) return match.name;
+    // ✅ Refino: Busca o arquétipo com maior quantidade de top3 antes de aceitar qualquer strong match
+    let bestMatch = null;
+    let maxIntersection = 0;
+    archetypes.forEach(a => {
+        if (a.match.includes(primary)) {
+            const intersection = a.match.filter(t => top3.includes(t)).length;
+            if (intersection > maxIntersection) {
+                maxIntersection = intersection;
+                bestMatch = a;
+            }
+        }
+    });
+    if (bestMatch) return bestMatch.name;
 
-    // Fallback Match (primary only)
-    match = archetypes.find(a => a.match.includes(primary));
-    if (match) return match.name;
-
-    // Segurança final (não é para ocorrer)
+    // 🔄 Fallback se nada funcionar (muito improvável)
     return "Perfil não arquetípico";
 }
 
