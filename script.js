@@ -613,52 +613,37 @@ function prevQuestion() {
     }
 }
 
-// // 🔹 Função para encontrar o melhor arquétipo considerando os Clusters corretos
-// function getArchetype(transtornoScores) {
-//     let sortedTranstornos = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
-
-//     let top3 = [sortedTranstornos[0][0], sortedTranstornos[1][0], sortedTranstornos[2][0]];
-//     let primaryTranstorno = top3[0];  
-//     let secondaryTranstornos = [top3[1], top3[2]];
-
-//     let bestMatch = archetypes.find(a => a.match.every(t => top3.includes(t)));
-
-//     if (!bestMatch) {
-//         bestMatch = archetypes.find(a => 
-//             a.match.includes(primaryTranstorno) &&
-//             (a.match.includes(secondaryTranstornos[0]) || a.match.includes(secondaryTranstornos[1]))
-//         );
-//     }
-
-//     if (!bestMatch) {
-//         bestMatch = archetypes.find(a => a.match.includes(primaryTranstorno));
-//     }
-
-//     return bestMatch ? bestMatch.name : "🔍 Arquétipo desconhecido";
-// }
-
 function getArchetype(transtornoScores) {
     const sorted = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
     const primary = sorted[0][0];
     const secondary1 = sorted[1][0];
     const secondary2 = sorted[2][0];
     const top3 = [primary, secondary1, secondary2];
-  
-    // 1️⃣ Perfect Match (all 3 traits present in archetype)
+    const primaryScore = sorted[0][1];
+    const secondScore = sorted[1][1];
+    const dominanceThreshold = 10; // threshold de dominância ajustado para 10
+
+    // Se o traço primário domina muito, força o arquétipo puro
+    if (primaryScore - secondScore >= dominanceThreshold) {
+        const pure = archetypes.find(a => a.match.length === 1 && a.match.includes(primary));
+        if (pure) return pure.name;
+    }
+
+    // Perfect Match (all 3 traits present in archetype)
     let match = archetypes.find(a => top3.every(t => a.match.includes(t)) && a.match.length === top3.length);
     if (match) return match.name;
-  
-    // 2️⃣ Strong Match (primary + at least one secondary present)
+
+    // Strong Match (primary + at least one secondary present)
     match = archetypes.find(a => a.match.includes(primary) && (a.match.includes(secondary1) || a.match.includes(secondary2)));
     if (match) return match.name;
-  
-    // 3️⃣ Fallback Match (primary only)
+
+    // Fallback Match (primary only)
     match = archetypes.find(a => a.match.includes(primary));
     if (match) return match.name;
-  
-    // 4️⃣ No match found
+
+    // Segurança final (não é para ocorrer)
     return "Perfil não arquetípico";
-  }
+}
 
 
 document.addEventListener("DOMContentLoaded", function () {
