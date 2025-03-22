@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Define o primário (único)
     const primaryScore = sortedScores[0][1];
-    const primaryTrait = `${traitNames[sortedScores[0][0]]} (${sortedScores[0][0]})`;
+    const primaryTrait = `${traitNames[sortedScores[0][0]]}`;
     
     // Agora encontra todos os secundários empatados (pontuação igual ao segundo ou terceiro)
     let secondaryTraits = [];
@@ -79,15 +79,15 @@ document.addEventListener("DOMContentLoaded", () => {
     
     for (let i = 1; i < sortedScores.length; i++) {
       if (sortedScores[i][1] === secondScore || sortedScores[i][1] === sortedScores[2][1]) {
-        secondaryTraits.push(`${traitNames[sortedScores[i][0]]} (${sortedScores[i][0]})`);
+        secondaryTraits.push(`${traitNames[sortedScores[i][0]]}`);
       } else if (sortedScores[i][1] < sortedScores[2][1]) {
         break; // Já podemos parar de iterar
       }
     }
     
     resultsDiv.innerHTML += `
-      <h2 class="res-pg">Traço Primário:</h2><p>${primaryTrait}</p>
-      <h2 class="res-pg">Traços Secundários:</h2><p>${secondaryTraits.join(', ')}</p>
+      <h2 class="res-pg">Traço Primário:</h2><h2>${primaryTrait}</h2>
+      <h2 class="res-pg">Traços Secundários:</h2><h2>${secondaryTraits.join(', ')}</h2>
     `;
     
     // // Exibir pontuação final para cada transtorno
