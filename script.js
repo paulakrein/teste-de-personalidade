@@ -253,7 +253,7 @@ const questions = [
         "Gosto de discutir, e com frequência convenço os outros, pois falo com segurança e propriedade.",
         "Gosto de testar até onde as pessoas vão para defender o ponto de vista delas.",
         "Apresento argumentos lógicos e bem estruturados.",
-        "Concordo fácil com pessoas confiantes ou com quem eu gosto.",
+        "Concordo fácil com pessoas confiantes ou de quem eu gosto.",
         "Se for uma conversa difícil, desvio do assunto."
     ] },
     { text: "Você entra em um grupo novo. Como se sente e age?",
