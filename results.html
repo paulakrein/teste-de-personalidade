@@ -45,8 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Exibir o arquétipo antes da pontuação
-    const chosenArchetype = localStorage.getItem("chosenArchetype") || "🔍 Arquétipo desconhecido";
-    resultsDiv.innerHTML += `<h2 class="res-pg">Seu Arquétipo:</h2><h3>${chosenArchetype}</h3>`;
+    const chosenArchetypeName = localStorage.getItem("chosenArchetype") || "Perfil não arquetípico";
+    const archetypeObj = archetypes.find(a => a.name === chosenArchetypeName);
+    
+    resultsDiv.innerHTML += `<h2 class="res-pg">Seu Arquétipo:</h2><h3>${chosenArchetypeName}</h3>`;
+    
+    if (archetypeObj) {
+        resultsDiv.innerHTML += `<p class="archetype-description">${archetypeObj.description}</p>`;
+    }
     
     // Exibir pontuação final para cada transtorno
     resultsDiv.innerHTML += `<h2>Seu Resultado:</h2>`;
