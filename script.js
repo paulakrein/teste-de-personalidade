@@ -295,7 +295,7 @@ const questions = [
         "Eu travo e não consigo tomar novas decisões, então procuro alguém pra me ajudar.",
         "Fico ansioso e tento me preparar para o pior cenário possível."
     ] },
-    { text: "quando você está dentro de um grupo, o que é mais importante para você? Coloque em ordem de prioridade.",
+    { text: "Quando você está dentro de um grupo, o que é mais importante para você? (Segure e arraste para colocar em ordem de prioridade)",
         type: "draggable",
         options:
         [
@@ -320,7 +320,7 @@ const questions = [
         "Um tribunal de justiça, onde todos os movimentos são analisados e julgados."
     ] },
     { text: "Pergunta 11: Como você lida com conflitos e frustrações?", type: "slider11" },
-    { text: "Pergunta 12: O que é mais importante para você em qualquer situação?", type: "draggable12",
+    { text: "Pergunta 12: O que é mais importante para você em qualquer situação? (Segure e arraste para colocar em ordem de prioridade)", type: "draggable12",
         options: [
             "Independência e controle sobre o que acontece comigo",
             "Segurança e estabilidade, evitando erros e imprevistos",
