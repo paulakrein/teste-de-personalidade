@@ -468,23 +468,22 @@ function loadQuestion() {
       document.getElementById('answer-inner').classList.add('grid');
       
         // SHUFFLE
-        // if (questions[currentQuestion].options) {
-        //     let shuffledOptions = shuffleArray([...questions[currentQuestion].options]); // 🔹 Embaralha uma cópia, sem alterar o original
-            
-        //     shuffledOptions.forEach(option => {
-        //         optionsDiv.innerHTML += `<label>
-        //             <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
-        //             ${option}
-        //         </label><br>`;
-        //     });
-        // }
-        // DO NOT SHUFFLE for testing
-        questions[currentQuestion].options.forEach(option => {
-            optionsDiv.innerHTML += `<label class="module">
-                <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
-                ${option}
-            </label><br>`;
-        });
+        if (questions[currentQuestion].options) {
+            const shuffledOptions = shuffleArray([...questions[currentQuestion].options]);
+            shuffledOptions.forEach(option => {
+                optionsDiv.innerHTML += `<label class="module">
+                    <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
+                    ${option}
+                </label><br>`;
+            });
+        }
+        // // DO NOT SHUFFLE for testing
+        // questions[currentQuestion].options.forEach(option => {
+        //     optionsDiv.innerHTML += `<label class="module">
+        //         <input type='radio' name='q${currentQuestion}' value='${option}' ${answers[currentQuestion] === option ? "checked" : ""}>
+        //         ${option}
+        //     </label><br>`;
+        // });
     }
 }
 
