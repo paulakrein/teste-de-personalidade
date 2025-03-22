@@ -620,7 +620,7 @@ function getArchetype(transtornoScores) {
     const top3 = [primary, secondary1, secondary2];
     const primaryScore = sorted[0][1];
     const secondScore = sorted[1][1];
-    const dominanceThreshold = 10; 
+    const dominanceThreshold = 18; 
 
     // 🔥 Pureza
     if (primaryScore - secondScore >= dominanceThreshold) {
