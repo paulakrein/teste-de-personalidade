@@ -296,10 +296,10 @@ input[type="range"]::-webkit-slider-thumb {
   background: #4A90E2;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -8px; /* Centraliza a bolinha sobre o trilho */
+  margin-top: -4px; /* Centraliza a bolinha sobre o trilho */
 }
 
-.slider:hover {
+.slider:hover::-webkit-slider-runnable-track  {
     background: #C8D2E0;
 }
 
