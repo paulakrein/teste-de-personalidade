@@ -457,27 +457,29 @@ else if (questions[currentQuestion].type === "draggable12") {
 }
 else if (questions[currentQuestion].type === "sliderSelfEsteem") {
     optionsDiv.innerHTML = `
-    ${['Odeio que esperem algo de mim / Gosto quando esperam de mim',
-    'Me sinto comum / Me sinto estranho',
-    'Confio nas pessoas / Desconfio o tempo todo',
-    'Tenho autoimagem estável / Minha visão sobre mim muda o tempo todo',
-    'Prefiro ser ignorado / Preciso ser notado',
-    'Me sinto inferior / Me sinto superior',
-    'Jamais passaria por cima / Passo por cima se necessário',
-    'Me permito errar / Me cobro para não errar',
-    'Prefiro agir sozinho / Preciso de apoio pra agir',
-    'Não temo rejeição / Evito me expor por medo de rejeição'
-    ].map((label, index) => {
-        const [left, right] = label.split(' / ');
-        return `
-        <div class='slider-container'>
-            <div class="slider-labels">
-                <span>${left}</span>
-                <span>${right}</span>
-            </div>
-            <input type='range' class='slider' id='se${index + 1}' min='-2' max='2' step='1' value='${answers["se" + (index + 1)] || 0}'>
-        </div>`;
-    }).join('')}
+    ${[
+      { question: "Você gosta de ser o centro das atenções?", left: "Detesto", right: "Adoro" },
+      { question: "Você se sente diferente das outras pessoas?", left: "Comum", right: "Diferente" },
+      { question: "Você costuma desconfiar das intenções dos outros?", left: "Confio", right: "Desconfio" },
+      { question: "Sua autoimagem muda com facilidade?", left: "Estável", right: "Oscila" },
+      { question: "Você precisa da atenção das pessoas?", left: "Dispenso", right: "Preciso" },
+      { question: "Você se sente superior aos outros?", left: "Inferior", right: "Superior" },
+      { question: "Você passa por cima dos outros pra conseguir o que quer?", left: "Jamais", right: "Faço" },
+      { question: "Você se cobra muito para não errar?", left: "Tranquilo", right: "Cobro" },
+      { question: "Você precisa de apoio pra agir?", left: "Independo", right: "Preciso" },
+      { question: "Você evita se expor por medo de rejeição?", left: "Não temo", right: "Evito" }
+    ].map((item, index) => `
+      <div class='slider-block'>
+          <p class="slider-question">${item.question}</p>
+          <div class='slider-container'>
+              <div class="slider-labels">
+                  <span>${item.left}</span>
+                  <span>${item.right}</span>
+              </div>
+              <input type='range' class='slider' id='se${index + 1}' min='-2' max='2' step='1' value='${answers["se" + (index + 1)] || 0}'>
+          </div>
+      </div>
+    `).join('')}
     `;
 }
 else {
