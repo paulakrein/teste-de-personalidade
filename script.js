@@ -742,7 +742,7 @@ for (let i = 0; i < 10; i++) {
     let nextAngle = (Math.PI * 2 * (i + 1)) / 10;
     let color = colors[i];
 
-    ctx.globalAlpha = 0.2; // Ensure transparency for background
+    ctx.globalAlpha = 0.3; // Ensure transparency for background
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.lineTo(centerX + maxRadius * Math.cos(angle), centerY + maxRadius * Math.sin(angle));
