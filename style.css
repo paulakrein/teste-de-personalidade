@@ -79,7 +79,7 @@
 }
 
 /* 🔹 Ajuste para telas grandes */
-@media (min-height: 801px) {
+@media (min-height: 750px) {
   .center-margin {
         display: grid;
         min-height: calc(100vh - 100px);
