@@ -4,6 +4,19 @@
 	box-sizing: border-box;
 }
 
+body {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: #333333;
+  background: #FFFFFF;
+}
+
+a {
+	text-decoration: none;
+}
+
 #chartCanvas {
     display: block;
     margin: 10px auto;
@@ -93,19 +106,6 @@
   }
 }
 
-body {
-  font-family: "Lora", serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-  color: #333333;
-  background: #F7F9FB;
-}
-
-a {
-	text-decoration: none;
-}
-
 /* QUESTIONS */
 
 .grid {
@@ -129,11 +129,11 @@ a {
   width: 100%;
   border-radius: 5px;
   background: #FFF;
-  border: 1px solid #EEEFF5;
+  border: 1px solid #E6EAF0;
 }
 
 .module:has(input:checked) {
-  background-color: #4A90E2;
+  background-color: #4C6FFF;
   border: 1px solid #2277DA;
   color: white;
 }
@@ -222,7 +222,7 @@ p.quote .symb {
   position: absolute;
   top: -0.3em;
   left: -0.3em;
-  color: #4A90E2;
+  color: #4C6FFF;
 }
 
 p.quote .author {
@@ -242,8 +242,8 @@ p.quote .author {
     width: 100%;
     max-width: 520px;
     margin: 10px auto;
-    background: #FFF;
-    border: 1px solid #EEEFF5;
+    background: #FAFAFA;
+    border: 1px solid #E6EAF0;
     padding: 12px;
     border-radius: 12px;
 }
@@ -271,7 +271,7 @@ p.quote .author {
     -webkit-appearance: none;
     appearance: none;
     height: 10px; /* Trilho FINO controlado */
-    background: #eeeff5;
+    background: #E6EAF0;
     border-radius: 10px;
     outline: none;
     transition: 0.2s;
@@ -279,14 +279,14 @@ p.quote .author {
 
 .slider::-webkit-slider-runnable-track {
   height: 10px; /* Trilho FINO controlado */
-  background: #eeeff5;
+  background: #E6EAF0;
   border-radius: 10px;
 }
 
 input[type="range"]::-moz-range-thumb {
     width: 20px;    /* Aumenta o tamanho da bolinha */
     height: 20px;
-    background: #4A90E2;
+    background: #4C6FFF;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -295,14 +295,14 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 20px;    /* Aumenta o tamanho da bolinha */
   height: 20px;
-  background: #4A90E2;
+  background: #4C6FFF;
   border-radius: 50%;
   cursor: pointer;
   margin-top: -5px; /* Centraliza a bolinha sobre o trilho */
 }
 
 .slider:hover::-webkit-slider-runnable-track  {
-    background: #C8D2E0;
+    background: #84A7FF;
 }
 
 .slider-question {
@@ -357,7 +357,7 @@ input[type="range"]::-webkit-slider-thumb {
     padding: 15px;
     margin: 16px;
     cursor: grab;
-    border: 1px solid #c8d2e0;
+    border: 1px solid #84A7FF;
     border-radius: 5px;
     font-size: 16px;
     font-weight: 500;
@@ -373,7 +373,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* Efeito ao passar o mouse */
 .draggable-item:hover {
-    background: #4a90e2;
+    background: #4C6FFF;
     border: 1px solid #2277da;
     color: white;
 }
