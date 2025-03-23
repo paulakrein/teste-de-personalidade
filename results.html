@@ -41,10 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
     const transtornoScores = JSON.parse(localStorage.getItem("transtornoScores")) || {};
 
-    // // Exibir respostas selecionadas
-    // Object.keys(savedAnswers).forEach(qIndex => {
-    //     resultsDiv.innerHTML += `<p>Pergunta ${qIndex}: ${savedAnswers[qIndex]}</p>`;
-    // });
+    // Exibir respostas selecionadas
+    Object.keys(savedAnswers).forEach(qIndex => {
+        resultsDiv.innerHTML += `<p>Pergunta ${qIndex}: ${savedAnswers[qIndex]}</p>`;
+    });
 
     // Exibir o arquétipo antes da pontuação
     const chosenArchetypeName = localStorage.getItem("chosenArchetype") || "Perfil não arquetípico";
@@ -92,11 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
       <h2 class="res-pg">Traços Secundários:</h2><h2>${secondaryTraits.join(', ')}</h2>
     `;
     
-    // // Exibir pontuação final para cada transtorno
-    // resultsDiv.innerHTML += `<h2>Seu Resultado:</h2>`;
-    // Object.keys(transtornoScores).forEach(tKey => {
-    //     resultsDiv.innerHTML += `<p>${tKey.toUpperCase()} - ${transtornoScores[tKey]} respostas pontuaram para este transtorno.</p>`;
-    // });
+    // Exibir pontuação final para cada transtorno
+    resultsDiv.innerHTML += `<h2>Seu Resultado:</h2>`;
+    Object.keys(transtornoScores).forEach(tKey => {
+        resultsDiv.innerHTML += `<p>${tKey.toUpperCase()} - ${transtornoScores[tKey]} respostas pontuaram para este transtorno.</p>`;
+    });
 });
 </script>
 </html>
