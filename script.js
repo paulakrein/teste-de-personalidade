@@ -458,16 +458,16 @@ else if (questions[currentQuestion].type === "draggable12") {
 else if (questions[currentQuestion].type === "sliderSelfEsteem") {
     optionsDiv.innerHTML = `
     ${[
-      { question: "Gosto de ser o centro das atenções", left: "Detesto", right: "Adoro" },
-      { question: "Sou uma pessoa excêntrica — penso, sinto ou reajo de forma incomum ou peculiar", left: "Nem um pouco", right: "Muito" },
-      { question: "Desconfio das intenções dos outros", left: "Acredito fielmente", right: "Desconfio de todos" },
-      { question: "Minha autoestima e autoimagem são instáveis", left: "Estáveis", right: "Instáveis" },
-      { question: "Quando me afasto ou me isolo, é porque...", left: "Quero ficar sozinho", right: "Tenho medo de ser julgado" },
-      { question: "É mais comum que eu me perceba...", left: "Pior que os outros", right: "Melhor que os outros" },
-      { question: "Passo por cima das pessoas para conseguir o que quero", left: "Muito raro", right: "Com frequência" },
-      { question: "Me cobro muito para não errar", left: "Nenhuma cobrança", right: "Alta cobrança" },
-      { question: "Preciso de ajuda para agir ou saber o que fazer", left: "Muito raro", right: "Com frequência" },
-      { question: "Diante da rejeição eu...", left: "Me afasto envergonhado", right: "Reajo de forma intensa e impulsiva" }
+      { question: "Adoro ser o centro das atenções", left: "Discorto totalmente", right: "Concordo totalmente" },
+      { question: "Sou uma pessoa excêntrica — penso, sinto ou reajo de forma incomum ou peculiar", left: "Discorto totalmente", right: "Concordo totalmente" },
+      { question: "Desconfio das intenções dos outros", left: "Discorto totalmente", right: "Concordo totalmente" },
+      { question: "Minha autoestima e autoimagem são instáveis", left: "Discorto totalmente", right: "Concordo totalmente" },
+      { question: "Quando me afasto, é mais por medo de ser julgado do que por vontade de ficar sozinho", left: "Discorto totalmente", right: "Concordo totalmente" },
+      { question: "É mais comum que eu me perceba melhor ou à frente dos outros", left: "Discorto totalmente", right: "Concordo totalmente" },
+      { question: "Passo por cima das pessoas para conseguir o que quero", left: "Discorto totalmente", right: "Concordo totalmente" },
+      { question: "Me cobro muito para não errar", left: "Discorto totalmente", right: "Concordo totalmente" },
+      { question: "Preciso de ajuda para agir ou saber o que fazer", left: "Discorto totalmente", right: "Concordo totalmente" },
+      { question: "Se for rejeitado, em vez de me afastar reajo de forma intensa e impulsiva", left: "Discorto totalmente", right: "Concordo totalmente" }
     ].map((item, index) => `
       <div class='slider-block'>
           <p class="slider-question">${item.question}</p>
