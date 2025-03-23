@@ -281,18 +281,22 @@ p.quote .author {
   border-radius: 8px;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    appearance: none;
-}
-
-input[type="range"]::-webkit-slider-thumb,
-input[type="range"]::-moz-range-thumb,
-.slider::-webkit-slider-thumb {
-    width: 12px;
-    height: 12px;
+input[type="range"]::-moz-range-thumb {
+    width: 16px;    /* Aumenta o tamanho da bolinha */
+    height: 16px;
     background: #4A90E2;
     border-radius: 50%;
     cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;    /* Aumenta o tamanho da bolinha */
+  height: 16px;
+  background: #4A90E2;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -8px; /* Centraliza a bolinha sobre o trilho */
 }
 
 .slider:hover {
