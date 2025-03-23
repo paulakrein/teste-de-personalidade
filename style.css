@@ -268,26 +268,29 @@ p.quote .author {
     width: 100%;
     -webkit-appearance: none;
     appearance: none;
-    height: 5px;
+    height: 8px; /* Trilho FINO controlado */
     background: #eeeff5;
-    border-radius: 5px;
+    border-radius: 8px;
     outline: none;
     transition: 0.2s;
 }
 
+.slider::-webkit-slider-runnable-track {
+  height: 8px; /* Trilho FINO controlado */
+  background: #eeeff5;
+  border-radius: 8px;
+}
+
 input[type="range"]::-webkit-slider-thumb {
     appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb,
+.slider::-webkit-slider-thumb {
     width: 12px;
     height: 12px;
     background: #4A90E2;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: #4A90E2; /* 🔹 Cor vermelha */
     border-radius: 50%;
     cursor: pointer;
 }
