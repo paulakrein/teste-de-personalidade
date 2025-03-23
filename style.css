@@ -111,7 +111,7 @@ a {
 .grid {
 	padding: 1em 0.5em 0;
 	margin: 0;
-	column-count: 4;
+	column-count: 3;
 	column-gap: 2em;
 	column-rule: 2px outset rgba(0, 0, 128, 0.3);
 }
@@ -128,6 +128,8 @@ a {
   box-shadow: 1px 1px 3px rgba(0,0,0,0.02);
   width: 100%;
   border-radius: 5px;
+  background: #FFF;
+  border: 1px solid #EEEFF5;
 }
 
 .module:has(input:checked) {
@@ -415,13 +417,13 @@ input[type="range"]::-webkit-slider-thumb {
 
 @media screen and (max-width: 960px) {
 	.grid {
-		column-count: 3;
+		column-count: 2;
 	}
 }
 
 @media screen and (max-width: 600px) {
 	.grid {
-		column-count: 2;
+		column-count: 1;
 	}
 }
 
