@@ -459,15 +459,15 @@ else if (questions[currentQuestion].type === "sliderSelfEsteem") {
     optionsDiv.innerHTML = `
     ${[
       { question: "Adoro ser o centro das atenções", left: "✘✘✘", right: "✔✔✔" },
-      { question: "Sou uma pessoa excêntrica — penso, sinto ou reajo de forma incomum ou peculiar", left: "✘✘✘", right: "✔✔✔" },
+      { question: "Sou uma pessoa excêntrica e peculiar", left: "✘✘✘", right: "✔✔✔" },
       { question: "Desconfio das intenções dos outros", left: "✘✘✘", right: "✔✔✔" },
       { question: "Minha autoestima e autoimagem são instáveis", left: "✘✘✘", right: "✔✔✔" },
       { question: "Quando me afasto, é mais por medo de ser julgado do que por vontade de ficar sozinho", left: "✘✘✘", right: "✔✔✔" },
-      { question: "É mais comum que eu me perceba melhor ou à frente dos outros", left: "✘✘✘", right: "✔✔✔" },
+      { question: "Me percebo como melhor ou um passo à frente dos outros", left: "✘✘✘", right: "✔✔✔" },
       { question: "Passo por cima das pessoas para conseguir o que quero", left: "✘✘✘", right: "✔✔✔" },
       { question: "Me cobro muito para não errar", left: "✘✘✘", right: "✔✔✔" },
       { question: "Preciso de ajuda para agir ou saber o que fazer", left: "✘✘✘", right: "✔✔✔" },
-      { question: "Se for rejeitado, em vez de me afastar reajo de forma intensa e impulsiva", left: "✘✘✘", right: "✔✔✔" }
+      { question: "Se for rejeitado, em vez de me afastar, reajo de forma intensa e impulsiva", left: "✘✘✘", right: "✔✔✔" }
     ].map((item, index) => `
       <div class='slider-block'>
           <p class="slider-question">${item.question}</p>
@@ -714,7 +714,7 @@ const colors = ["#FF9478", "#F69FD1", "#839DEF", "#00C9EA", "#00DAEA", "#00EFEA"
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 // Draw grid lines
-ctx.strokeStyle = "#888888"; // Darker lines for clarity
+ctx.strokeStyle = "#BAD8EF"; // Darker lines for clarity
 ctx.globalAlpha = 1; // Ensures sharp visibility
 
 for (let i = 1; i <= levels; i++) {
