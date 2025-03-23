@@ -458,16 +458,16 @@ else if (questions[currentQuestion].type === "draggable12") {
 else if (questions[currentQuestion].type === "sliderSelfEsteem") {
     optionsDiv.innerHTML = `
     ${[
-      { question: "Adoro ser o centro das atenções", left: "Discorto totalmente", right: "Concordo totalmente" },
-      { question: "Sou uma pessoa excêntrica — penso, sinto ou reajo de forma incomum ou peculiar", left: "Discorto totalmente", right: "Concordo totalmente" },
-      { question: "Desconfio das intenções dos outros", left: "Discorto totalmente", right: "Concordo totalmente" },
-      { question: "Minha autoestima e autoimagem são instáveis", left: "Discorto totalmente", right: "Concordo totalmente" },
-      { question: "Quando me afasto, é mais por medo de ser julgado do que por vontade de ficar sozinho", left: "Discorto totalmente", right: "Concordo totalmente" },
-      { question: "É mais comum que eu me perceba melhor ou à frente dos outros", left: "Discorto totalmente", right: "Concordo totalmente" },
-      { question: "Passo por cima das pessoas para conseguir o que quero", left: "Discorto totalmente", right: "Concordo totalmente" },
-      { question: "Me cobro muito para não errar", left: "Discorto totalmente", right: "Concordo totalmente" },
-      { question: "Preciso de ajuda para agir ou saber o que fazer", left: "Discorto totalmente", right: "Concordo totalmente" },
-      { question: "Se for rejeitado, em vez de me afastar reajo de forma intensa e impulsiva", left: "Discorto totalmente", right: "Concordo totalmente" }
+      { question: "Adoro ser o centro das atenções", left: "Discordo", right: "Concordo" },
+      { question: "Sou uma pessoa excêntrica — penso, sinto ou reajo de forma incomum ou peculiar", left: "Discordo", right: "Concordo" },
+      { question: "Desconfio das intenções dos outros", left: "Discordo", right: "Concordo" },
+      { question: "Minha autoestima e autoimagem são instáveis", left: "Discordo", right: "Concordo" },
+      { question: "Quando me afasto, é mais por medo de ser julgado do que por vontade de ficar sozinho", left: "Discordo", right: "Concordo" },
+      { question: "É mais comum que eu me perceba melhor ou à frente dos outros", left: "Discordo", right: "Concordo" },
+      { question: "Passo por cima das pessoas para conseguir o que quero", left: "Discordo", right: "Concordo" },
+      { question: "Me cobro muito para não errar", left: "Discordo", right: "Concordo" },
+      { question: "Preciso de ajuda para agir ou saber o que fazer", left: "Discordo", right: "Concordo" },
+      { question: "Se for rejeitado, em vez de me afastar reajo de forma intensa e impulsiva", left: "Discordo", right: "Concordo" }
     ].map((item, index) => `
       <div class='slider-block'>
           <p class="slider-question">${item.question}</p>
