@@ -203,19 +203,10 @@ cluster3: ["t8", "t9", "t10"]
 };
 
 const questions = [
-{ text: "Se você tivesse que escrever uma bio curta e sincera para um perfil anônimo, o que diria?",
-    options: [
-    "Só observando, nada pessoal…",
-    "Um sonhador curioso viajando entre realidades.",
-    "Sempre alerta.",
-    "Numa mudança constante. Me avise se entender alguma coisa!",
-    "Gosto de pessoas, de histórias e de boas conversas.",
-    "Não sigo tendências, crio.",
-    "É simples assim: a vida é um jogo, e eu jogo para ganhar.",
-    "Se eu me propus a algo, que seja bem feito.",
-    "Não sou bom em decidir sobre essas coisas… O que você acha?",
-    "Se eu soubesse que ninguém julgaria, até falaria mais…"
-] },
+{
+    text: "O quanto essas afirmações refletem como <i>você</i> se vê?",
+    type: "sliderSelfEsteem"
+},
 { text: "Você está diante de uma decisão importante, como costuma lidar com isso?", type: "slider" },
 { text: "Quando alguém se aproxima querendo ser seu amigo, como você reage?",
     options: [
@@ -464,6 +455,31 @@ else if (questions[currentQuestion].type === "draggable12") {
         list.appendChild(listItem);
     });
 }
+else if (questions[currentQuestion].type === "sliderSelfEsteem") {
+    optionsDiv.innerHTML = `
+    ${['Odeio que esperem algo de mim / Gosto quando esperam de mim',
+    'Me sinto comum / Me sinto estranho',
+    'Confio nas pessoas / Desconfio o tempo todo',
+    'Tenho autoimagem estável / Minha visão sobre mim muda o tempo todo',
+    'Prefiro ser ignorado / Preciso ser notado',
+    'Me sinto inferior / Me sinto superior',
+    'Jamais passaria por cima / Passo por cima se necessário',
+    'Me permito errar / Me cobro para não errar',
+    'Prefiro agir sozinho / Preciso de apoio pra agir',
+    'Não temo rejeição / Evito me expor por medo de rejeição'
+    ].map((label, index) => {
+        const [left, right] = label.split(' / ');
+        return `
+        <div class='slider-container'>
+            <div class="slider-labels">
+                <span>${left}</span>
+                <span>${right}</span>
+            </div>
+            <input type='range' class='slider' id='se${index + 1}' min='-2' max='2' step='1' value='${answers["se" + (index + 1)] || 0}'>
+        </div>`;
+    }).join('')}
+    `;
+}
 else {
   document.getElementById('answer-inner').classList.add('grid');
   
@@ -573,6 +589,19 @@ else if (questions[currentQuestion].type === "draggable12") {
         let itemText = item.textContent.trim();
         answers[`12p${index + 1}`] = itemText; // Stores priority ranking as "12p1", "12p2", etc.
     });
+}
+else if (questions[currentQuestion].type === "sliderSelfEsteem") {
+    answers["se1"] = document.getElementById("se1").value;
+    answers["se2"] = document.getElementById("se2").value;
+    answers["se3"] = document.getElementById("se3").value;
+    answers["se4"] = document.getElementById("se4").value;
+    answers["se5"] = document.getElementById("se5").value;
+    answers["se6"] = document.getElementById("se6").value;
+    answers["se7"] = document.getElementById("se7").value;
+    answers["se8"] = document.getElementById("se8").value;
+    answers["se9"] = document.getElementById("se9").value;
+    answers["se10"] = document.getElementById("se10").value;
+    // ... até se10
 }
 else {
     const selectedOption = document.querySelector(`input[name='q${currentQuestion}']:checked`);
@@ -889,6 +918,26 @@ const slider11Scores = {
         });
     }
 });
+
+const selfEsteemSliders = {
+    "se1": { pos: "t1", neg: "t5" },
+    "se2": { pos: "t2", neg: "t9" },
+    "se3": { pos: "t3", neg: "t6" },
+    "se4": { pos: "t4", neg: "t8" },
+    "se5": { pos: "t5", neg: "t1" },
+    "se6": { pos: "t6", neg: "t10" },
+    "se7": { pos: "t7", neg: "t9" },
+    "se8": { pos: "t8", neg: "t4" },
+    "se9": { pos: "t9", neg: "t7" },
+    "se10": { pos: "t10", neg: "t2" }
+  };
+
+  Object.keys(selfEsteemSliders).forEach(se => {
+    let value = Number(savedAnswers[se]);
+    if (value > 0) transtornoScores[selfEsteemSliders[se].pos] += value * 3;
+    else if (value < 0) transtornoScores[selfEsteemSliders[se].neg] += Math.abs(value) * 3;
+    // valor 0 não pontua
+  });
 
 // 🔹 Pontuação da Pergunta 12 (Ordenação de Prioridades)
 const priorityScores12 = {
