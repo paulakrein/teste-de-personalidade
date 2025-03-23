@@ -307,7 +307,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 .slider-question {
   font-weight: 500;
-  margin: 12px auto 6px;
+  margin: 2.6em auto 0;
   text-align: center;
 }
 
