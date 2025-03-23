@@ -238,7 +238,7 @@ p.quote .author {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 500px;
+    max-width: 520px;
     margin: 10px auto;
     background: #FFF;
     border: 1px solid #EEEFF5;
@@ -268,22 +268,22 @@ p.quote .author {
     width: 100%;
     -webkit-appearance: none;
     appearance: none;
-    height: 8px; /* Trilho FINO controlado */
+    height: 10px; /* Trilho FINO controlado */
     background: #eeeff5;
-    border-radius: 8px;
+    border-radius: 10px;
     outline: none;
     transition: 0.2s;
 }
 
 .slider::-webkit-slider-runnable-track {
-  height: 8px; /* Trilho FINO controlado */
+  height: 20px; /* Trilho FINO controlado */
   background: #eeeff5;
-  border-radius: 8px;
+  border-radius: 20px;
 }
 
 input[type="range"]::-moz-range-thumb {
-    width: 16px;    /* Aumenta o tamanho da bolinha */
-    height: 16px;
+    width: 20px;    /* Aumenta o tamanho da bolinha */
+    height: 20px;
     background: #4A90E2;
     border-radius: 50%;
     cursor: pointer;
@@ -291,12 +291,12 @@ input[type="range"]::-moz-range-thumb {
 
 input[type="range"]::-webkit-slider-thumb {
   appearance: none;
-  width: 16px;    /* Aumenta o tamanho da bolinha */
-  height: 16px;
+  width: 20px;    /* Aumenta o tamanho da bolinha */
+  height: 20px;
   background: #4A90E2;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -4px; /* Centraliza a bolinha sobre o trilho */
+  margin-top: -5px; /* Centraliza a bolinha sobre o trilho */
 }
 
 .slider:hover::-webkit-slider-runnable-track  {
@@ -305,7 +305,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 .slider-question {
   font-weight: 500;
-  margin-bottom: 8px;
+  margin: 12px auto 6px;
   text-align: center;
 }
 
