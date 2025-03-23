@@ -133,8 +133,8 @@ a {
 }
 
 .module:has(input:checked) {
-  background-color: #4C6FFF;
-  border: 1px solid #2277DA;
+  background-color: #84A7FF;
+  border: 1px solid #1943AE;
   color: white;
 }
 
