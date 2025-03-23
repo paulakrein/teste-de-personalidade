@@ -269,17 +269,16 @@ p.quote .author {
     -webkit-appearance: none;
     appearance: none;
     height: 5px;
-    background: #FFF;
+    background: #eeeff5;
     border-radius: 5px;
     outline: none;
     transition: 0.2s;
-    border: 1px solid #EEEFF5;
 }
 
 input[type="range"]::-webkit-slider-thumb {
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 12px;
+    height: 12px;
     background: #4A90E2;
     border-radius: 50%;
     cursor: pointer;
