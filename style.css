@@ -252,7 +252,7 @@ p.quote .author {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    font-size: 1.25em;
+    font-size: 1em;
     letter-spacing: 3px;
     font-weight: 500;
     margin-bottom: 5px;
@@ -312,12 +312,12 @@ input[type="range"]::-webkit-slider-thumb {
   text-align: center;
 }
 
-.slider-labels span:first-child {
+/* .slider-labels span:first-child {
     color: #df4444; /* tom avermelhado ou mais forte */
 }
 .slider-labels span:last-child {
     color: #20cfc2; /* tom azul escuro */
-}
+} */
 
 /* MEDIA QUERY PARA MOBILE */
 @media (max-width: 480px) {
