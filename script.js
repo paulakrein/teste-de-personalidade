@@ -204,7 +204,7 @@ cluster3: ["t8", "t9", "t10"]
 
 const questions = [
 {
-    text: "O quanto essas afirmações refletem como <i>você</i> se vê?",
+    text: "Como você se vê?",
     type: "sliderSelfEsteem"
 },
 { text: "Você está diante de uma decisão importante, como costuma lidar com isso?", type: "slider" },
@@ -458,16 +458,16 @@ else if (questions[currentQuestion].type === "draggable12") {
 else if (questions[currentQuestion].type === "sliderSelfEsteem") {
     optionsDiv.innerHTML = `
     ${[
-      { question: "Você gosta de ser o centro das atenções?", left: "Detesto", right: "Adoro" },
-      { question: "Você se sente diferente das outras pessoas?", left: "Comum", right: "Diferente" },
-      { question: "Você costuma desconfiar das intenções dos outros?", left: "Confio", right: "Desconfio" },
-      { question: "Sua autoimagem muda com facilidade?", left: "Estável", right: "Oscila" },
-      { question: "Você precisa da atenção das pessoas?", left: "Dispenso", right: "Preciso" },
-      { question: "Você se sente superior aos outros?", left: "Inferior", right: "Superior" },
-      { question: "Você passa por cima dos outros pra conseguir o que quer?", left: "Jamais", right: "Faço" },
-      { question: "Você se cobra muito para não errar?", left: "Tranquilo", right: "Cobro" },
-      { question: "Você precisa de apoio pra agir?", left: "Independo", right: "Preciso" },
-      { question: "Você evita se expor por medo de rejeição?", left: "Não temo", right: "Evito" }
+      { question: "Gosto de ser o centro das atenções", left: "Detesto", right: "Adoro" },
+      { question: "Sou uma pessoa excêntrica — penso, sinto ou reajo de forma incomum ou peculiar", left: "Nem um pouco", right: "Muito" },
+      { question: "Desconfio das intenções dos outros", left: "Acredito fielmente", right: "Desconfio de todos" },
+      { question: "Minha autoestima e autoimagem são instáveis", left: "Estáveis", right: "Instáveis" },
+      { question: "Quando me afasto ou me isolo, é porque...", left: "Quero ficar sozinho", right: "Tenho medo de ser julgado" },
+      { question: "É mais comum que eu me perceba...", left: "Pior que os outros", right: "Melhor que os outros" },
+      { question: "Passo por cima das pessoas para conseguir o que quero", left: "Muito raro", right: "Com frequência" },
+      { question: "Me cobro muito para não errar", left: "Nenhuma cobrança", right: "Alta cobrança" },
+      { question: "Preciso de ajuda para agir ou saber o que fazer", left: "Muito raro", right: "Com frequência" },
+      { question: "Diante da rejeição eu...", left: "Me afasto envergonhado", right: "Reajo de forma intensa e impulsiva" }
     ].map((item, index) => `
       <div class='slider-block'>
           <p class="slider-question">${item.question}</p>
@@ -926,12 +926,12 @@ const selfEsteemSliders = {
     "se2": { pos: "t2", neg: "t9" },
     "se3": { pos: "t3", neg: "t6" },
     "se4": { pos: "t4", neg: "t8" },
-    "se5": { pos: "t5", neg: "t1" },
+    "se5": { pos: "t10", neg: "t1" },
     "se6": { pos: "t6", neg: "t10" },
     "se7": { pos: "t7", neg: "t9" },
     "se8": { pos: "t8", neg: "t4" },
     "se9": { pos: "t9", neg: "t7" },
-    "se10": { pos: "t10", neg: "t2" }
+    "se10": { pos: "t4", neg: "t10" }
   };
 
   Object.keys(selfEsteemSliders).forEach(se => {
