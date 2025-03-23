@@ -276,9 +276,9 @@ p.quote .author {
 }
 
 .slider::-webkit-slider-runnable-track {
-  height: 20px; /* Trilho FINO controlado */
+  height: 10px; /* Trilho FINO controlado */
   background: #eeeff5;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 input[type="range"]::-moz-range-thumb {
