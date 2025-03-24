@@ -208,18 +208,18 @@ const questions = [
     type: "sliderSelfEsteem"
 },
 { text: "Você está diante de uma decisão importante, como costuma lidar com isso?", type: "slider" },
-{ text: "Quando alguém se aproxima querendo ser seu amigo, como você reage?",
+{ text: "Como você reage quando alguém tenta se aproximar?",
     options: [
-    "Se for alguém mais na dele e que respeite meu espaço, daí tudo bem.",
-    "É algo desconfortável, pois é difícil saber o que as pessoas querem e esperam.",
-    "Não sei… Preciso observar melhor o comportamento dela pra ter mais segurança.",
-    "Se essa pessoa se interessar de verdade, me aproximo e me apego com facilidade.",
-    "Quanto mais amigos melhor… Gosto de conhecer pessoas novas, espero que sejam divertidas.",
-    "Acho que não é todo mundo que merece atenção, mas eu gosto quando me admiram e se interessam por mim.",
-    "Amizades vêm e vão… Essa pessoa tem algo a me oferecer?",
-    "Tenho dificuldade em lidar com gente impulsiva ou emocional demais.",
-    "Tento agradar para já garantir que gostem de mim.",
-    "Tenho medo de ter criado alguma expectativa e depois decepcionar as pessoas."
+    "Prefiro que respeitem meu espaço",
+    "Fico curioso e perplexo, não entendo direito as pessoas"
+    "Desconfio de segundas intenções",
+    "Me apego rápido",
+    "Fico feliz, amo gente nova!",
+    "Me interesso mais caso receba reconhecimento e admiração",
+    "Me pergunto se tenho algo a ganhar com isso",
+    "Evito pessoas impulsivas, caóticas ou dramáticas",
+    "Me esforço pra agradar",
+    "Tenho medo de criarem expectativas ou decepcionar"
 ] },
 { text: "Você está passando por um período difícil. Como lida com isso?",
     options: [
