@@ -286,15 +286,15 @@ const questions = [
     "Eu travo e não consigo tomar novas decisões, então procuro alguém pra me ajudar.",
     "Fico ansioso e tento me preparar para o pior cenário possível."
 ] },
-{ text: "Quando você está dentro de um grupo, o que é mais importante para você? (Segure e arraste para colocar em ordem de prioridade)",
+{ text: "Quando você está em um grupo, o que orienta seu comportamento?",
     type: "draggable",
     options:
     [
-        "Independência",
-        "Liderança e Carisma",
-        "Estabilidade e Proteção",
-        "Estrutura e Controle",
-        "Reconhecimento e Validação"
+        "Autonomia • individualidade • autossuficiência",
+        "Liderança • influência • poder de decisão",
+        "Harmonia • estabilidade • evitar conflitos",
+        "Regras • ordem • respeito",
+        "Admiração • reconhecimento • validação"
     ]
 },
 { text: "Se sua mente fosse um lugar, como ela seria?",
@@ -311,13 +311,13 @@ const questions = [
     "Um tribunal de justiça, onde todos os movimentos são analisados e julgados."
 ] },
 { text: "Pergunta 11: Como você lida com conflitos e frustrações?", type: "slider11" },
-{ text: "Pergunta 12: O que é mais importante para você em qualquer situação? (Segure e arraste para colocar em ordem de prioridade)", type: "draggable12",
+{ text: "Pergunta 12: O que move você na vida, o que é mais importante acima de tudo? (Segure e arraste para colocar em ordem de prioridade)", type: "draggable12",
     options: [
-        "Independência e controle sobre o que acontece comigo",
-        "Segurança e estabilidade, evitando erros e imprevistos",
-        "Relacionamentos e aprovação das pessoas ao meu redor",
-        "Criatividade, novidade e liberdade para explorar novas ideias",
-        "Ordem e previsibilidade, saber que tudo está bem estruturado"
+        "Liberdade de existência • Autenticidade • Criatividade • Autonomia • Ruptura",
+        "Segurança • Proteção • Estabilidade • Refúgio • Previsibilidade",
+        "Afeto • Aprovação • Relacionamentos • Pertencimento • Validação",
+        "Ordem • Estrutura • Controle • Regras • Disciplina",
+        "Poder • Vantagem • Vigilância • Autoproteção • Superioridade"
     ]
 }
 ];
@@ -803,7 +803,7 @@ const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
 
 // 🔹 Pontuação das Barras da Pergunta 2 🔹
 const sliderScores = {
-    "2a": { "-2": { c1: 4, c2: 0, c3: 2 }, "-1": { c1: 2, c2: 2, c3: 2 }, "0": { c1: 2, c2: 2, c3: 2 }, "1": { c1: 0, c2: 2, c3: 2 }, "2": { c1: 0, c2: 4, c3: 2 } },
+    "2a": { "-2": { c1: 2, c2: 0, c3: 2 }, "-1": { c1: 1, c2: 2, c3: 2 }, "0": { c1: 1, c2: 2, c3: 2 }, "1": { c1: 0, c2: 2, c3: 2 }, "2": { c1: 0, c2: 3, c3: 2 } },
     "2b": { "-2": { c1: 4, c2: 0, c3: 0 }, "-1": { c1: 2, c2: 0, c3: 2 }, "0": { c1: 2, c2: 2, c3: 2 }, "1": { c1: 0, c2: 2, c3: 2 }, "2": { c1: 0, c2: 4, c3: 2 } },
     "2c": { "-2": { c1: 0, c2: 4, c3: 2 }, "-1": { c1: 2, c2: 2, c3: 2 }, "0": { c1: 2, c2: 2, c3: 2 }, "1": { c1: 2, c2: 0, c3: 2 }, "2": { c1: 4, c2: 0, c3: 4 } },
     "2d": { "-2": { c1: 4, c2: 2, c3: 0 }, "-1": { c1: 2, c2: 2, c3: 0 }, "0": { c1: 2, c2: 2, c3: 2 }, "1": { c1: 0, c2: 2, c3: 2 }, "2": { c1: 0, c2: 0, c3: 4 } }
@@ -837,9 +837,9 @@ questions.forEach((question, index) => {
             if (answerIndex < 3) {
                 clusters.cluster1.forEach(t => transtornoScores[t] += 0.25);
             } else if (answerIndex >= 3 && answerIndex <= 6) {
-                clusters.cluster2.forEach(t => transtornoScores[t] += 0.25);
+                clusters.cluster2.forEach(t => transtornoScores[t] += 0.5);
             } else {
-                clusters.cluster3.forEach(t => transtornoScores[t] += 0.25);
+                clusters.cluster3.forEach(t => transtornoScores[t] += 0.5);
             }
         }
     }
@@ -853,13 +853,13 @@ const priorityScores = {
     "p4": { primary: 1, secondary: 0 },
     "p5": { primary: 0, secondary: 0 }
 };
-// a=independencia b=lideranca e carisma c=estabilidade e proteção d=estrutura e controle e=reconhecimento e validação
 const question9Clusters = {
-    "9a": { primary: "cluster1", secondary: "cluster2" },
-    "9b": { primary: "cluster2", secondary: "cluster3" },
-    "9c": { primary: "cluster3", secondary: "cluster1" },
-    "9d": { primary: "cluster3", secondary: "cluster2" },
-    "9e": { primary: "cluster2", secondary: "cluster1" }
+    // Foco em comportamento SOCIAL e interações
+    "9a": { primary: ["t1", "t7"], secondary: ["t8"] }, // Autonomia, se manter fora das dinâmicas
+    "9b": { primary: ["t6", "t3"], secondary: ["t7"] }, // Liderança e influência
+    "9c": { primary: ["t9", "t10"], secondary: ["t5"] }, // Busca por estabilidade e aceitação
+    "9d": { primary: ["t8", "t3"], secondary: ["t10"] }, // Regras e estrutura
+    "9e": { primary: ["t5", "t4"], secondary: ["t6"] }  // Validação social e busca de aplauso
 };
 
 Object.keys(question9Clusters).forEach(option => {
@@ -937,18 +937,18 @@ const selfEsteemSliders = {
 
   Object.keys(selfEsteemSliders).forEach(se => {
     let value = Number(savedAnswers[se]);
-    if (value > 0) transtornoScores[selfEsteemSliders[se].pos] += value * 3;
-    else if (value < 0) transtornoScores[selfEsteemSliders[se].neg] += Math.abs(value) * 3;
+    if (value > 0) transtornoScores[selfEsteemSliders[se].pos] += value * 2;
+    else if (value < 0) transtornoScores[selfEsteemSliders[se].neg] += Math.abs(value) * 2;
     // valor 0 não pontua
   });
 
 // 🔹 Pontuação da Pergunta 12 (Ordenação de Prioridades)
 const priorityScores12 = {
-    "Independência e controle sobre o que acontece comigo": { main: ["t7", "t6"], secondary: "t3" },  // Antissocial, Narcisista, Paranoide
-    "Segurança e estabilidade, evitando erros e imprevistos": { main: ["t9", "t10"], secondary: "t8" },  // Dependente, Evitativo, Obsessivo-Compulsivo
-    "Relacionamentos e aprovação das pessoas ao meu redor": { main: ["t5", "t4"], secondary: "t9" },  // Histriônico, Borderline, Dependente
-    "Criatividade, novidade e liberdade para explorar novas ideias": { main: ["t2", "t1"], secondary: "t7" },  // Esquizotípico, Esquizoide, Antissocial
-    "Ordem e previsibilidade, saber que tudo está bem estruturado": { main: ["t8", "t3"], secondary: "t10" }  // Obsessivo-Compulsivo, Paranoide, Evitativo
+    "Liberdade de existência • Autenticidade • Criatividade • Autonomia • Ruptura": { main: ["t2", "t7"], secondary: "t1" },
+    "Segurança • Proteção • Estabilidade • Refúgio • Previsibilidade": { main: ["t9", "t10"], secondary: "t8" },
+    "Afeto • Aprovação • Relacionamentos • Pertencimento • Validação": { main: ["t5", "t4"], secondary: "t9" },
+    "Ordem • Estrutura • Controle • Regras • Disciplina": { main: ["t8", "t3"], secondary: "t6" },
+    "Poder • Vantagem • Vigilância • Autoproteção • Superioridade": { main: ["t3", "t6"], secondary: "t7" }
 };
 
 // 🔹 Pontuação da Pergunta 12 (Ordenação de Prioridades)
