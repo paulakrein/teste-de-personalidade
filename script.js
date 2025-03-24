@@ -876,33 +876,40 @@ const question9Targets = {
 
 // 🔹 Pontuação das Barras da Pergunta 11 🔹
 const slider11Scores = {
+    // Evito o confronto ↔ Enfrento de cabeça
     "11a": {
-        "1": { t7: 2, t6: 2, t4: 1 },  // Antissocial, Narcisista, Borderline
-        "2": { t3: 2, t5: 1 },  // Paranoide, Histriônico
-        "3": { t2: 1, t9: 1 },  // Esquizotípico, Dependente
-        "4": { t8: 2, t1: 1 },  // Obsessivo-Compulsivo, Esquizoide
-        "5": { t10: 2, t9: 2 }  // Evitativo, Dependente
+        "1": { t9: 2, t10: 2 },           // Evitativo, Dependente
+        "2": { t8: 2, t1: 1 },            // Obsessivo, Esquizoide
+        "3": { t2: 1, t5: 1 },            // Esquizotípico, Histriônico
+        "4": { t3: 2, t4: 1 },            // Paranoide, Borderline
+        "5": { t7: 2, t6: 2, t4: 1 }      // Antissocial, Narcisista, Borderline
     },
+
+    // Reprimo o que sinto ↔ Expresso tudo intensamente
     "11b": {
-        "1": { t1: 2, t3: 2 },  // Esquizoide, Paranoide
-        "2": { t8: 2, t10: 1 },  // Obsessivo-Compulsivo, Evitativo
-        "3": { t2: 1, t9: 1 },  // Esquizotípico, Dependente
-        "4": { t6: 1, t5: 1 },  // Narcisista, Histriônico
-        "5": { t4: 2, t5: 2, t7: 1 }  // Borderline, Histriônico, Antissocial
+        "1": { t1: 2, t3: 2 },            // Esquizoide, Paranoide (reprime muito)
+        "2": { t8: 2, t10: 1 },           // Obsessivo, Evitativo
+        "3": { t2: 1, t9: 1 },            // Esquizotípico, Dependente
+        "4": { t6: 1, t5: 1 },            // Narcisista, Histriônico
+        "5": { t4: 2, t5: 2, t7: 1 }      // Borderline, Histriônico, Antissocial (expressa tudo)
     },
+
+    // A culpa é minha ↔ A culpa é dos outros
     "11c": {
-        "1": { t9: 2, t3: 2 },  // Dependente, Paranoide
-        "2": { t8: 1, t2: 1 },  // Obsessivo-Compulsivo, Esquizotípico
-        "3": { t1: 2, t7: 1 },  // Esquizoide, Antissocial
-        "4": { t3: 2, t6: 1 },  // Paranoide, Narcisista
-        "5": { t7: 2, t6: 2, t4: 1 }  // Antissocial, Narcisista, Borderline
+        "1": { t9: 2, t3: 2 },            // Dependente, Paranoide (carrega a culpa)
+        "2": { t8: 1, t2: 1 },            // Obsessivo, Esquizotípico
+        "3": { t1: 2, t7: 1 },            // Esquizoide, Antissocial (meio termo, frio)
+        "4": { t3: 2, t6: 1 },            // Paranoide, Narcisista
+        "5": { t7: 2, t6: 2, t4: 1 }      // Antissocial, Narcisista, Borderline (culpa os outros)
     },
+
+    // Eu aceito ordens ↔ Eu desafio autoridade
     "11d": {
-        "1": { t9: 2, t10: 2 },  // Dependente, Evitativo
-        "2": { t8: 1, t1: 1 },  // Obsessivo-Compulsivo, Esquizoide
-        "3": { t2: 1, t4: 1 },  // Esquizotípico, Borderline
-        "4": { t3: 2, t6: 1 },  // Paranoide, Narcisista
-        "5": { t7: 2, t6: 2, t4: 1 }  // Antissocial, Narcisista, Borderline
+        "1": { t9: 2, t10: 2 },           // Dependente, Evitativo (submisso)
+        "2": { t8: 1, t1: 1 },            // Obsessivo, Esquizoide
+        "3": { t2: 1, t4: 1 },            // Esquizotípico, Borderline
+        "4": { t3: 2, t6: 1 },            // Paranoide, Narcisista
+        "5": { t7: 2, t6: 2, t4: 1 }      // Antissocial, Narcisista, Borderline (desafia)
     }
 };
 
