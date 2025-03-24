@@ -835,7 +835,7 @@ questions.forEach((question, index) => {
             // Pontua +2 para o cluster correspondente
             // AJUSTA O CLUSTER - de 2 para 1
             if (answerIndex < 3) {
-                clusters.cluster1.forEach(t => transtornoScores[t] += 0.25);
+                clusters.cluster1.forEach(t => transtornoScores[t] += 0.1);
             } else if (answerIndex >= 3 && answerIndex <= 6) {
                 clusters.cluster2.forEach(t => transtornoScores[t] += 0.5);
             } else {
@@ -845,38 +845,31 @@ questions.forEach((question, index) => {
     }
 });
 
-// 🔹 Pontuação da Pergunta 9 (Draggable) 🔹
-const priorityScores = {
+const priorityScores9 = {
     "p1": { primary: 7, secondary: 3 },
     "p2": { primary: 5, secondary: 2 },
     "p3": { primary: 3, secondary: 1 },
     "p4": { primary: 1, secondary: 0 },
     "p5": { primary: 0, secondary: 0 }
 };
-const question9Clusters = {
-    // Foco em comportamento SOCIAL e interações
-    "9a": { primary: ["t1", "t7"], secondary: ["t8"] }, // Autonomia, se manter fora das dinâmicas
-    "9b": { primary: ["t6", "t3"], secondary: ["t7"] }, // Liderança e influência
-    "9c": { primary: ["t9", "t10"], secondary: ["t5"] }, // Busca por estabilidade e aceitação
-    "9d": { primary: ["t8", "t3"], secondary: ["t10"] }, // Regras e estrutura
-    "9e": { primary: ["t5", "t4"], secondary: ["t6"] }  // Validação social e busca de aplauso
+
+const question9Targets = {
+    "9a": { primary: ["t1", "t7"], secondary: ["t8"] }, // Autonomia
+    "9b": { primary: ["t6", "t3"], secondary: ["t7"] }, // Influência
+    "9c": { primary: ["t9", "t10"], secondary: ["t5"] }, // Harmonia
+    "9d": { primary: ["t8", "t3"], secondary: ["t10"] }, // Regras
+    "9e": { primary: ["t5", "t4"], secondary: ["t6"] }   // Validação
 };
 
-Object.keys(question9Clusters).forEach(option => {
-    let position = savedAnswers[option]; // Ex: "p1", "p2", etc.
-    if (position && priorityScores[position]) {
-        let clusterData = question9Clusters[option];
+["9a", "9b", "9c", "9d", "9e"].forEach(q => {
+    const pos = savedAnswers[q]; // exemplo: 'p1'
+    if (pos && priorityScores9[pos]) {
+        const score = priorityScores9[pos];
+        const cluster = question9Targets[q];
 
-        // Adiciona pontos ao cluster principal
-        clusterData.primary.forEach(t => {
-            transtornoScores[t] += priorityScores[position].primary;
-        });
-
-        // Adiciona pontos ao cluster secundário (se existir)
-        if (clusterData.secondary) {
-            clusterData.secondary.forEach(t => {
-                transtornoScores[t] += priorityScores[position].secondary;
-            });
+        cluster.primary.forEach(t => transtornoScores[t] += score.primary);
+        if (cluster.secondary) {
+            cluster.secondary.forEach(t => transtornoScores[t] += score.secondary);
         }
     }
 });
