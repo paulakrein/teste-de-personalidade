@@ -868,13 +868,13 @@ Object.keys(question9Clusters).forEach(option => {
         let clusterData = question9Clusters[option];
 
         // Adiciona pontos ao cluster principal
-        clusters[clusterData.primary].forEach(t => {
+        clusterData.primary.forEach(t => {
             transtornoScores[t] += priorityScores[position].primary;
         });
 
         // Adiciona pontos ao cluster secundário (se existir)
         if (clusterData.secondary) {
-            clusters[clusterData.secondary].forEach(t => {
+            clusterData.secondary.forEach(t => {
                 transtornoScores[t] += priorityScores[position].secondary;
             });
         }
