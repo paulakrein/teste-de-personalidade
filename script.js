@@ -211,7 +211,7 @@ const questions = [
 { text: "Como você reage quando alguém tenta se aproximar?",
     options: [
     "Prefiro que respeitem meu espaço",
-    "Fico curioso e perplexo, não entendo direito as pessoas"
+    "Fico curioso e perplexo, não entendo direito as pessoas",
     "Desconfio de segundas intenções",
     "Me apego rápido",
     "Fico feliz, amo gente nova!",
