@@ -855,9 +855,9 @@ const priorityScores9 = {
 
 const question9Targets = {
     "9a": { primary: ["t1", "t7"], secondary: ["t8"] }, // Autonomia
-    "9b": { primary: ["t6", "t3"], secondary: ["t7"] }, // Influência
+    "9b": { primary: ["t6", "t7"], secondary: ["t3"] }, // Influência
     "9c": { primary: ["t9", "t10"], secondary: ["t5"] }, // Harmonia
-    "9d": { primary: ["t8", "t3"], secondary: ["t10"] }, // Regras
+    "9d": { primary: ["t8", "t3"], secondary: ["t6"] }, // Regras
     "9e": { primary: ["t5", "t4"], secondary: ["t6"] }   // Validação
 };
 
@@ -916,14 +916,14 @@ const slider11Scores = {
 });
 
 const selfEsteemSliders = {
-    "se1": { pos: "t1", neg: "t5" },
+    "se1": { pos: "t5", neg: "t1" },
     "se2": { pos: "t2", neg: "t9" },
-    "se3": { pos: "t3", neg: "t6" },
+    "se3": { pos: "t3", neg: "t9" },
     "se4": { pos: "t4", neg: "t8" },
     "se5": { pos: "t10", neg: "t1" },
     "se6": { pos: "t6", neg: "t10" },
     "se7": { pos: "t7", neg: "t9" },
-    "se8": { pos: "t8", neg: "t4" },
+    "se8": { pos: "t8", neg: "t7" },
     "se9": { pos: "t9", neg: "t7" },
     "se10": { pos: "t4", neg: "t10" }
   };
