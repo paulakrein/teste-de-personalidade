@@ -219,20 +219,20 @@ const questions = [
     "Me pergunto se tenho algo a ganhar com isso",
     "Evito pessoas impulsivas, caóticas ou dramáticas",
     "Me esforço pra agradar",
-    "Tenho medo de criarem expectativas ou decepcionar"
+    "Tenho medo de criarem expectativas ou de decepcionar"
 ] },
 { text: "Você está passando por um período difícil. Como lida com isso?",
     options: [
-    "Passo por isso sozinho, como sempre. E está tudo bem, vai se resolver, é assim que as coisas são.",
-    "Fico preso em pensamentos, analisando sinais e padrões no mundo, tentando entender o que significa.",
-    "Redobro minha atenção e analiso tudo ao meu redor com mais cuidado.",
-    "Preciso que alguém fique comigo, embora não queira conselhos — só que me mostrem que estão comigo e que as coisas vão ficar bem.",
-    "Converso com mais de um amigo, preciso sentir que estou falando de coisas importantes e sendo ouvido também.",
-    "Não perco tempo me lamentando… Sei que é temporário, que tenho capacidade pra resolver e que tudo será um crescimento no fim.",
-    "As pessoas se complicam muito. A situação parece difícil? Mudo meu caminho e pronto.",
-    "Me concentro no que posso controlar, e planejo pra resolver da forma mais eficiente possível.",
-    "Preciso do apoio das pessoas pra me ajudarem a tomar decisões.",
-    "É difícil pedir ajuda, mesmo quando preciso — tenho medo do que vão pensar se eu explicar o problema."
+    "Prefiro lidar sozinho e não ligo para o que digam",
+    "Me perco em pensamentos, teorias e fantasias",
+    "Fico mais vigilante e atento",
+    "Preciso de companhias reconfortantes",
+    "Comento com todo mundo",
+    "Enfrento e confio que resolverei o que quer que seja",
+    "Simplesmente perco o interesse e mudo meu caminho",
+    "Foco no que posso controlar e faço um plano",
+    "Peço conselhos para quem eu amo",
+    "Evito pedir ajuda por medo de ser julgado"
 ] },
 { text: "Você está em uma conversa e alguém diz algo com que você discorda. Como reage?",
     options: [
