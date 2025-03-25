@@ -215,7 +215,7 @@ const questions = [
     "Desconfio de segundas intenções",
     "Me apego rápido",
     "Fico feliz, gosto de conhecer gente nova",
-    "Me interesso mais caso receba reconhecimento e admiração",
+    "Me interesso se houver admiração e reconhecimento envolvidos",
     "Me pergunto se tenho algo a ganhar com isso",
     "Evito pessoas impulsivas, caóticas ou dramáticas",
     "Me esforço pra agradar",
