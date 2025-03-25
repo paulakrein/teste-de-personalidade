@@ -214,12 +214,12 @@ const questions = [
     "Fico curioso e perplexo, não entendo direito as pessoas",
     "Desconfio de segundas intenções",
     "Me apego rápido",
-    "Fico feliz, amo gente nova!",
+    "Fico feliz, gosto de conhecer gente nova",
     "Me interesso mais caso receba reconhecimento e admiração",
     "Me pergunto se tenho algo a ganhar com isso",
     "Evito pessoas impulsivas, caóticas ou dramáticas",
     "Me esforço pra agradar",
-    "Tenho medo de criarem expectativas ou de decepcionar"
+    "Tenho medo de criar expectativas e decepcionar"
 ] },
 { text: "Você está passando por um período difícil. Como lida com isso?",
     options: [
