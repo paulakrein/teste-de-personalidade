@@ -230,7 +230,7 @@ const questions = [
     "Comento com todo mundo",
     "Enfrento e confio que resolverei o que quer que seja",
     "Simplesmente perco o interesse e mudo meu caminho",
-    "Foco no que posso controlar e faço um plano",
+    "Foco no que posso controlar e faço um plano estruturado",
     "Peço conselhos para quem eu amo",
     "Evito pedir ajuda por medo de ser julgado"
 ] },
