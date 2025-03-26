@@ -340,6 +340,68 @@ function updateQuestionCounter() {
 document.getElementById("question-counter").innerText = `${currentQuestion + 1}/${questions.length}`;
 }
 
+// 👇 Coloca aqui, antes da loadQuestion()
+function makeDraggableList(selector) {
+    const list = document.querySelector(selector);
+    let draggingItem = null;
+    let placeholder = null;
+
+    list.querySelectorAll('li').forEach(item => {
+        item.addEventListener('pointerdown', (e) => {
+            e.preventDefault(); // previne scroll no mobile
+            draggingItem = item;
+            draggingItem.classList.add('dragging');
+
+            const moveHandler = (e) => {
+                const pointerY = e.clientY || e.touches?.[0]?.clientY;
+
+                // Cria o placeholder só se ainda não existir
+                if (!placeholder) {
+                    placeholder = document.createElement('li');
+                    placeholder.classList.add('placeholder');
+                    placeholder.style.height = `${draggingItem.offsetHeight}px`;
+                }
+
+                // Detecta onde inserir o placeholder
+                const items = [...list.querySelectorAll('li:not(.dragging):not(.placeholder)')];
+                let inserted = false;
+                for (let el of items) {
+                    const box = el.getBoundingClientRect();
+                    if (pointerY < box.top + box.height / 2) {
+                        list.insertBefore(placeholder, el);
+                        inserted = true;
+                        break;
+                    }
+                }
+                if (!inserted) {
+                    list.appendChild(placeholder);
+                }
+            };
+
+            const upHandler = () => {
+                // Solta no placeholder se existir
+                if (placeholder) {
+                    list.insertBefore(draggingItem, placeholder);
+                    placeholder.remove();
+                    placeholder = null;
+                }
+                draggingItem.classList.remove('dragging');
+                draggingItem = null;
+
+                document.removeEventListener('pointermove', moveHandler);
+                document.removeEventListener('pointerup', upHandler);
+                document.removeEventListener('touchmove', moveHandler);
+                document.removeEventListener('touchend', upHandler);
+            };
+
+            document.addEventListener('pointermove', moveHandler);
+            document.addEventListener('pointerup', upHandler);
+            document.addEventListener('touchmove', moveHandler, { passive: false });
+            document.addEventListener('touchend', upHandler);
+        });
+    });
+}
+
 function loadQuestion() {
 updateQuestionCounter(); // 🔹 Atualiza o contador de perguntas sempre que carregar uma nova pergunta
 
@@ -359,11 +421,9 @@ if (questions[currentQuestion].type === "draggable") {
       listItem.draggable = true;
       listItem.dataset.index = index;
       listItem.classList.add("draggable-item"); // Adiciona classe para estilização
-      listItem.addEventListener("dragstart", dragStart);
-      listItem.addEventListener("dragover", dragOver);
-      listItem.addEventListener("drop", drop);
       list.appendChild(listItem);
   });
+  makeDraggableList('#draggable-list');
 }
 else if (questions[currentQuestion].type === "slider") {
 optionsDiv.innerHTML = `
@@ -447,13 +507,11 @@ else if (questions[currentQuestion].type === "draggable12") {
         listItem.dataset.index = index;
       listItem.classList.add("draggable-item"); // Adiciona classe para estilização
         
-        // Ensure event listeners for draggable actions
-        listItem.addEventListener("dragstart", dragStart12);
-        listItem.addEventListener("dragover", dragOver12);
-        listItem.addEventListener("drop", drop12);
 
         list.appendChild(listItem);
     });
+  
+    makeDraggableList('#draggable-list-12');
 }
 else if (questions[currentQuestion].type === "sliderSelfEsteem") {
     optionsDiv.innerHTML = `
@@ -515,25 +573,8 @@ else {
       slider.classList.add('answered');
     }
   });
-}
 
-function dragStart(event) {
-event.dataTransfer.setData("text/plain", event.target.dataset.index);
-}
 
-function dragOver(event) {
-event.preventDefault();
-}
-
-function drop(event) {
-event.preventDefault();
-const draggedIndex = event.dataTransfer.getData("text/plain");
-const targetIndex = event.target.dataset.index;
-let list = document.getElementById("draggable-list");
-let items = Array.from(list.children);
-
-list.insertBefore(items[draggedIndex], items[targetIndex]);
-updateIndices();
 }
 
 function updateIndices() {
@@ -542,32 +583,6 @@ let items = Array.from(list.children);
 items.forEach((item, index) => {
     item.dataset.index = index;
 });
-}
-
-function dragStart12(event) {
-event.dataTransfer.setData("text/plain", event.target.dataset.index);
-}
-
-function dragOver12(event) {
-event.preventDefault();
-}
-
-function drop12(event) {
-event.preventDefault();
-const draggedIndex = event.dataTransfer.getData("text/plain");
-const targetIndex = event.target.dataset.index;
-let list = document.getElementById("draggable-list-12");
-let items = Array.from(list.children);
-
-if (draggedIndex !== targetIndex) {
-    let draggedItem = items[draggedIndex];
-    let targetItem = items[targetIndex];
-
-    if (draggedItem && targetItem) {
-        list.insertBefore(draggedItem, targetItem);
-        updateIndices12();
-    }
-}
 }
 
 function updateIndices12() {
