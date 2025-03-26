@@ -503,6 +503,18 @@ else {
     //     </label><br>`;
     // });
 }
+  
+
+    document.querySelectorAll('.slider').forEach(slider => {
+    slider.addEventListener('input', () => {
+      slider.classList.add('answered');
+    });
+
+    // Se já houver valor diferente do padrão, já aplica o .answered
+    if (slider.value != 0 && slider.value != 3) {
+      slider.classList.add('answered');
+    }
+  });
 }
 
 function dragStart(event) {
