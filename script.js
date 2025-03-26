@@ -484,16 +484,16 @@ else if (questions[currentQuestion].type === "slider11") {
 optionsDiv.innerHTML = `
     <div class='slider-container'>
         <div class="slider-labels">
-            <span>Evito o confronto</span>
-            <span>Enfrento de cabeça</span>
+            <span>Evito confrontar</span>
+            <span>Confronto/ataco</span>
         </div>
         <input type='range' class='slider' id='q11a' min='1' max='5' step='1' value='${answers["11a"] || 3}'>
     </div>
 
     <div class='slider-container'>
         <div class="slider-labels">
-            <span>Reprimo o que sinto</span>
-            <span>Expresso tudo intensamente</span>
+            <span>Reprimo sentimentos</span>
+            <span>Expresso intensamente</span>
         </div>
         <input type='range' class='slider' id='q11b' min='1' max='5' step='1' value='${answers["11b"] || 3}'>
     </div>
@@ -508,8 +508,8 @@ optionsDiv.innerHTML = `
 
     <div class='slider-container'>
         <div class="slider-labels">
-            <span>Eu aceito ordens</span>
-            <span>Eu desafio autoridade</span>
+            <span>Aceito ordens</span>
+            <span>Desafio autoridade</span>
         </div>
         <input type='range' class='slider' id='q11d' min='1' max='5' step='1' value='${answers["11d"] || 3}'>
     </div>
