@@ -345,6 +345,7 @@ function makeDraggableList(selector) {
     const list = document.querySelector(selector);
     let draggingItem = null;
     let placeholder = null;
+    let ghost = null;
 
     list.querySelectorAll('li').forEach(item => {
         item.addEventListener('pointerdown', (e) => {
@@ -376,6 +377,10 @@ function makeDraggableList(selector) {
                 if (!inserted) {
                     list.appendChild(placeholder);
                 }
+                if (ghost) {
+                    ghost.style.top = `${pointerY - ghost.offsetHeight / 2}px`;
+                    ghost.style.left = `${(e.clientX || e.touches?.[0]?.clientX) - ghost.offsetWidth / 2}px`;
+                }
             };
 
             const upHandler = () => {
@@ -385,6 +390,11 @@ function makeDraggableList(selector) {
                     placeholder.remove();
                     placeholder = null;
                 }
+                if (ghost) {
+                    ghost.remove();
+                    ghost = null;
+                }
+                
                 draggingItem.classList.remove('dragging');
                 draggingItem = null;
 
@@ -393,6 +403,16 @@ function makeDraggableList(selector) {
                 document.removeEventListener('touchmove', moveHandler);
                 document.removeEventListener('touchend', upHandler);
             };
+
+            ghost = draggingItem.cloneNode(true);
+            ghost.style.position = 'fixed';
+            ghost.style.top = `${e.clientY}px`;
+            ghost.style.left = `${e.clientX}px`;
+            ghost.style.width = `${draggingItem.offsetWidth}px`;
+            ghost.style.pointerEvents = 'none';
+            ghost.style.opacity = '0.8';
+            ghost.style.zIndex = '1000';
+            document.body.appendChild(ghost);
 
             document.addEventListener('pointermove', moveHandler);
             document.addEventListener('pointerup', upHandler);
