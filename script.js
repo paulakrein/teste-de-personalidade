@@ -310,8 +310,8 @@ const questions = [
     "Um barzinho de samba, vibrante, animado e cheio de pessoas que se gostam",
     "Um tribunal de justiça, onde todos os movimentos são analisados e julgados"
 ] },
-{ text: "Pergunta 11: Como você lida com conflitos e frustrações?", type: "slider11" },
-{ text: "Pergunta 12: O que move você na vida, o que é mais importante acima de tudo? (Segure e arraste para colocar em ordem de prioridade)", type: "draggable12",
+{ text: "Como você lida com conflitos e frustrações?", type: "slider11" },
+{ text: "O que move você na vida, o que é mais importante acima de tudo? (Segure e arraste para colocar em ordem de prioridade)", type: "draggable12",
     options: [
         "Liberdade de existência • Autenticidade • Criatividade • Autonomia • Ruptura",
         "Segurança • Proteção • Estabilidade • Refúgio • Previsibilidade",
