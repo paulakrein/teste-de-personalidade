@@ -386,17 +386,17 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /* Efeito ao passar o mouse */
-.draggable-item:hover {
+/* .draggable-item:hover {
     background: #4C6FFF;
     border: 1px solid #2277da;
     color: white;
-}
+} */
 
 /* Efeito ao soltar um item */
-.draggable-item.drag-over {
+/* .draggable-item.drag-over {
     background: #E6545F;
     color: white;
-}
+} */
 
 .placeholder {
     background-color: #dfe6f1;
