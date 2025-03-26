@@ -398,6 +398,13 @@ input[type="range"]::-webkit-slider-thumb {
     color: white;
 }
 
+.placeholder {
+    background-color: #dfe6f1;
+    border: 2px dashed #4C6FFF;
+    margin: 16px;
+    border-radius: 5px;
+    height: 5px; /* ou ajuste conforme seu item */
+}
 
 /* bottom btn */
 
