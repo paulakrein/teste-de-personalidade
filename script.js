@@ -716,10 +716,6 @@ if (secondScore === thirdScore) {
 // Gera top3 com o traço principal e os secundários definidos acima
 const top3 = [primary].concat(secondaryTraits);
 
-const primaryScore = sorted[0][1];
-const secondScore = sorted[1][1];
-const dominanceThreshold = 20; 
-
 // 🔥 Pureza
 if (primaryScore - secondScore >= dominanceThreshold) {
     const pure = archetypes.find(a => a.match.length === 1 && a.match.includes(primary));
