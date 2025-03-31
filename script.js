@@ -697,20 +697,24 @@ updateQuestionCounter(); // 🔹 Atualiza o contador ao voltar para a pergunta a
 
 function getArchetype(transtornoScores) {
 const sorted = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
-const primary = sorted[0][0];
 
-let secondaryTraits = [];
+const primary = sorted[0][0];
+const primaryScore = sorted[0][1];
 const secondScore = sorted[1][1];
 const thirdScore = sorted[2][1];
+const dominanceThreshold = 20;
 
-// Se houver empate entre segundo e terceiro, inclui ambos
+let secondaryTraits = [];
+
+// Se houver empate entre segundo e terceiro, inclui os dois
 if (secondScore === thirdScore) {
   secondaryTraits = [sorted[1][0], sorted[2][0]];
 } else {
   secondaryTraits = [sorted[1][0]];
 }
 
-const top3 = [primary, ...secondaryTraits];
+// Gera top3 com o traço principal e os secundários definidos acima
+const top3 = [primary].concat(secondaryTraits);
 
 const primaryScore = sorted[0][1];
 const secondScore = sorted[1][1];
