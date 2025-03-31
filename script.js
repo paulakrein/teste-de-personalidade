@@ -273,7 +273,7 @@ const questions = [
     "Ser deixado de lado",
     "Ser interrompido quando estou falando",
     "Perder pra alguém inferior a mim",
-    "Gente sensível, irritante ou dramática demais",
+    "Autoridades incompetentes, esvaziadas, que não merecem respeito",
     "Mudança de planos inesperada",
     "Ter que lidar com problemas totalmente sozinho",
     "Me sentir exposto em público"
@@ -698,9 +698,20 @@ updateQuestionCounter(); // 🔹 Atualiza o contador ao voltar para a pergunta a
 function getArchetype(transtornoScores) {
 const sorted = Object.entries(transtornoScores).sort((a, b) => b[1] - a[1]);
 const primary = sorted[0][0];
-const secondary1 = sorted[1][0];
-const secondary2 = sorted[2][0];
-const top3 = [primary, secondary1, secondary2];
+
+let secondaryTraits = [];
+const secondScore = sorted[1][1];
+const thirdScore = sorted[2][1];
+
+// Se houver empate entre segundo e terceiro, inclui ambos
+if (secondScore === thirdScore) {
+  secondaryTraits = [sorted[1][0], sorted[2][0]];
+} else {
+  secondaryTraits = [sorted[1][0]];
+}
+
+const top3 = [primary, ...secondaryTraits];
+
 const primaryScore = sorted[0][1];
 const secondScore = sorted[1][1];
 const dominanceThreshold = 20; 
