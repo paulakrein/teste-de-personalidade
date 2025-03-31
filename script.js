@@ -191,7 +191,12 @@ const archetypes = [
         name: "O Equilibrista",
         match: ["t4", "t8"],
         description: "O Equilibrista atravessa a vida racionalmente, sempre prestes a cair no abismo das emoções. O desejo de amar é contido pelo horror do caos dos relacionamentos e, em geral, ele rompe antes do abandono. Tem autoestima frágil e dependente — tanto da aprovação externa quanto da própria avaliação sobre a adequação de seu comportamento. Cada decisão é pesada, organizada, planejada e calculada — até que tudo sai do controle e a sobrecarga emocional o carrega para o desespero. Daí decorre uma enorme dificuldade de manter a linearidade da narrativa. Busca a perfeição e é destruído pela cobrança. A raiva disfarçada de tranquilidade, o afeto de exigência. E todo dia é um ato de equilíbrio: entre o desejo de viver e o controle para não viver demais."
-      }      
+      },
+      { // 37
+        name: "A Protagonista",
+        match: ["t5", "t9"],
+        description: "A Protagonista tem uma autoimagem dependente da admiração, do desejo, do carinho ou da necessidade dos outros. Mas é encantadora demais, autêntica demais, para dizermos que é apenas um reflexo (ou representação). Esses são talentos raros: transformar fragilidade em beleza, convencer com cenas estudadas e inspirar cuidado com o afeto. Os outros se aproximam, e ela os mantém por perto — e quem ela seria sem eles, afinal? Expressiva, verbalmente envolvente, apela emocionalmente se precisa de ajuda. Indireta ao expressar necessidades, ensina a todos como adivinhar o que deseja. Evita confrontos diretos e valoriza a harmonia nas relações. Fica ansiosa se for deixada sozinha para tomar decisões, ou diante de mudanças que envolvam separação. O medo de ser dispensada, a angústia de ter de estar sempre presente (e alegre), o não saber existir sozinha — suas conexões mais fortes vêm daí. E, porque consegue corresponder ao olhar dos outros, às exigências arbitrárias dos outros, é difícil alguém negar sua beleza (quase objetiva, quase universal). E tudo isso ensina a ela, pouco a pouco, quem é de verdade."
+      }
 ];
 
 
