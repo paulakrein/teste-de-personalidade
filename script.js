@@ -898,7 +898,7 @@ questions.forEach((question, index) => {
             // Pontua +2 para o cluster correspondente
             // AJUSTA O CLUSTER - de 2 para 1
             if (answerIndex < 3) {
-                clusters.cluster1.forEach(t => transtornoScores[t] += 0.1);
+                clusters.cluster1.forEach(t => transtornoScores[t] += 0.5);
             } else if (answerIndex >= 3 && answerIndex <= 6) {
                 clusters.cluster2.forEach(t => transtornoScores[t] += 0.5);
             } else {
