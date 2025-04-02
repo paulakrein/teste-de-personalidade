@@ -196,6 +196,11 @@ const archetypes = [
         name: "A Protagonista",
         match: ["t5", "t9"],
         description: "A Protagonista tem uma autoimagem dependente da admiração, do desejo, do carinho ou da necessidade dos outros. Mas é encantadora demais, autêntica demais, para dizermos que é apenas um reflexo (ou representação). Esses são talentos raros: transformar fragilidade em beleza, convencer com cenas estudadas e inspirar cuidado com o afeto. Os outros se aproximam, e ela os mantém por perto — e quem ela seria sem eles, afinal? Expressiva, verbalmente envolvente, apela emocionalmente se precisa de ajuda. Indireta ao expressar necessidades, ensina a todos como adivinhar o que deseja. Evita confrontos diretos e valoriza a harmonia nas relações. Fica ansiosa se for deixada sozinha para tomar decisões, ou diante de mudanças que envolvam separação. O medo de ser dispensada, a angústia de ter de estar sempre presente (e alegre), o não saber existir sozinha — suas conexões mais fortes vêm daí. E, porque consegue corresponder ao olhar dos outros, às exigências arbitrárias dos outros, é difícil alguém negar sua beleza (quase objetiva, quase universal). E tudo isso ensina a ela, pouco a pouco, quem é de verdade."
+      },
+      { // 38
+        name: "O Trapezista",
+        match: ["t4", "t8", "t10"],
+        description: "O arquétipo da contradição entre o controle e as emoções intensas. Tem uma autoimagem instável e autocrítica, oscilando entre o desejo de ser impecável e o sentimento de inadequação ou fracasso iminente. Teme o abandono, mas também teme se expor. É como um trapezista em voo: suspenso entre o isolamento defensivo, a segurança do cálculo e o desejo de sentir e viver conexões profundas. Avesso à impulsividade — até que a sobrecarga emocional o vença e ele mostre, de forma mais autêntica e espontânea, como realmente se sente. Tudo isso se resume na preferência, a priori, por viver sob regras pré-estabelecidas, numa rigidez que, no fim, serve como estrutura que o protege de cair de uma grande altura. Quando encontra segurança e apoio, experimenta transformações intensas e profundas."
       }
 ];
 
