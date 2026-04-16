@@ -178,7 +178,7 @@ const archetypes = [
         description: "O artista fabricou para si, por engenho, coragem ou capricho, um novo mundo fantástico que transparece em seus jeitos. Um mundo que sua mente imaginativa habilmente apresenta às outras pessoas — sem, no entanto, convidá-las a viver nele. Um todo completo, como ele mesmo, formado por imagens belas e imperturbáveis. Daí decorrem seus modos inusitados de se apresentar, sua expressividade, que nos levam a chamá-lo de uma figura autêntica e performática. Apesar do enorme poder de encantar com a linguagem, suas ideias são pouco usuais e suas expressões, imprevisíveis. Está, a todo momento, compondo cenas sombrias e fascinantes — e, no fim, mesmo que ninguém o entenda, ele encanta. Pode-se dizer: é o tipo capaz de transcender a condição humana, a única imagem que irá restar, no fim, quando todos os escombros forem removidos."
       },
       { // 34
-        name: "O Fauno",
+        name: "O Minotauro",
         match: ["t2", "t3", "t8"],
         description: "A figura que fareja a intenção e sabe, com clareza, que as pessoas não são o que aparentam ser. Ele mesmo, silenciosamente, sempre sabe mais do que aparenta, sempre é mais hábil, sempre é mais metódico do que deixa transparecer. E talvez sinta mais também — mas aí há dúvida. E as pessoas sabem: ele é desconfiado, hipervigilante, recluso por convicção. Observa o mundo de forma detalhista, busca o controle da narrativa e usa sua capacidade analítica para enxergar padrões ocultos nas coisas. O que alguns chamam de magia, ele chama de atenção — e isso dá medo, porque ele é, de fato, atento. Daí decorre algo que qualquer um pode entender: que ele fique, inteiro e solitário, escondido no centro do labirinto das coisas — e que realmente prefira estar ali (nas suas formas conhecidas), a ser traído pela superfície."
       },
@@ -296,7 +296,7 @@ const questions = [
     "Travo e peço ajuda para elaborar um novo plano",
     "Fico ansioso e tento me preparar para o pior cenário possível"
 ] },
-{ text: "Quando você está em um grupo, o que orienta seu comportamento?",
+{ text: "Quando você está em um grupo, o que orienta seu comportamento? (Segure e arraste para colocar em ordem de prioridade)",
     type: "draggable",
     options:
     [
